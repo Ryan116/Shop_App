@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shopapp.databinding.FragmentMainBinding
-import com.example.shopapp.features.mainScreen.presentation.recyclerView.HomeStoreAdapter
+import com.example.shopapp.features.mainScreen.presentation.recyclerView.HomeStorePageAdapter
 import com.example.shopapp.features.mainScreen.presentation.viewModel.MainViewModel
 
 
@@ -28,14 +28,13 @@ class MainFragment : Fragment() {
 
 
         }
-        val adapterRV = HomeStoreAdapter()
+        val adapterRV = HomeStorePageAdapter(requireActivity())
         binding.recyclerViewHomeStore.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerViewHomeStore.adapter = adapterRV
-        mainViewModel.phones.observe(viewLifecycleOwner, {
-            binding.textView1.text = it.toString()
-            adapterRV.submitList(it)
-        })
+//        mainViewModel.phones.observe(viewLifecycleOwner, {
+//            adapterRV.submitList(it)
+//        })
 
         return binding.root
     }

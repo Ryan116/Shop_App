@@ -16,7 +16,7 @@
         android:layout_height="wrap_content">
 
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/imageView"
             android:layout_width="378dp"
             android:layout_height="182dp"
@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
 
-        </androidx.appcompat.widget.AppCompatImageView>
+        </androidx.viewpager2.widget.ViewPager2>
 
         <TextView
             android:id="@+id/textViewMainTitle"
