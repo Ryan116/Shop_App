@@ -1,6 +1,7 @@
 package com.example.shopapp.features.mainScreen.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,10 +29,14 @@ class MainFragment : Fragment() {
 
 
         }
-        val adapterRV = HomeStorePageAdapter(requireActivity())
-        binding.recyclerViewHomeStore.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.recyclerViewHomeStore.adapter = adapterRV
+        mainViewModel.phones.observe(viewLifecycleOwner, {
+            mainViewModel.homeStoreListSize.value = it.size
+            binding.textView1.text = mainViewModel.homeStoreListSize.value.toString()
+            val adapterRV = HomeStorePageAdapter(requireActivity(), listSize = mainViewModel.homeStoreListSize.value?:0)
+            binding.viewPagerHomeStore.adapter = adapterRV
+        })
+//        binding.recyclerViewHomeStore.layoutManager =
+//            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 //        mainViewModel.phones.observe(viewLifecycleOwner, {
 //            adapterRV.submitList(it)
 //        })

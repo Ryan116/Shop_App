@@ -25,6 +25,9 @@ class MainViewModel: ViewModel() {
     private val _phones = MutableLiveData<List<HomeStore>>()
     val phones: LiveData<List<HomeStore>> = _phones
 
+    var homeStoreListSize = MutableLiveData<Int>()
+
+
     init {
         getPhoneModels()
     }
