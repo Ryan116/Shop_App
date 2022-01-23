@@ -10,15 +10,13 @@ import com.example.shopapp.features.mainScreen.domain.repository.MainScreenRepos
 class MainScreenRepositoryImpl(private val remoteDataSource: RemoteDataSource) :
     MainScreenRepository {
 
-    private var phonesBestSellerListLD = MutableLiveData<List<BestSeller>>()
     private var phonesHomeStoreListLD = MutableLiveData<List<HomeStore>>()
 
 
 
 
-    override suspend fun getBestSellerPhonesList(): LiveData<List<BestSeller>> {
-        phonesBestSellerListLD.value = remoteDataSource.getPhonesList()[0].bestSeller
-        return phonesBestSellerListLD
+    override suspend fun getBestSellerPhonesList(): List<BestSeller> {
+        return remoteDataSource.getPhonesList()[0].bestSeller
 
     }
 

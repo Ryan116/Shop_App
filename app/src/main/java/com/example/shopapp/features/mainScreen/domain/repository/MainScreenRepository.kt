@@ -6,7 +6,7 @@ import com.example.shopapp.features.mainScreen.domain.model.HomeStore
 
 interface MainScreenRepository {
 
-    suspend fun getBestSellerPhonesList(): LiveData<List<BestSeller>>
+    suspend fun getBestSellerPhonesList(): List<BestSeller>
 
     suspend fun getHomeStorePhonesList(): LiveData<List<HomeStore>>
 }
