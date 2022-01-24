@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shopapp.databinding.FragmentMainBinding
+import com.example.shopapp.features.mainScreen.presentation.recyclerView.BestSellerAdapter
 import com.example.shopapp.features.mainScreen.presentation.recyclerView.HomeStorePageAdapter
 import com.example.shopapp.features.mainScreen.presentation.viewModel.MainViewModel
 
@@ -35,11 +37,14 @@ class MainFragment : Fragment() {
             val adapterRV = HomeStorePageAdapter(requireActivity(), listSize = mainViewModel.homeStoreListSize.value?:0)
             binding.viewPagerHomeStore.adapter = adapterRV
         })
-//        binding.recyclerViewHomeStore.layoutManager =
-//            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-//        mainViewModel.phones.observe(viewLifecycleOwner, {
-//            adapterRV.submitList(it)
-//        })
+        mainViewModel.bestSellerPhonesList.observe(viewLifecycleOwner, {
+            mainViewModel.bestSellerListSize.value = it.size
+            val adapterBS = BestSellerAdapter()
+            adapterBS.submitList(it)
+            binding.recyclerViewBestSeller.adapter = adapterBS
+            binding.recyclerViewBestSeller.layoutManager = GridLayoutManager(requireContext(), 2)
+
+        })
 
         return binding.root
     }

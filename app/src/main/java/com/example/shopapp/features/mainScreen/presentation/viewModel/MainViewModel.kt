@@ -29,6 +29,7 @@ class MainViewModel: ViewModel() {
     val bestSellerPhonesList: LiveData<List<BestSeller>> = _bestSellerPhonesList
 
     var homeStoreListSize = MutableLiveData<Int>()
+    val bestSellerListSize = MutableLiveData<Int>()
 
 
     init {

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bestSellerLayout"
+        android:layout_width="181dp"
+        android:layout_height="227dp"
+        android:padding="6dp">
+
+
+        <ImageView
+            android:id="@+id/imageViewBestSeller"
+            android:layout_width="181dp"
+            android:layout_height="168dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/textViewDiscountPrice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/textViewMainTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/black"
+            tools:text="Samsung Galaxy Ultra"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewDiscountPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textViewMainTitle"
+            app:layout_constraintStart_toStartOf="@+id/textViewMainTitle" />
+
+        <TextView
+            android:id="@+id/textViewPriceWithourDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewDiscountPrice"
+            app:layout_constraintStart_toEndOf="@+id/textViewDiscountPrice"
+            app:layout_constraintTop_toTopOf="@+id/textViewDiscountPrice" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
