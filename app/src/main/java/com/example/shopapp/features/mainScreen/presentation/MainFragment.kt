@@ -33,7 +33,6 @@ class MainFragment : Fragment() {
         }
         mainViewModel.phones.observe(viewLifecycleOwner, {
             mainViewModel.homeStoreListSize.value = it.size
-            binding.textView1.text = mainViewModel.homeStoreListSize.value.toString()
             val adapterRV = HomeStorePageAdapter(requireActivity(), listSize = mainViewModel.homeStoreListSize.value?:0)
             binding.viewPagerHomeStore.adapter = adapterRV
         })

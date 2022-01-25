@@ -22,6 +22,17 @@ class BestSellerViewHolder(private var binding: BestSellerItemBinding) :
             textViewPriceWithourDiscount.text = NumberFormat.getCurrencyInstance(Locale.US)
                 .format(bestSeller.priceWithoutDiscount).toString()
             imageViewBestSeller.setImageDrawableFromUrl(bestSeller.picture)
+            var pressed = true
+            imageViewBSLikes.setOnClickListener {
+                if (pressed) {
+                    pressed = false
+                    imageViewBSLikes.setImageResource(R.drawable.ic_bestseller)
+                } else {
+                    pressed = true
+                    imageViewBSLikes.setImageResource(R.drawable.ic_bslike_empty)
+                }
+
+            }
 
 
         }
