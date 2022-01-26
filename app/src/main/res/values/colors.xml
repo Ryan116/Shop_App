@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="main_background">#f8f8f8</color>
     <color name="button_see_more">#FF6E4E</color>
+    <color name="filter_background">#010035</color>
 </resources>

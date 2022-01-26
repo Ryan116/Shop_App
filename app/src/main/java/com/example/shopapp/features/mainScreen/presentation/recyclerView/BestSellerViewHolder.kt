@@ -13,14 +13,11 @@ import java.util.*
 
 class BestSellerViewHolder(private var binding: BestSellerItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
-    val homeStoreLayout: ConstraintLayout = binding.bestSellerLayout
     fun bind(bestSeller: BestSeller) {
         binding.apply {
             textViewMainTitle.text = bestSeller.title
-            textViewDiscountPrice.text = NumberFormat.getCurrencyInstance(Locale.US)
-                .format(bestSeller.discountPrice)
-            textViewPriceWithourDiscount.text = NumberFormat.getCurrencyInstance(Locale.US)
-                .format(bestSeller.priceWithoutDiscount).toString()
+            textViewDiscountPrice.text = "$${bestSeller.discountPrice}"
+            textViewPriceWithourDiscount.text = "$${bestSeller.priceWithoutDiscount}"
             imageViewBestSeller.setImageDrawableFromUrl(bestSeller.picture)
             var pressed = true
             imageViewBSLikes.setOnClickListener {
