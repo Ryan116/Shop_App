@@ -5,14 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import coil.load
+import coil.transform.RoundedCornersTransformation
 import com.example.shopapp.R
 import com.example.shopapp.databinding.FragmentImageBinding
 import com.example.shopapp.features.mainScreen.presentation.viewModel.MainViewModel
-import com.squareup.picasso.Picasso
 
 const val IMAGE_POSITION = "imagePos"
 
@@ -31,17 +30,16 @@ class ImageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val picasso = Picasso.get()
 
 
         arguments?.takeIf {
             it.containsKey(IMAGE_POSITION)
         }?.apply {
             val position = getInt(IMAGE_POSITION)
-            mainViewModel.phones.observe(viewLifecycleOwner, {
+            mainViewModel.phones.observe(viewLifecycleOwner) {
                 val listSize = it.size
                 for (i in 0 until listSize) {
-                    when(position) {
+                    when (position) {
                         i -> {
                             val phone = it[i]
                             binding.apply {
@@ -52,28 +50,21 @@ class ImageFragment : Fragment() {
                         }
                     }
                 }
-
-
-            })
-
-
+            }
         }
     }
-
-
-
-
-
 }
 
 private fun ImageView.setImageFromUrl(imgUrl: String) {
     imgUrl.let {
-        val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
-        this.load(imgUri) {
+        this.load(imgUrl) {
             placeholder(R.drawable.loading_animation)
             error(R.drawable.ic_broken_image)
+            transformations(RoundedCornersTransformation(40f))
         }
     }
 }
+
+
 
 
