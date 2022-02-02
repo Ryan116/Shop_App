@@ -7,5 +7,5 @@ data class HomeStore(
     val title: String,
     val subtitle: String,
     val picture: String,
-    @Json(name = "is_buy") val isBuy: Boolean
-    )
+    @Json(name = "is_buy") val isBuy: Boolean,
+)

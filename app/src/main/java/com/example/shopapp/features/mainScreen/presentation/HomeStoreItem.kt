@@ -10,13 +10,13 @@ import androidx.fragment.app.viewModels
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.example.shopapp.R
-import com.example.shopapp.databinding.FragmentImageBinding
+import com.example.shopapp.databinding.HomeStoreItemBinding
 import com.example.shopapp.features.mainScreen.presentation.viewModel.MainViewModel
 
 const val IMAGE_POSITION = "imagePos"
 
-class ImageFragment : Fragment() {
-    private lateinit var binding: FragmentImageBinding
+class HomeStoreItem : Fragment() {
+    private lateinit var binding: HomeStoreItemBinding
     private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreateView(
@@ -24,7 +24,7 @@ class ImageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentImageBinding.inflate(layoutInflater)
+        binding = HomeStoreItemBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -46,6 +46,7 @@ class ImageFragment : Fragment() {
                                 textViewMainTitle.text = phone.title
                                 textViewSubtitle.text = phone.subtitle
                                 imageView.setImageFromUrl(phone.picture)
+
                             }
                         }
                     }

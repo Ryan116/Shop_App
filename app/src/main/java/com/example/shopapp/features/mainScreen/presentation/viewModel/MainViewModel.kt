@@ -31,16 +31,16 @@ class MainViewModel: ViewModel() {
     var homeStoreListSize = MutableLiveData<Int>()
     val bestSellerListSize = MutableLiveData<Int>()
 
-    private val _buttonClicked = MutableLiveData<String>()
-    val buttonClicked: LiveData<String> = _buttonClicked
+    private val _buttonClicked = MutableLiveData<Boolean>()
+    val buttonClicked: LiveData<Boolean> = _buttonClicked
 
 
     init {
         getPhoneModels()
     }
 
-    fun setClickedButton(buttonClickedName: String) {
-        _buttonClicked.value = buttonClickedName
+    fun setButtonClicked(clicked: Boolean) {
+        _buttonClicked.value = clicked
     }
 
     private fun getPhoneModels() {

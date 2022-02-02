@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -13,6 +14,7 @@ import com.example.shopapp.databinding.FragmentMainBinding
 import com.example.shopapp.features.mainScreen.presentation.recyclerView.BestSellerAdapter
 import com.example.shopapp.features.mainScreen.presentation.recyclerView.HomeStorePageAdapter
 import com.example.shopapp.features.mainScreen.presentation.viewModel.MainViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 
 class MainFragment : Fragment() {
@@ -49,21 +51,53 @@ class MainFragment : Fragment() {
         }
         binding.apply {
             imageButtonPhones.apply {
-                categoryButtonClick(this, R.drawable.ic_button_phones_clicked, R.drawable.ic_button_phones, getString(R.string.category_phones))
+                categoryButtonClick(
+                    this,
+                    R.drawable.ic_button_phones_clicked,
+                    R.drawable.ic_button_phones,
+                    getString(R.string.category_phones)
+                )
             }
             imageButtonComputer.apply {
-                categoryButtonClick(this, R.drawable.ic_button_computer_clicked, R.drawable.ic_button_computer, getString(R.string.category_computer))
+                categoryButtonClick(
+                    this,
+                    R.drawable.ic_button_computer_clicked,
+                    R.drawable.ic_button_computer,
+                    getString(R.string.category_computer)
+                )
             }
             imageButtonHealth.apply {
-                categoryButtonClick(this, R.drawable.ic_button_health_clicked, R.drawable.ic_button_health, getString(R.string.category_health))
+                categoryButtonClick(
+                    this,
+                    R.drawable.ic_button_health_clicked,
+                    R.drawable.ic_button_health,
+                    getString(R.string.category_health)
+                )
             }
             imageButtonBooks.apply {
-                categoryButtonClick(this, R.drawable.ic_button_books_clicked, R.drawable.ic_button_books, getString(R.string.category_books))
+                categoryButtonClick(
+                    this,
+                    R.drawable.ic_button_books_clicked,
+                    R.drawable.ic_button_books,
+                    getString(R.string.category_books)
+                )
             }
             imageButton5.apply {
-                categoryButtonClick(this, R.drawable.ic_button_5_clicked, R.drawable.ic_button_5, getString(R.string.category_button_5))
+                categoryButtonClick(
+                    this,
+                    R.drawable.ic_button_5_clicked,
+                    R.drawable.ic_button_5,
+                    getString(R.string.category_button_5)
+                )
             }
         }
+        binding.imageButtonFilter.setOnClickListener {
+            val view: View = layoutInflater.inflate(R.layout.bottom_filter, null)
+            val dialog = BottomSheetDialog(requireContext())
+            dialog.setContentView(view)
+            dialog.show()
+        }
+
 
 
 
@@ -76,11 +110,9 @@ class MainFragment : Fragment() {
         notClickedImage: Int,
         buttonClickedName: String
     ) {
-        mainViewModel.setClickedButton(buttonClickedName)
-
         var clicked = true
         imageButton.setOnClickListener {
-            when (mainViewModel.buttonClicked.value.equals(buttonClickedName)) {
+            when (clicked) {
                 true -> {
                     clicked = false
                     imageButton.setBackgroundResource(clickedImage)
@@ -88,7 +120,6 @@ class MainFragment : Fragment() {
                 false -> {
                     clicked = true
                     imageButton.setBackgroundResource(notClickedImage)
-
                 }
             }
         }
