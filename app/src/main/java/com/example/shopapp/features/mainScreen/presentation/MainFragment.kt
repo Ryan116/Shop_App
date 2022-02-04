@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.shopapp.R
 import com.example.shopapp.databinding.FragmentMainBinding
@@ -43,7 +43,14 @@ class MainFragment : Fragment() {
         }
         mainViewModel.bestSellerPhonesList.observe(viewLifecycleOwner) {
             mainViewModel.bestSellerListSize.value = it.size
-            val adapterBS = BestSellerAdapter()
+            val adapterBS = BestSellerAdapter() {
+                if (view != null) {
+                    Navigation.findNavController(requireView())
+                        .navigate(R.id.action_mainFragment_to_productDetailsFragment)
+                }
+
+
+            }
             adapterBS.submitList(it)
             binding.recyclerViewBestSeller.adapter = adapterBS
             binding.recyclerViewBestSeller.layoutManager = GridLayoutManager(requireContext(), 2)
