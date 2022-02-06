@@ -18,7 +18,7 @@
         android:contentDescription="TODO" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewPageName"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:text="Product Details"
@@ -43,9 +43,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="356dp" />
+        app:layout_constraintGuide_begin="420dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -169,8 +170,8 @@
             android:id="@+id/imageButtonCpu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:background="@color/white"
             android:src="@drawable/ic_cpu"
             app:layout_constraintEnd_toStartOf="@+id/imageButtonCamera"
             app:layout_constraintHorizontal_bias="0.5"
@@ -182,7 +183,6 @@
             android:id="@+id/textViewCpu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="@+id/imageButtonCpu"
             app:layout_constraintStart_toStartOf="@+id/imageButtonCpu"
             app:layout_constraintTop_toBottomOf="@+id/imageButtonCpu" />
@@ -192,6 +192,7 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:src="@drawable/ic_button_camera"
+            android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/imageButtonCpu"
             app:layout_constraintEnd_toStartOf="@+id/imageButtonRam"
             app:layout_constraintHorizontal_bias="0.5"
@@ -203,7 +204,6 @@
             android:id="@+id/textViewCamera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="@+id/imageButtonCamera"
             app:layout_constraintStart_toStartOf="@+id/imageButtonCamera"
             app:layout_constraintTop_toBottomOf="@+id/imageButtonCamera" />
@@ -212,7 +212,8 @@
             android:id="@+id/imageButtonRam"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:src="@drawable/ic_button_storage"
+            android:background="@color/white"
+            android:src="@drawable/button_ram"
             app:layout_constraintBottom_toBottomOf="@+id/imageButtonCamera"
             app:layout_constraintEnd_toStartOf="@+id/imageButtonStorage"
             app:layout_constraintHorizontal_bias="0.5"
@@ -223,7 +224,6 @@
             android:id="@+id/textViewRam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="@+id/imageButtonRam"
             app:layout_constraintStart_toStartOf="@+id/imageButtonRam"
             app:layout_constraintTop_toBottomOf="@+id/imageButtonRam" />
@@ -233,6 +233,7 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:src="@drawable/ic_button_storage"
+            android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/imageButtonRam"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -244,7 +245,6 @@
             android:id="@+id/textViewStorage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="@+id/imageButtonStorage"
             app:layout_constraintHorizontal_bias="0.533"
             app:layout_constraintStart_toStartOf="@+id/imageButtonStorage"
@@ -263,23 +263,25 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewCpu" />
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/imageButtonColor1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:layout_marginTop="8dp"
             android:src="@drawable/ic_pdbuttonok"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <ImageButton
-            android:id="@+id/imageButton8"
+            android:id="@+id/imageButtonColor2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:layout_marginStart="8dp"
             android:src="@drawable/ic_pdbuttoncolor"
-            app:layout_constraintBottom_toBottomOf="@+id/imageButton"
-            app:layout_constraintStart_toEndOf="@+id/imageButton"
-            app:layout_constraintTop_toTopOf="@+id/imageButton" />
+            app:layout_constraintBottom_toBottomOf="@+id/imageButtonColor1"
+            app:layout_constraintStart_toEndOf="@+id/imageButtonColor1"
+            app:layout_constraintTop_toTopOf="@+id/imageButtonColor1" />
 
         <TextView
             android:id="@+id/textView128GB"
@@ -288,21 +290,43 @@
             android:layout_marginEnd="32dp"
             android:background="@drawable/ic_button128gb"
             android:gravity="center"
-            android:text="128 GB"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/imageButton8"
-            app:layout_constraintEnd_toStartOf="@+id/textView4"
-            app:layout_constraintTop_toTopOf="@+id/imageButton8" />
+            app:layout_constraintBottom_toBottomOf="@+id/imageButtonColor2"
+            app:layout_constraintEnd_toStartOf="@+id/textView256GB"
+            app:layout_constraintTop_toTopOf="@+id/imageButtonColor2" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView256GB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
-            android:text="256 GB"
             app:layout_constraintBottom_toBottomOf="@+id/textView128GB"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView128GB" />
 
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/button_see_more"
+            android:text="Add to Cart $1500.00"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageButtonColor2" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerPD"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPageName" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

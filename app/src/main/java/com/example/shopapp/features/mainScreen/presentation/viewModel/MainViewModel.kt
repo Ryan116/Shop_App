@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.shopapp.features.mainScreen.data.network.ShopMainApi
 import com.example.shopapp.features.mainScreen.data.remote.RemoteDataSourceImpl
 import com.example.shopapp.features.mainScreen.data.repository.MainScreenRepositoryImpl
+import com.example.shopapp.features.productDetailsScreen.data.repository.DetailsRepositoryImpl
 import com.example.shopapp.features.mainScreen.domain.model.BestSeller
 import com.example.shopapp.features.mainScreen.domain.model.HomeStore
 import kotlinx.coroutines.launch
@@ -31,17 +32,12 @@ class MainViewModel: ViewModel() {
     var homeStoreListSize = MutableLiveData<Int>()
     val bestSellerListSize = MutableLiveData<Int>()
 
-    private val _buttonClicked = MutableLiveData<Boolean>()
-    val buttonClicked: LiveData<Boolean> = _buttonClicked
-
 
     init {
         getPhoneModels()
     }
 
-    fun setButtonClicked(clicked: Boolean) {
-        _buttonClicked.value = clicked
-    }
+
 
     private fun getPhoneModels() {
 

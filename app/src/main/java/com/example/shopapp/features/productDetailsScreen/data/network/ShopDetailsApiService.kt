@@ -1,13 +1,11 @@
 package com.example.shopapp.features.productDetailsScreen.data.network
 
-import android.telecom.Call
-import com.example.shopapp.features.mainScreen.data.network.ShopMainApiService
-import com.example.shopapp.features.mainScreen.domain.model.Main
 import com.example.shopapp.features.productDetailsScreen.domain.model.ProductDetailsItem
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Headers
 
@@ -32,7 +30,7 @@ interface ShopDetailsApiService {
     suspend fun getProductDetails(): List<ProductDetailsItem>
 }
 
-object ShopMainApi {
+object ShopDetailsApi {
     val retrofitService : ShopDetailsApiService by lazy {
         retrofit.create(ShopDetailsApiService::class.java) }
 }
