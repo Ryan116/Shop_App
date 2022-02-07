@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.example.shopapp.R
@@ -30,6 +31,10 @@ class HomeStoreItem : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.imageView.setOnClickListener {
+            Navigation.findNavController(requireView())
+                .navigate(R.id.action_mainFragment_to_productDetailsFragment)
+        }
 
 
         arguments?.takeIf {

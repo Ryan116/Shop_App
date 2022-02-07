@@ -37,7 +37,8 @@ class MainFragment : Fragment() {
             mainViewModel.homeStoreListSize.value = it.size
             val adapterRV = HomeStorePageAdapter(
                 requireActivity(),
-                listSize = mainViewModel.homeStoreListSize.value ?: 0
+                listSize = mainViewModel.homeStoreListSize.value ?: 0,
+
             )
             binding.viewPagerHomeStore.adapter = adapterRV
         }

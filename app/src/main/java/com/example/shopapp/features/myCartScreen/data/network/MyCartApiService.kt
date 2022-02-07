@@ -1,0 +1,38 @@
+package com.example.shopapp.features.myCartScreen.data.network
+
+import com.example.shopapp.features.myCartScreen.domain.model.BasketMain
+import com.example.shopapp.features.productDetailsScreen.data.network.ShopDetailsApiService
+import com.example.shopapp.features.productDetailsScreen.domain.model.ProductDetailsItem
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.http.GET
+import retrofit2.http.Headers
+
+private const val BASE_URL =
+    "https://shopapi-0575.restdb.io/rest/"
+
+private val moshi = Moshi.Builder()
+    .add(KotlinJsonAdapterFactory())
+    .build()
+
+private val retrofit = Retrofit.Builder()
+    .addConverterFactory(MoshiConverterFactory.create(moshi))
+    .baseUrl(BASE_URL)
+    .build()
+
+interface MyCartApiService {
+
+    @Headers(
+        "x-apikey: 61ddae2e95cb716ea5ee48e4"
+    )
+    @GET("cart")
+    suspend fun getMyCart(): List<BasketMain>
+}
+
+object MyCartApi {
+    val retrofitService : MyCartApiService by lazy {
+        retrofit.create(MyCartApiService::class.java) }
+}
