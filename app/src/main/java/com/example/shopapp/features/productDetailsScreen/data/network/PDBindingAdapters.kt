@@ -1,6 +1,7 @@
 package com.example.shopapp.features.productDetailsScreen.data.network
 
 import android.content.Context
+import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -14,7 +15,7 @@ import com.example.shopapp.R
 import com.example.shopapp.features.mainScreen.domain.model.HomeStore
 import com.example.shopapp.features.mainScreen.domain.model.Main
 import com.example.shopapp.features.mainScreen.presentation.viewModel.MainViewModel
-
+import com.example.shopapp.features.mainScreen.presentation.viewModel.ShopApiStatus
 
 
 @BindingAdapter("imageUrl")
@@ -27,5 +28,22 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
         }
     }
 
+}
+
+@BindingAdapter("shopApiStatus")
+fun bindStatus(statusImageView: ImageView, status: ShopApiStatus?) {
+    when (status) {
+        ShopApiStatus.LOADING -> {
+            statusImageView.visibility = View.VISIBLE
+            statusImageView.setImageResource(R.drawable.loading_animation)
+        }
+        ShopApiStatus.ERROR -> {
+            statusImageView.visibility = View.VISIBLE
+            statusImageView.setImageResource(R.drawable.ic_connection_error)
+        }
+        ShopApiStatus.DONE -> {
+            statusImageView.visibility = View.GONE
+        }
+    }
 }
 

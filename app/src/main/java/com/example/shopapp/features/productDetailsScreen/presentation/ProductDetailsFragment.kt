@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.example.shopapp.R
@@ -52,19 +53,22 @@ class ProductDetailsFragment : Fragment() {
             binding.viewPagerPD.adapter = adapterPD
         }
 
-    }
+        binding.apply {
+            viewModel = productDetailsViewModel
+            lifecycleOwner = this@ProductDetailsFragment
+            buttonMyCart.setOnClickListener {
+                Navigation.findNavController(requireView())
+                    .navigate(R.id.action_productDetailsFragment_to_myCartFragment)
+            }
 
 
-}
-
-private fun ImageView.setImageResource(imgUrl: String) {
-    imgUrl.let {
-        this.load(imgUrl) {
-            placeholder(R.drawable.loading_animation)
-            error(R.drawable.ic_broken_image)
-            transformations(RoundedCornersTransformation(40f))
         }
+
     }
+
+
 }
+
+
 
 

@@ -7,6 +7,7 @@
     <string name="category_health">Health</string>
     <string name="category_books">Books</string>
     <string name="category_button_5">button_5</string>
+    <string name="my_cart_total">$%s us</string>
     <array name="brands">
         <item>Samsung</item>
         <item>IPhone</item>

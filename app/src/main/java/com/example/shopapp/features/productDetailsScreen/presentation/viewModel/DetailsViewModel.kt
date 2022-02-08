@@ -35,7 +35,7 @@ class DetailsViewModel: ViewModel() {
         viewModelScope.launch {
             _status.value = DetailsApiStatus.LOADING
             try {
-                _phoneDetailsList.value = ShopDetailsApi.retrofitService.getProductDetails()
+                _phoneDetailsList.value = repository.getProductDetails()
                 _status.value = DetailsApiStatus.DONE
             } catch (e: Exception) {
                 _status.value = DetailsApiStatus.ERROR
