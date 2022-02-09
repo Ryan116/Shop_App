@@ -25,6 +25,10 @@
             android:id="@+id/action_mainFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment"
             app:popUpTo="@id/mainFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment"
+            app:popUpTo="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/productDetailsFragment"

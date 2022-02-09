@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/main_background"
     android:background="@drawable/layout_bg"
     android:padding="16dp">
 
@@ -12,27 +13,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Filter options"
+        android:textColor="@color/black"
         android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imButFilterClose"
         app:layout_constraintEnd_toStartOf="@+id/buttonDone"
-        app:layout_constraintStart_toEndOf="@+id/buttonClose"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/imButFilterClose"
+        app:layout_constraintTop_toTopOf="@+id/imButFilterClose" />
 
     <Button
         android:id="@+id/buttonDone"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:backgroundTint="@color/button_see_more"
         android:text="Done"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewLabelMain"
+        android:textAllCaps="false"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imButFilterClose"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textViewLabelMain"
+        app:layout_constraintTop_toTopOf="@+id/imButFilterClose"
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/textViewBrandLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
         android:paddingTop="16dp"
         android:text="Brand"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/spinnerBrands"
         app:layout_constraintTop_toBottomOf="@+id/textViewLabelMain" />
 
@@ -47,21 +60,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewBrandLabel"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-    <Button
-        android:id="@+id/buttonClose"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:text="X"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewLabelMain"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textViewLabelMain" />
-
     <TextView
         android:id="@+id/textViewPriceLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="16dp"
         android:text="Price"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerBrands" />
 
@@ -81,6 +88,9 @@
         android:layout_height="wrap_content"
         android:paddingTop="16dp"
         android:text="Size"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerPrice" />
 
@@ -94,4 +104,13 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewSize" />
+
+    <ImageButton
+        android:id="@+id/imButFilterClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/main_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_button_close" />
 </androidx.constraintlayout.widget.ConstraintLayout>

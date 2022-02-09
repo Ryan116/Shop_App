@@ -106,6 +106,16 @@ class MainFragment : Fragment() {
             dialog.show()
         }
 
+        binding.bottomNavigationView.setOnItemSelectedListener {
+            when(it.itemId) {
+                R.id.item2-> {
+                    Navigation.findNavController(requireView())
+                        .navigate(R.id.action_mainFragment_to_myCartFragment)
+                }
+            }
+            true
+        }
+
 
 
 
