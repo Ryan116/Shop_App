@@ -9,6 +9,8 @@ import com.example.shopapp.features.mainScreen.data.remote.RemoteDataSourceImpl
 import com.example.shopapp.features.mainScreen.data.repository.MainScreenRepositoryImpl
 import com.example.shopapp.features.mainScreen.domain.model.BestSeller
 import com.example.shopapp.features.mainScreen.domain.model.HomeStore
+import com.example.shopapp.features.mainScreen.domain.useCases.GetBestSellerListUseCase
+import com.example.shopapp.features.mainScreen.domain.useCases.GetHomeStorePhonesListUseCase
 import kotlinx.coroutines.launch
 
 enum class ShopApiStatus { LOADING, ERROR, DONE }
@@ -18,6 +20,8 @@ class MainViewModel: ViewModel() {
     private val shopMainApiService = ShopMainApi.retrofitService
     private val remoteDataSource = RemoteDataSourceImpl(shopMainApiService)
     private val repository = MainScreenRepositoryImpl(remoteDataSource)
+    private val getBestSellerListUseCase = GetBestSellerListUseCase(repository)
+    private val getHomeStorePhonesListUseCase = GetHomeStorePhonesListUseCase(repository)
 
     private val _status = MutableLiveData<ShopApiStatus>()
     val status: LiveData<ShopApiStatus> = _status
@@ -43,8 +47,8 @@ class MainViewModel: ViewModel() {
         viewModelScope.launch {
             _status.value = ShopApiStatus.LOADING
                 try {
-                    _phones.value = repository.getHomeStorePhonesList()
-                    _bestSellerPhonesList.value = repository.getBestSellerPhonesList()
+                    _phones.value = getHomeStorePhonesListUseCase.getHomeStorePhonesList()
+                    _bestSellerPhonesList.value = getBestSellerListUseCase.getBestSellerPhonesList()
                     _status.value = ShopApiStatus.DONE
                 } catch (e: Exception) {
                     _status.value = ShopApiStatus.ERROR
