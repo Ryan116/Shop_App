@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.shopapp.features.mainScreen.data.network.ShopMainApi
 import com.example.shopapp.features.mainScreen.data.remote.RemoteDataSourceImpl
 import com.example.shopapp.features.mainScreen.data.repository.MainScreenRepositoryImpl
-import com.example.shopapp.features.productDetailsScreen.data.repository.DetailsRepositoryImpl
 import com.example.shopapp.features.mainScreen.domain.model.BestSeller
 import com.example.shopapp.features.mainScreen.domain.model.HomeStore
 import kotlinx.coroutines.launch
@@ -44,7 +43,7 @@ class MainViewModel: ViewModel() {
         viewModelScope.launch {
             _status.value = ShopApiStatus.LOADING
                 try {
-                    _phones.value = repository.getHomeStorePhonesList().value
+                    _phones.value = repository.getHomeStorePhonesList()
                     _bestSellerPhonesList.value = repository.getBestSellerPhonesList()
                     _status.value = ShopApiStatus.DONE
                 } catch (e: Exception) {

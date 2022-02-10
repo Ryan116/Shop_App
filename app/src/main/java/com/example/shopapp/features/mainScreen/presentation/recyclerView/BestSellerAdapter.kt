@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.shopapp.databinding.BestSellerItemBinding
 import com.example.shopapp.features.mainScreen.domain.model.BestSeller
-import com.example.shopapp.features.mainScreen.presentation.HomeStoreItem
 
 class BestSellerAdapter(private val onItemClicked: (BestSeller) -> Unit) :
     ListAdapter<BestSeller, BestSellerViewHolder>(BestSellerDiffCallback()) {

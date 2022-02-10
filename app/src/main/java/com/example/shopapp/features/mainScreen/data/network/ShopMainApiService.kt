@@ -1,6 +1,6 @@
 package com.example.shopapp.features.mainScreen.data.network
 
-import com.example.shopapp.features.mainScreen.domain.model.Main
+import com.example.shopapp.features.mainScreen.data.modelDB.MainDB
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -26,7 +26,7 @@ interface ShopMainApiService {
         "x-apikey: 61ddae2e95cb716ea5ee48e4"
     )
     @GET("home")
-    suspend fun getMain(): List<Main>
+    suspend fun getMain(): List<MainDB>
 }
 
 object ShopMainApi {

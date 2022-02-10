@@ -1,5 +1,6 @@
 package com.example.shopapp.features.myCartScreen.data.network
 
+import com.example.shopapp.features.myCartScreen.data.modelDB.BasketMainDB
 import com.example.shopapp.features.myCartScreen.domain.model.BasketMain
 import com.example.shopapp.features.productDetailsScreen.data.network.ShopDetailsApiService
 import com.example.shopapp.features.productDetailsScreen.domain.model.ProductDetailsItem
@@ -29,7 +30,7 @@ interface MyCartApiService {
         "x-apikey: 61ddae2e95cb716ea5ee48e4"
     )
     @GET("cart")
-    suspend fun getMyCart(): List<BasketMain>
+    suspend fun getMyCart(): List<BasketMainDB>
 }
 
 object MyCartApi {

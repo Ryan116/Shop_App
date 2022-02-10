@@ -1,15 +1,12 @@
 package com.example.shopapp.features.mainScreen.presentation.recyclerView
 
 import android.widget.ImageView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.shopapp.R
 import com.example.shopapp.databinding.BestSellerItemBinding
 import com.example.shopapp.features.mainScreen.domain.model.BestSeller
-import java.text.NumberFormat
-import java.util.*
 
 class BestSellerViewHolder(private var binding: BestSellerItemBinding) :
     RecyclerView.ViewHolder(binding.root) {

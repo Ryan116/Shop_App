@@ -2,7 +2,6 @@ package com.example.shopapp.features.mainScreen.presentation.recyclerView
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.shopapp.features.mainScreen.domain.model.BestSeller
-import com.example.shopapp.features.mainScreen.domain.model.HomeStore
 
 class BestSellerDiffCallback:DiffUtil.ItemCallback<BestSeller>() {
     override fun areItemsTheSame(oldItem: BestSeller, newItem: BestSeller): Boolean {

@@ -1,5 +1,6 @@
 package com.example.shopapp.features.productDetailsScreen.data.repository
 
+import com.example.shopapp.features.productDetailsScreen.data.mapper.ProductDetailsScreenMapper
 import com.example.shopapp.features.productDetailsScreen.data.remote.DetailsRemoteDataSource
 import com.example.shopapp.features.productDetailsScreen.domain.model.ProductDetailsItem
 import com.example.shopapp.features.productDetailsScreen.domain.repository.DetailsScreenRepository
@@ -7,7 +8,11 @@ import com.example.shopapp.features.productDetailsScreen.domain.repository.Detai
 class DetailsRepositoryImpl(private val detailsRemoteDataSource: DetailsRemoteDataSource) :
     DetailsScreenRepository {
 
+    private val productDetailsMapper = ProductDetailsScreenMapper()
+
     override suspend fun getProductDetails(): List<ProductDetailsItem> {
-        return detailsRemoteDataSource.getPhonesDetailsList()
+        return productDetailsMapper.mapListProductDetailsItemDBToProductDetailsItem(
+            detailsRemoteDataSource.getPhonesDetailsList()
+        )
     }
 }

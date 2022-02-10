@@ -31,7 +31,7 @@ class HomeStoreItem : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.imageView.setOnClickListener {
+        binding.bestSellerLayout.setOnClickListener {
             Navigation.findNavController(requireView())
                 .navigate(R.id.action_mainFragment_to_productDetailsFragment)
         }

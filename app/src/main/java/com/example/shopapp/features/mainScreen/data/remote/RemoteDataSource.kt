@@ -1,10 +1,13 @@
 package com.example.shopapp.features.mainScreen.data.remote
 
-import com.example.shopapp.features.mainScreen.domain.model.Main
+import com.example.shopapp.features.mainScreen.data.modelDB.BestSellerDB
+import com.example.shopapp.features.mainScreen.data.modelDB.HomeStoreDB
 
 
 interface RemoteDataSource {
 
-    suspend fun getPhonesList() : List<Main>
+    suspend fun getBestSellerPhonesList(): List<BestSellerDB>
+
+    suspend fun getHomeStorePhonesList(): List<HomeStoreDB>
 
 }

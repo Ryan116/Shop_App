@@ -1,10 +1,10 @@
 package com.example.shopapp.features.myCartScreen.data.remote
 
-import com.example.shopapp.features.myCartScreen.domain.model.BasketMain
+import com.example.shopapp.features.myCartScreen.data.modelDB.BasketMainDB
 
 
 interface MyCartRemoteDataSource {
 
-    suspend fun getMyCart() : List<BasketMain>
+    suspend fun getMyCart() : List<BasketMainDB>
 
 }
