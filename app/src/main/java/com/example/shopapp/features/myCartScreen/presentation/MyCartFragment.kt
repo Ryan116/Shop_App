@@ -12,13 +12,14 @@ import coil.transform.RoundedCornersTransformation
 import com.example.shopapp.R
 import com.example.shopapp.databinding.FragmentMyCartBinding
 import com.example.shopapp.features.myCartScreen.presentation.viewModel.MyCartViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.NumberFormat
 import java.util.*
 
 
 class MyCartFragment : Fragment() {
     private lateinit var binding: FragmentMyCartBinding
-    private val myCartViewModel: MyCartViewModel by viewModels()
+    private val myCartViewModel by viewModel<MyCartViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

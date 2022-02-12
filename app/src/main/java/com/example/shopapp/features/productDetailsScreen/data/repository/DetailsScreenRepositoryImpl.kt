@@ -5,10 +5,13 @@ import com.example.shopapp.features.productDetailsScreen.data.remote.DetailsRemo
 import com.example.shopapp.features.productDetailsScreen.domain.model.ProductDetailsItem
 import com.example.shopapp.features.productDetailsScreen.domain.repository.DetailsScreenRepository
 
-class DetailsRepositoryImpl(private val detailsRemoteDataSource: DetailsRemoteDataSource) :
+class DetailsScreenRepositoryImpl(
+    private val detailsRemoteDataSource: DetailsRemoteDataSource,
+    private val productDetailsMapper: ProductDetailsScreenMapper
+    ) :
     DetailsScreenRepository {
 
-    private val productDetailsMapper = ProductDetailsScreenMapper()
+
 
     override suspend fun getProductDetails(): List<ProductDetailsItem> {
         return productDetailsMapper.mapListProductDetailsItemDBToProductDetailsItem(

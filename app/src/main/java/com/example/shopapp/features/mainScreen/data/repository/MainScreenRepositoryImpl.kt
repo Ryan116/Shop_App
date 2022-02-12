@@ -6,10 +6,11 @@ import com.example.shopapp.features.mainScreen.domain.model.BestSeller
 import com.example.shopapp.features.mainScreen.domain.model.HomeStore
 import com.example.shopapp.features.mainScreen.domain.repository.MainScreenRepository
 
-class MainScreenRepositoryImpl(private val remoteDataSource: RemoteDataSource) :
+class MainScreenRepositoryImpl(
+    private val remoteDataSource: RemoteDataSource,
+    private val mainScreenMapper: MainScreenMapper
+) :
     MainScreenRepository {
-
-    private val mainScreenMapper = MainScreenMapper()
 
 
     override suspend fun getBestSellerPhonesList(): List<BestSeller> {

@@ -6,19 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.example.shopapp.R
 import com.example.shopapp.databinding.HomeStoreItemBinding
 import com.example.shopapp.features.mainScreen.presentation.viewModel.MainViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 const val IMAGE_POSITION = "imagePos"
 
 class HomeStoreItem : Fragment() {
     private lateinit var binding: HomeStoreItemBinding
-    private val mainViewModel: MainViewModel by viewModels()
+    private val mainViewModel by viewModel<MainViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

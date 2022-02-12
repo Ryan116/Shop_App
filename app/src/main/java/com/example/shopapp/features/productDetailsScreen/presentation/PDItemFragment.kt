@@ -14,12 +14,13 @@ import com.example.shopapp.databinding.FragmentPDItemBinding
 import com.example.shopapp.databinding.HomeStoreItemBinding
 import com.example.shopapp.features.mainScreen.presentation.viewModel.MainViewModel
 import com.example.shopapp.features.productDetailsScreen.presentation.viewModel.DetailsViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 const val PD_IMAGE_POSITION = "pdImagePos"
 
 class PDItemFragment : Fragment() {
     private lateinit var binding: FragmentPDItemBinding
-    private val pdViewModel: DetailsViewModel by viewModels()
+    private val pdViewModel by viewModel<DetailsViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

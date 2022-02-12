@@ -15,11 +15,12 @@ import com.example.shopapp.features.mainScreen.presentation.recyclerView.BestSel
 import com.example.shopapp.features.mainScreen.presentation.recyclerView.HomeStorePageAdapter
 import com.example.shopapp.features.mainScreen.presentation.viewModel.MainViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
-    private val mainViewModel: MainViewModel by viewModels()
+    private val mainViewModel by viewModel<MainViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

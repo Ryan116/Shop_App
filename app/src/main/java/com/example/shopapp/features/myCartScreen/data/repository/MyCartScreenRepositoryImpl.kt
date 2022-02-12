@@ -5,10 +5,13 @@ import com.example.shopapp.features.myCartScreen.data.remote.MyCartRemoteDataSou
 import com.example.shopapp.features.myCartScreen.domain.model.BasketMain
 import com.example.shopapp.features.myCartScreen.domain.repository.MyCartScreenRepository
 
-class MyCartRepositoryImpl(private val myCartRemoteDataSource: MyCartRemoteDataSource) :
+class MyCartScreenRepositoryImpl(
+    private val myCartRemoteDataSource: MyCartRemoteDataSource,
+    private val myCartScreenMapper: MyCartScreenMapper
+    ) :
     MyCartScreenRepository {
 
-    private val myCartScreenMapper = MyCartScreenMapper()
+
 
     override suspend fun getMyCart(): List<BasketMain> {
         return myCartScreenMapper.mapListBasketMainDBToBasketMain(myCartRemoteDataSource.getMyCart())

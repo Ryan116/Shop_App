@@ -1,28 +1,22 @@
 package com.example.shopapp.features.productDetailsScreen.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.core.net.toUri
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import coil.load
-import coil.transform.RoundedCornersTransformation
 import com.example.shopapp.R
-import com.example.shopapp.databinding.FragmentMainBinding
 import com.example.shopapp.databinding.FragmentProductDetailsBinding
-import com.example.shopapp.features.mainScreen.presentation.recyclerView.HomeStorePageAdapter
-import com.example.shopapp.features.mainScreen.presentation.viewModel.MainViewModel
 import com.example.shopapp.features.productDetailsScreen.presentation.adapters.PDPageAdapter
 import com.example.shopapp.features.productDetailsScreen.presentation.viewModel.DetailsViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class ProductDetailsFragment : Fragment() {
     private lateinit var binding: FragmentProductDetailsBinding
-    private val productDetailsViewModel: DetailsViewModel by viewModels()
+    private val productDetailsViewModel by viewModel<DetailsViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
