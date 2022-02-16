@@ -1,21 +1,12 @@
-package com.example.shopapp.features.productDetailsScreen.data.network
+package com.example.shopapp.features.productDetailsScreen.presentation
 
-import android.content.Context
 import android.view.View
-import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.example.shopapp.R
-import com.example.shopapp.features.mainScreen.domain.model.HomeStore
-import com.example.shopapp.features.mainScreen.domain.model.Main
-import com.example.shopapp.features.mainScreen.presentation.viewModel.MainViewModel
-import com.example.shopapp.features.mainScreen.presentation.viewModel.ShopApiStatus
+import com.example.shopapp.features.productDetailsScreen.presentation.viewModel.DetailsApiStatus
 
 
 @BindingAdapter("imageUrl")
@@ -30,18 +21,18 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
 
 }
 
-@BindingAdapter("shopApiStatus")
-fun bindStatus(statusImageView: ImageView, status: ShopApiStatus?) {
+@BindingAdapter("detailsApiStatus")
+fun bindStatus(statusImageView: ImageView, status: DetailsApiStatus?) {
     when (status) {
-        ShopApiStatus.LOADING -> {
+        DetailsApiStatus.LOADING -> {
             statusImageView.visibility = View.VISIBLE
             statusImageView.setImageResource(R.drawable.loading_animation)
         }
-        ShopApiStatus.ERROR -> {
+        DetailsApiStatus.ERROR -> {
             statusImageView.visibility = View.VISIBLE
             statusImageView.setImageResource(R.drawable.ic_connection_error)
         }
-        ShopApiStatus.DONE -> {
+        DetailsApiStatus.DONE -> {
             statusImageView.visibility = View.GONE
         }
     }

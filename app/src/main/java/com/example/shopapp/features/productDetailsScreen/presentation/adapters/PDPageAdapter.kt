@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.shopapp.features.mainScreen.presentation.IMAGE_POSITION
-import com.example.shopapp.features.mainScreen.presentation.HomeStoreItem
 import com.example.shopapp.features.productDetailsScreen.presentation.PDItemFragment
 import com.example.shopapp.features.productDetailsScreen.presentation.PD_IMAGE_POSITION
 

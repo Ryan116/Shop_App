@@ -1,12 +1,9 @@
 package com.example.shopapp.features.myCartScreen.data.mapper
 
-import com.example.shopapp.features.mainScreen.domain.model.BestSeller
 import com.example.shopapp.features.myCartScreen.data.modelDB.BasketMainDB
 import com.example.shopapp.features.myCartScreen.data.modelDB.BasketProductDB
 import com.example.shopapp.features.myCartScreen.domain.model.BasketMain
 import com.example.shopapp.features.myCartScreen.domain.model.BasketProduct
-import com.example.shopapp.features.productDetailsScreen.data.modelDB.ProductDetailsItemDB
-import com.example.shopapp.features.productDetailsScreen.domain.model.ProductDetailsItem
 
 class MyCartScreenMapper {
     fun mapListBasketMainDBToBasketMain(listBasketMainDB: List<BasketMainDB>): List<BasketMain> {

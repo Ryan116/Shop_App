@@ -4,10 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.shopapp.features.myCartScreen.data.network.MyCartApiService
-import com.example.shopapp.features.myCartScreen.data.remote.MyCartRemoteDataSource
 import com.example.shopapp.features.myCartScreen.domain.model.BasketMain
-import com.example.shopapp.features.myCartScreen.domain.repository.MyCartScreenRepository
 import com.example.shopapp.features.myCartScreen.domain.useCases.GetMyCartUseCase
 import kotlinx.coroutines.launch
 

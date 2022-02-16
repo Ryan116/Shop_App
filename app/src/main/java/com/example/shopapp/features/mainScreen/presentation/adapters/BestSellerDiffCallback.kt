@@ -1,4 +1,4 @@
-package com.example.shopapp.features.mainScreen.presentation.recyclerView
+package com.example.shopapp.features.mainScreen.presentation.adapters
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.shopapp.features.mainScreen.domain.model.BestSeller

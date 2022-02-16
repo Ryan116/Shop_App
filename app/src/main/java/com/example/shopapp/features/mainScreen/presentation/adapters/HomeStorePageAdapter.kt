@@ -1,4 +1,4 @@
-package com.example.shopapp.features.mainScreen.presentation.recyclerView
+package com.example.shopapp.features.mainScreen.presentation.adapters
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

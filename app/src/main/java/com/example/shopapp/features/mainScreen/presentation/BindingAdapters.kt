@@ -1,21 +1,12 @@
-package com.example.shopapp.features.mainScreen.data.network
+package com.example.shopapp.features.mainScreen.presentation
 
 import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import coil.load
 import com.example.shopapp.R
-import com.example.shopapp.features.mainScreen.data.modelDB.HomeStoreDB
-import com.example.shopapp.features.productDetailsScreen.presentation.viewModel.DetailsApiStatus
+import com.example.shopapp.features.mainScreen.presentation.viewModel.ShopApiStatus
 
-@BindingAdapter("setModel")
-fun setModelText(textView: TextView, list: List<HomeStoreDB>?) {
-    list?.let {
-        textView.text = list.toString()
-    }
-
-}
 
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
@@ -29,17 +20,17 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
 }
 
 @BindingAdapter("shopApiStatus")
-fun bindStatus(statusImageView: ImageView, status: DetailsApiStatus?) {
+fun bindStatus(statusImageView: ImageView, status: ShopApiStatus?) {
     when (status) {
-        DetailsApiStatus.LOADING -> {
+        ShopApiStatus.LOADING -> {
             statusImageView.visibility = View.VISIBLE
             statusImageView.setImageResource(R.drawable.loading_animation)
         }
-        DetailsApiStatus.ERROR -> {
+        ShopApiStatus.ERROR -> {
             statusImageView.visibility = View.VISIBLE
             statusImageView.setImageResource(R.drawable.ic_connection_error)
         }
-        DetailsApiStatus.DONE -> {
+        ShopApiStatus.DONE -> {
             statusImageView.visibility = View.GONE
         }
     }

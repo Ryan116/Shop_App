@@ -1,14 +1,10 @@
 package com.example.shopapp.features.myCartScreen.data.network
 
 import com.example.shopapp.features.myCartScreen.data.modelDB.BasketMainDB
-import com.example.shopapp.features.myCartScreen.domain.model.BasketMain
-import com.example.shopapp.features.productDetailsScreen.data.network.ShopDetailsApiService
-import com.example.shopapp.features.productDetailsScreen.domain.model.ProductDetailsItem
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Headers
 

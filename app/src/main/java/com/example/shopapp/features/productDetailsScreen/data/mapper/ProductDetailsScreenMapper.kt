@@ -1,6 +1,5 @@
 package com.example.shopapp.features.productDetailsScreen.data.mapper
 
-import com.example.shopapp.features.mainScreen.domain.model.BestSeller
 import com.example.shopapp.features.productDetailsScreen.data.modelDB.ProductDetailsItemDB
 import com.example.shopapp.features.productDetailsScreen.domain.model.ProductDetailsItem
 

@@ -1,4 +1,4 @@
-package com.example.shopapp.features.mainScreen.presentation.recyclerView
+package com.example.shopapp.features.mainScreen.presentation.adapters
 
 import android.widget.ImageView
 import androidx.core.net.toUri

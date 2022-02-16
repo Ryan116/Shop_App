@@ -4,14 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.shopapp.features.mainScreen.data.network.ShopMainApi
-import com.example.shopapp.features.mainScreen.data.network.ShopMainApiService
-import com.example.shopapp.features.mainScreen.data.remote.RemoteDataSource
-import com.example.shopapp.features.mainScreen.data.remote.RemoteDataSourceImpl
-import com.example.shopapp.features.mainScreen.data.repository.MainScreenRepositoryImpl
 import com.example.shopapp.features.mainScreen.domain.model.BestSeller
 import com.example.shopapp.features.mainScreen.domain.model.HomeStore
-import com.example.shopapp.features.mainScreen.domain.repository.MainScreenRepository
 import com.example.shopapp.features.mainScreen.domain.useCases.GetBestSellerListUseCase
 import com.example.shopapp.features.mainScreen.domain.useCases.GetHomeStorePhonesListUseCase
 import kotlinx.coroutines.launch
