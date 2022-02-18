@@ -8,3 +8,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Shop App"
 include ':app'
+include ':feature_splash_screen'
+include ':feature_main_screen'
+include ':feature_my_cart_screen'
+include ':feature_product_details_screen'

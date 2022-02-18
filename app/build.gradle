@@ -57,6 +57,7 @@ dependencies {
     // Navigation libraries
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
     implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.3.5"
     // Room
     implementation "androidx.room:room-runtime:2.4.1"
     kapt "androidx.room:room-compiler:2.4.1"
@@ -83,6 +84,11 @@ dependencies {
     testImplementation "io.insert-koin:koin-test:3.0.2"
     // Koin main features for Android
     implementation "io.insert-koin:koin-android:3.1.4"
+    //Modules
+    implementation project(path: ':feature_main_screen')
+    implementation project(path: ':feature_my_cart_screen')
+    implementation project(path: ':feature_product_details_screen')
+    implementation project(path: ':feature_splash_screen')
 
 
 }

@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
-        tools:context=".features.productDetailsScreen.presentation.ProductDetailsFragment">
+        tools:context="com.ryan116.myapplication.productDetailsScreen.presentation.ProductDetailsFragment">
 
         <ImageButton
             android:id="@+id/buttonPrevious"
@@ -32,8 +32,7 @@
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPageName"
-            app:detailsApiStatus="@{viewModel.status}" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewPageName" />
 
         <TextView
             android:id="@+id/textViewPageName"

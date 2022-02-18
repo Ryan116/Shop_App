@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".features.myCartScreen.presentation.MyCartFragment">
+    android:layout_height="match_parent">
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -15,7 +14,8 @@
         android:backgroundTint="@color/white"
         android:src="@drawable/ic_button_previous"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/textView"
@@ -37,7 +37,8 @@
         android:backgroundTint="@color/white"
         android:src="@drawable/ic_button_location"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/textView3"
@@ -74,7 +75,8 @@
             android:src="@drawable/ic_button_basket"
             app:layout_constraintBottom_toBottomOf="@+id/textViewItem2Price"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewItem2Name" />
+            app:layout_constraintTop_toTopOf="@+id/textViewItem2Name"
+            android:contentDescription="TODO" />
 
         <ImageButton
             android:id="@+id/imageButton14"
@@ -86,7 +88,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/textViewItem2Price"
             app:layout_constraintEnd_toStartOf="@+id/imageButton15"
             app:layout_constraintTop_toTopOf="@+id/textViewItem2Name"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            android:contentDescription="TODO" />
 
         <ImageView
             android:id="@+id/imageViewItem1"
@@ -97,7 +100,8 @@
             android:layout_marginTop="50dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
+            tools:src="@tools:sample/avatars"
+            android:contentDescription="TODO" />
 
         <TextView
             android:id="@+id/textViewItem1Name"
@@ -151,7 +155,8 @@
             android:src="@drawable/ic_button_basket"
             app:layout_constraintBottom_toBottomOf="@+id/textViewItem1Price"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewItem1Name" />
+            app:layout_constraintTop_toTopOf="@+id/textViewItem1Name"
+            android:contentDescription="TODO" />
 
         <ImageButton
             android:id="@+id/imageButton10"
@@ -162,7 +167,8 @@
             android:src="@drawable/ic_button_add"
             app:layout_constraintBottom_toBottomOf="@+id/textViewItem1Price"
             app:layout_constraintEnd_toStartOf="@+id/imageButton9"
-            app:layout_constraintTop_toTopOf="@+id/textViewItem1Name" />
+            app:layout_constraintTop_toTopOf="@+id/textViewItem1Name"
+            android:contentDescription="TODO" />
 
         <ImageView
             android:id="@+id/imageViewItem2"
@@ -173,7 +179,8 @@
             android:layout_marginTop="32dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewItem1"
-            tools:src="@tools:sample/avatars" />
+            tools:src="@tools:sample/avatars"
+            android:contentDescription="TODO" />
 
         <TextView
             android:id="@+id/textViewItem2Name"

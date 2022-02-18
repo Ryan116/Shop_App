@@ -107,7 +107,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewBestSellerLabel"
-            app:shopApiStatus="@{viewModel.status}" />
+            app:shopApiStatus="@{viewModel.status}"
+            android:contentDescription="TODO" />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -115,7 +116,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline2"
-            app:shopApiStatus="@{viewModel.status}" />
+            app:shopApiStatus="@{viewModel.status}"
+            android:contentDescription="TODO" />
 
         <TextView
             android:id="@+id/textViewBestSellerLabel"
@@ -188,7 +190,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textInputLayout"
-            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
+            android:contentDescription="TODO" />
 
         <Spinner
             android:id="@+id/spinner"
@@ -213,7 +216,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/spinner"
             app:srcCompat="@drawable/ic_icon_filter"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+            android:contentDescription="TODO" />
 
         <HorizontalScrollView
             android:layout_width="0dp"
@@ -237,7 +241,8 @@
                         android:id="@+id/imageButtonPhones"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ic_button_phones" />
+                        android:background="@drawable/ic_button_phones"
+                        android:contentDescription="TODO" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -254,7 +259,8 @@
                         android:id="@+id/imageButtonComputer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ic_button_computer" />
+                        android:background="@drawable/ic_button_computer"
+                        android:contentDescription="TODO" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -271,7 +277,8 @@
                         android:id="@+id/imageButtonHealth"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ic_button_health" />
+                        android:background="@drawable/ic_button_health"
+                        android:contentDescription="TODO" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -288,7 +295,8 @@
                         android:id="@+id/imageButtonBooks"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ic_button_books" />
+                        android:background="@drawable/ic_button_books"
+                        android:contentDescription="TODO" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -305,7 +313,8 @@
                         android:id="@+id/imageButton5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ic_button_5" />
+                        android:background="@drawable/ic_button_5"
+                        android:contentDescription="TODO" />
 
                     <TextView
                         android:layout_width="match_parent"

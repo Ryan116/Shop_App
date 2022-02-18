@@ -112,5 +112,6 @@
         android:backgroundTint="@color/main_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_button_close" />
+        app:srcCompat="@drawable/ic_button_close"
+        android:contentDescription="TODO" />
 </androidx.constraintlayout.widget.ConstraintLayout>
