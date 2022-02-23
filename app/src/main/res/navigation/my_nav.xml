@@ -39,4 +39,13 @@
             android:id="@+id/deepLink3"
             app:uri="shopapp://ToMyCart" />
     </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.example.shopapp.features.mapScreen.presentation.fragment.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps">
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="shopapp://ToMapScreen" />
+    </fragment>
 </navigation>

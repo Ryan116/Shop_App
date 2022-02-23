@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ImageButton
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
@@ -112,6 +113,13 @@ class MainFragment : Fragment() {
             }
             true
         }
+        binding.textViewrLocation.setOnClickListener {
+            val uri = Uri.parse("shopapp://ToMapScreen")
+            findNavController().navigate(uri)
+        }
+
+
+
 
         return binding.root
     }

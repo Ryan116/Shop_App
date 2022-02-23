@@ -29,8 +29,8 @@ val mainScreenDataModule = module {
         ShopMainApi.retrofitService
     }
 
-    factory<com.example.shopapp.features.mainScreen.data.mapper.MainScreenMapper> {
-        com.example.shopapp.features.mainScreen.data.mapper.MainScreenMapper()
+    factory<MainScreenMapper> {
+        MainScreenMapper()
     }
 }
 

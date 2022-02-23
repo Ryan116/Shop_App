@@ -44,8 +44,6 @@ private fun ImageView.setImageDrawableFromUrl(imgUrl: String) {
             error(R.drawable.ic_broken_image)
         }
     }
-
-
 }
 
 

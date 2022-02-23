@@ -8,7 +8,7 @@ import com.example.shopapp.features.mainScreen.domain.repository.MainScreenRepos
 
 class MainScreenRepositoryImpl(
     private val remoteDataSource: RemoteDataSource,
-    private val mainScreenMapper: com.example.shopapp.features.mainScreen.data.mapper.MainScreenMapper
+    private val mainScreenMapper: MainScreenMapper
 ) :
     MainScreenRepository {
 
