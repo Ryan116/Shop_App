@@ -13,14 +13,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
 import com.example.shopapp.R
 import com.example.shopapp.databinding.FragmentMapsBinding
 import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationRequest.create
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -30,7 +26,6 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlin.system.exitProcess
 
 
 const val LOCATION_REQUEST_CODE = 1
@@ -114,14 +109,17 @@ class MapsFragment : androidx.fragment.app.Fragment(), GoogleMap.OnMarkerClickLi
                 .setMessage("Please, click \"yes\" button to turn on GPS")
                 .setCancelable(false)
                 .setNegativeButton("No") { _, _ ->
-                    exitProcess(0)
+                    Toast.makeText(
+                        requireContext(),
+                        "GPS needed to find your location",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
                 .setPositiveButton("Yes") { _, _ ->
                     startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
                 }
                 .show()
         }
-
 
 
     }
