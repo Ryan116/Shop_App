@@ -80,6 +80,7 @@ class MapsFragment : androidx.fragment.app.Fragment(), GoogleMap.OnMarkerClickLi
     }
 
     private fun setUpMap(googleMap: GoogleMap) {
+
         if (checkGPSEnabled()) {
             if (ActivityCompat.checkSelfPermission(
                     requireContext(),
@@ -93,6 +94,11 @@ class MapsFragment : androidx.fragment.app.Fragment(), GoogleMap.OnMarkerClickLi
                 )
                 return
             }
+            Toast.makeText(
+                requireContext(),
+                "GPS enabled",
+                Toast.LENGTH_SHORT
+            ).show()
             googleMap.isMyLocationEnabled = true
             fusedLocationProviderClient.lastLocation.addOnSuccessListener {
                 if (it != null) {
@@ -108,15 +114,15 @@ class MapsFragment : androidx.fragment.app.Fragment(), GoogleMap.OnMarkerClickLi
                 .setTitle("GPS is disabled.")
                 .setMessage("Please, click \"yes\" button to turn on GPS")
                 .setCancelable(false)
+                .setPositiveButton("Yes") { _, _ ->
+                    startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+                }
                 .setNegativeButton("No") { _, _ ->
                     Toast.makeText(
                         requireContext(),
                         "GPS needed to find your location",
                         Toast.LENGTH_SHORT
                     ).show()
-                }
-                .setPositiveButton("Yes") { _, _ ->
-                    startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
                 }
                 .show()
         }
