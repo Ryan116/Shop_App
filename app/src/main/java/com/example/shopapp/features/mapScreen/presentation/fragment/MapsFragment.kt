@@ -68,6 +68,7 @@ class MapsFragment : androidx.fragment.app.Fragment(), GoogleMap.OnMarkerClickLi
         googleMap.addMarker(MarkerOptions().position(paris).title("Marker in Paris"))
         googleMap.addMarker(MarkerOptions().position(california).title("Marker in California"))
         googleMap.addMarker(MarkerOptions().position(amsterdam).title("Marker in Amsterdam"))
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(zihuatanejo))
         binding.buttonFindMe.setOnClickListener {
             setUpMap(googleMap)
         }
