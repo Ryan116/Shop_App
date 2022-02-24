@@ -1,23 +1,21 @@
-package com.example.shopapp.features.mapScreen.presentation.fragment
+package com.example.shopapp.features.mapScreen.presentation
 
 import android.Manifest
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
-import android.location.LocationRequest
 import android.os.Bundle
-import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import com.example.shopapp.R
-import com.example.shopapp.databinding.FragmentMapsBinding
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
+import androidx.fragment.app.Fragment
+import com.example.shopapp.features.mapScreen.R
+import com.example.shopapp.features.mapScreen.databinding.FragmentMapsBinding
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.common.api.ResolvableApiException
+import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -25,16 +23,34 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-
+import com.google.android.gms.tasks.Task
 
 const val LOCATION_REQUEST_CODE = 1
 
-class MapsFragment : androidx.fragment.app.Fragment(), GoogleMap.OnMarkerClickListener {
+class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
     private lateinit var binding: FragmentMapsBinding
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var lastLocation: Location
     private lateinit var locationRequest: LocationRequest
+
+
+    private val callback = OnMapReadyCallback { googleMap ->
+        googleMap.uiSettings.isZoomControlsEnabled = true
+        googleMap.setOnMarkerClickListener(this)
+        val zihuatanejo = LatLng(17.64, -101.0)
+        val paris = LatLng(48.86, 2.34)
+        val california = LatLng(36.77, -119.41)
+        val amsterdam = LatLng(52.37, 4.89)
+        googleMap.addMarker(MarkerOptions().position(zihuatanejo).title("Marker in Mexica"))
+        googleMap.addMarker(MarkerOptions().position(paris).title("Marker in Paris"))
+        googleMap.addMarker(MarkerOptions().position(california).title("Marker in California"))
+        googleMap.addMarker(MarkerOptions().position(amsterdam).title("Marker in Amsterdam"))
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(zihuatanejo))
+        googleMap.uiSettings.isMyLocationButtonEnabled = true
+        binding.buttonFindMe.setOnClickListener {
+            checkGPS(googleMap)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,39 +65,12 @@ class MapsFragment : androidx.fragment.app.Fragment(), GoogleMap.OnMarkerClickLi
         super.onViewCreated(view, savedInstanceState)
         fusedLocationProviderClient =
             LocationServices.getFusedLocationProviderClient(requireActivity())
+
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
     }
 
-    override fun onMarkerClick(p0: Marker): Boolean = false
-
-    private val callback = OnMapReadyCallback { googleMap ->
-        googleMap.uiSettings.isZoomControlsEnabled = true
-        googleMap.setOnMarkerClickListener(this)
-
-
-        val zihuatanejo = LatLng(17.64, -101.0)
-        val paris = LatLng(48.86, 2.34)
-        val california = LatLng(36.77, -119.41)
-        val amsterdam = LatLng(52.37, 4.89)
-        googleMap.addMarker(MarkerOptions().position(zihuatanejo).title("Marker in Mexica"))
-        googleMap.addMarker(MarkerOptions().position(paris).title("Marker in Paris"))
-        googleMap.addMarker(MarkerOptions().position(california).title("Marker in California"))
-        googleMap.addMarker(MarkerOptions().position(amsterdam).title("Marker in Amsterdam"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(zihuatanejo))
-        binding.buttonFindMe.setOnClickListener {
-            setUpMap(googleMap)
-        }
-    }
-
-    private fun checkGPSEnabled(): Boolean {
-        var locationManager =
-            requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-    }
-
-    private fun setUpMap(googleMap: GoogleMap) {
-
+    private fun checkGPS(googleMap: GoogleMap) {
         if (checkGPSEnabled()) {
             if (ActivityCompat.checkSelfPermission(
                     requireContext(),
@@ -95,11 +84,6 @@ class MapsFragment : androidx.fragment.app.Fragment(), GoogleMap.OnMarkerClickLi
                 )
                 return
             }
-            Toast.makeText(
-                requireContext(),
-                "GPS enabled",
-                Toast.LENGTH_SHORT
-            ).show()
             googleMap.isMyLocationEnabled = true
             fusedLocationProviderClient.lastLocation.addOnSuccessListener {
                 if (it != null) {
@@ -111,24 +95,41 @@ class MapsFragment : androidx.fragment.app.Fragment(), GoogleMap.OnMarkerClickLi
             }
 
         } else {
-            MaterialAlertDialogBuilder(requireContext())
-                .setTitle("GPS is disabled.")
-                .setMessage("Please, click \"yes\" button to turn on GPS")
-                .setCancelable(false)
-                .setPositiveButton("Yes") { _, _ ->
-                    startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
-                }
-                .setNegativeButton("No") { _, _ ->
-                    Toast.makeText(
-                        requireContext(),
-                        "GPS needed to find your location",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-                .show()
+            locationRequest = LocationRequest.create().apply {
+                interval = 10000
+                fastestInterval = 5000
+                priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+            }
+
+            val builder = LocationSettingsRequest.Builder()
+                .addLocationRequest(locationRequest)
+                .setAlwaysShow(true)
+
+            val locationSettingsResponseTask: Task<LocationSettingsResponse> =
+                LocationServices.getSettingsClient(requireActivity().applicationContext)
+                    .checkLocationSettings(builder.build())
+                    .addOnFailureListener {
+                        if (it is ResolvableApiException) {
+                            try {
+                                it.startResolutionForResult(
+                                    requireActivity(),
+                                    LOCATION_REQUEST_CODE
+                                )
+                            } catch (e: ApiException) {
+                                e.printStackTrace()
+                            }
+                        }
+                    }
         }
 
+    }
 
+    override fun onMarkerClick(p0: Marker): Boolean = false
+
+    private fun checkGPSEnabled(): Boolean {
+        var locationManager =
+            requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
     }
 
     private fun placeMarkerOnMap(currentLatLong: LatLng, googleMap: GoogleMap) {
@@ -139,11 +140,3 @@ class MapsFragment : androidx.fragment.app.Fragment(), GoogleMap.OnMarkerClickLi
 
 
 }
-
-
-
-
-
-
-
-
