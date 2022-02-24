@@ -1,6 +1,6 @@
 # Shop App (Rest Api)
 ## Description
-Interntet-shop with cart.<br/>
+Interntet-shop of phones with cart and google map.<br/>
 <br/>
 ![mygif](preview/shop_app.gif)
 ## Stack
@@ -11,6 +11,7 @@ Coroutines<br/>
 Retrofit<br/>
 Moshi (convert json to Kotlin object)<br/>
 Coil (convert image urls to image)<br/>
+GoogleMaps<br/>
 ## Architecture
 MVVM<br/>
 Clean Architecture<br/>
