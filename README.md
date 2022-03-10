@@ -12,6 +12,8 @@ Retrofit<br/>
 Moshi (convert json to Kotlin object)<br/>
 Coil (convert image urls to image)<br/>
 GoogleMaps<br/>
+Google Analytics<br/>
 ## Architecture
 MVVM<br/>
 Clean Architecture<br/>
+Multi-module<br/>
