@@ -4,7 +4,7 @@ import com.example.shopapp.features.myCartScreen.domain.model.BasketMain
 import com.example.shopapp.features.myCartScreen.domain.repository.MyCartScreenRepository
 
 class GetMyCartUseCase(private val myCartScreenRepository: MyCartScreenRepository) {
-    suspend fun getMyCart(): List<BasketMain> {
+    suspend fun getMyCart(): BasketMain {
         return myCartScreenRepository.getMyCart()
     }
 }

@@ -5,6 +5,6 @@ import com.example.shopapp.features.myCartScreen.data.modelDB.BasketMainDB
 
 interface MyCartRemoteDataSource {
 
-    suspend fun getMyCart() : List<BasketMainDB>
+    suspend fun getMyCart() : BasketMainDB
 
 }

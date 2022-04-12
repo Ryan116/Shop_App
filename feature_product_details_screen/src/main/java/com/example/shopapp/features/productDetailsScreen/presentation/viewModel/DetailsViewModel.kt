@@ -1,5 +1,6 @@
 package com.example.shopapp.features.productDetailsScreen.presentation.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,8 +19,8 @@ class DetailsViewModel(
     private val _status = MutableLiveData<DetailsApiStatus>()
     val status: LiveData<DetailsApiStatus> = _status
 
-    private val _phoneDetailsList = MutableLiveData<List<ProductDetailsItem>>()
-    val phoneDetailsList: LiveData<List<ProductDetailsItem>> = _phoneDetailsList
+    private val _phoneDetailsList = MutableLiveData<ProductDetailsItem>()
+    val phoneDetailsList: LiveData<ProductDetailsItem> = _phoneDetailsList
 
     init {
         getPDItemModels()

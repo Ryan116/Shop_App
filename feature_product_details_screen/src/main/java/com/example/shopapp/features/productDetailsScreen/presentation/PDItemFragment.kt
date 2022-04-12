@@ -37,7 +37,7 @@ class PDItemFragment : Fragment() {
         }?.apply {
             val position = getInt(PD_IMAGE_POSITION)
             pdViewModel.phoneDetailsList.observe(viewLifecycleOwner) {
-                val listImages = it[0].images
+                val listImages = it.images
                 val listSize = listImages.size
                 for (i in 0 until listSize) {
                     when (position) {

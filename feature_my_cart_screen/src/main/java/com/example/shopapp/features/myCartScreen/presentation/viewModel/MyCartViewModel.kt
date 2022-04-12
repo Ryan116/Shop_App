@@ -1,5 +1,6 @@
 package com.example.shopapp.features.myCartScreen.presentation.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,8 +19,8 @@ class MyCartViewModel(
     private val _status = MutableLiveData<MyCartApiStatus>()
     val status: LiveData<MyCartApiStatus> = _status
 
-    private val _myCartList = MutableLiveData<List<BasketMain>>()
-    val myCartList: LiveData<List<BasketMain>> = _myCartList
+    private val _myCartList = MutableLiveData<BasketMain>()
+    val myCartList: LiveData<BasketMain> = _myCartList
 
     init {
         getMyCartModels()

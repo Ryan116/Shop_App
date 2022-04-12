@@ -6,22 +6,13 @@ import com.example.shopapp.features.myCartScreen.domain.model.BasketMain
 import com.example.shopapp.features.myCartScreen.domain.model.BasketProduct
 
 class MyCartScreenMapper {
-    fun mapListBasketMainDBToBasketMain(listBasketMainDB: List<BasketMainDB>): List<BasketMain> {
-
-        val listBasketMain: MutableList<BasketMain> = mutableListOf()
-
-
-        listBasketMainDB.forEach {
-            val basketMain = BasketMain(
-                _id = it._id,
-                basket = mapBasketProductDBToBasketProduct(it.basket),
-                delivery = it.delivery,
-                total = it.total
-
-            )
-            listBasketMain.add(basketMain)
-        }
-        return listBasketMain
+    fun mapBasketMainDBToBasketMain(basketMainDB: BasketMainDB): BasketMain {
+        return BasketMain(
+            _id = basketMainDB.id,
+            basket = mapBasketProductDBToBasketProduct(basketMainDB.basket),
+            delivery = basketMainDB.delivery,
+            total = basketMainDB.total
+        )
     }
 
     fun mapBasketProductDBToBasketProduct(listBasketProductDB: List<BasketProductDB>): List<BasketProduct> {

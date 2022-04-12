@@ -13,7 +13,7 @@ class MyCartScreenRepositoryImpl(
 
 
 
-    override suspend fun getMyCart(): List<BasketMain> {
-        return myCartScreenMapper.mapListBasketMainDBToBasketMain(myCartRemoteDataSource.getMyCart())
+    override suspend fun getMyCart(): BasketMain {
+        return myCartScreenMapper.mapBasketMainDBToBasketMain(myCartRemoteDataSource.getMyCart())
     }
 }

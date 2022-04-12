@@ -5,6 +5,6 @@ import com.example.shopapp.features.productDetailsScreen.data.modelDB.ProductDet
 
 interface DetailsRemoteDataSource {
 
-    suspend fun getPhonesDetailsList() : List<ProductDetailsItemDB>
+    suspend fun getPhonesDetailsList() : ProductDetailsItemDB
 
 }

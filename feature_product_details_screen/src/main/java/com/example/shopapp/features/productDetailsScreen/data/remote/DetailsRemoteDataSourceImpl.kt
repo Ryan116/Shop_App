@@ -6,7 +6,7 @@ import com.example.shopapp.features.productDetailsScreen.data.network.ShopDetail
 
 class DetailsRemoteDataSourceImpl(private val detailsApiService: ShopDetailsApiService) :
     DetailsRemoteDataSource {
-    override suspend fun getPhonesDetailsList(): List<ProductDetailsItemDB> {
+    override suspend fun getPhonesDetailsList(): ProductDetailsItemDB {
         return detailsApiService.getProductDetails()
     }
 

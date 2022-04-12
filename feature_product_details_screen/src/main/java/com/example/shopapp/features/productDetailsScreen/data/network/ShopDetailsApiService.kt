@@ -9,7 +9,7 @@ import retrofit2.http.GET
 import retrofit2.http.Headers
 
 private const val BASE_URL =
-    "https://shopapi-0575.restdb.io/rest/"
+    "https://run.mocky.io/v3/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -21,12 +21,8 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface ShopDetailsApiService {
-
-    @Headers(
-        "x-apikey: 61ddae2e95cb716ea5ee48e4"
-    )
-    @GET("detail")
-    suspend fun getProductDetails(): List<ProductDetailsItemDB>
+    @GET("6c14c560-15c6-4248-b9d2-b4508df7d4f5")
+    suspend fun getProductDetails(): ProductDetailsItemDB
 }
 
 object ShopDetailsApi {

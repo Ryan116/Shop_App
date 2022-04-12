@@ -1,5 +1,6 @@
 package com.example.shopapp.features.productDetailsScreen.data.repository
 
+import android.util.Log
 import com.example.shopapp.features.productDetailsScreen.data.mapper.ProductDetailsScreenMapper
 import com.example.shopapp.features.productDetailsScreen.data.remote.DetailsRemoteDataSource
 import com.example.shopapp.features.productDetailsScreen.domain.model.ProductDetailsItem
@@ -13,8 +14,8 @@ class DetailsScreenRepositoryImpl(
 
 
 
-    override suspend fun getProductDetails(): List<ProductDetailsItem> {
-        return productDetailsMapper.mapListProductDetailsItemDBToProductDetailsItem(
+    override suspend fun getProductDetails(): ProductDetailsItem {
+        return productDetailsMapper.mapProductDetailsItemDBtoProductDetailsItem(
             detailsRemoteDataSource.getPhonesDetailsList()
         )
     }

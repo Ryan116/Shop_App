@@ -29,20 +29,18 @@ class ProductDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         productDetailsViewModel.phoneDetailsList.observe(viewLifecycleOwner) {
-            var phoneItemList = it
-            val phoneItem = phoneItemList?.get(0)
-            phoneItem?.let {
+            it?.let {
                 binding.apply {
-                    textViewPDPhoneTitle.text = phoneItem.title
-                    textViewCpu.text = phoneItem.cpu
-                    textViewCamera.text = phoneItem.camera
-                    textViewRam.text = phoneItem.ssd
-                    textViewStorage.text = phoneItem.sd
-                    textView128GB.text = phoneItem.capacity[0]
-                    textView256GB.text = phoneItem.capacity[1]
+                    textViewPDPhoneTitle.text = it.title
+                    textViewCpu.text = it.cpu
+                    textViewCamera.text = it.camera
+                    textViewRam.text = it.ssd
+                    textViewStorage.text = it.sd
+                    textView128GB.text = it.capacity[0]
+                    textView256GB.text = it.capacity[1]
                 }
             }
-            val adapterPD = PDPageAdapter(requireActivity(), 3)
+            val adapterPD = PDPageAdapter(requireActivity(), 2)
             binding.viewPagerPD.adapter = adapterPD
         }
 
@@ -50,8 +48,6 @@ class ProductDetailsFragment : Fragment() {
             buttonMyCart.setOnClickListener {
                 val uri = Uri.parse("shopapp://ToMyCart")
                 findNavController().navigate(uri)
-//                Navigation.findNavController(requireView())
-//                    .navigate(R.id.action_productDetailsFragment_to_myCartFragment)
             }
 
 

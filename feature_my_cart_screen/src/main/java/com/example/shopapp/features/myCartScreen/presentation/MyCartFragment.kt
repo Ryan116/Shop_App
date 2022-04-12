@@ -2,6 +2,7 @@ package com.example.shopapp.features.myCartScreen.presentation
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,7 +34,7 @@ class MyCartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         myCartViewModel.myCartList.observe(viewLifecycleOwner) {
-            val basketMain = it[0]
+            val basketMain = it
             binding.apply {
                 textViewDelivery.text = basketMain.delivery
                 val total = NumberFormat.getCurrencyInstance(Locale.US).format(basketMain.total)
@@ -47,7 +48,8 @@ class MyCartFragment : Fragment() {
                 textViewItem1Name.text = basketProduct1.title
                 textViewItem1Price.text =
                     NumberFormat.getCurrencyInstance(Locale.US).format(basketProduct1.price)
-                imageViewItem2.setImageUrl(basketProduct2.images)
+                val image2Url = (basketProduct2.images).substringBefore('?')
+                imageViewItem2.setImageUrl(image2Url)
                 textViewItem2Name.text = basketProduct2.title
                 textViewItem2Price.text =
                     NumberFormat.getCurrencyInstance(Locale.US).format(basketProduct2.price)
