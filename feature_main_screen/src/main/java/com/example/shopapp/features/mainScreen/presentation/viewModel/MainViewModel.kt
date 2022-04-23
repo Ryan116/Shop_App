@@ -6,15 +6,21 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shopapp.features.mainScreen.domain.model.BestSeller
 import com.example.shopapp.features.mainScreen.domain.model.HomeStore
+import com.example.shopapp.features.mainScreen.domain.useCases.AddBookmarkUseCase
+import com.example.shopapp.features.mainScreen.domain.useCases.DeleteBookmarkUseCase
 import com.example.shopapp.features.mainScreen.domain.useCases.GetBestSellerListUseCase
 import com.example.shopapp.features.mainScreen.domain.useCases.GetHomeStorePhonesListUseCase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 enum class ShopApiStatus { LOADING, ERROR, DONE }
 
 class MainViewModel(
         private val getBestSellerListUseCase: GetBestSellerListUseCase,
-        private val getHomeStorePhonesListUseCase: GetHomeStorePhonesListUseCase): ViewModel() {
+        private val getHomeStorePhonesListUseCase: GetHomeStorePhonesListUseCase,
+        private val addBookmarkUseCase: AddBookmarkUseCase,
+        private val deleteBookmarkUseCase: DeleteBookmarkUseCase
+        ): ViewModel() {
 
 
 
@@ -48,6 +54,18 @@ class MainViewModel(
                 } catch (e: Exception) {
                     _status.value = ShopApiStatus.ERROR
                 }
+        }
+    }
+
+    fun addBookmark(bestSeller: BestSeller) {
+        viewModelScope.launch(Dispatchers.IO) {
+            addBookmarkUseCase.addBookmark(bestSeller)
+        }
+    }
+
+    fun deleteBookmark(bestSeller: BestSeller) {
+        viewModelScope.launch(Dispatchers.IO) {
+            deleteBookmarkUseCase.deleteBookmark(bestSeller)
         }
     }
 }

@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ImageButton
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
@@ -14,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.shopapp.features.mainScreen.R
 import com.example.shopapp.features.mainScreen.databinding.FragmentMainBinding
+import com.example.shopapp.features.mainScreen.domain.model.BestSeller
 import com.example.shopapp.features.mainScreen.presentation.adapters.BestSellerAdapter
 import com.example.shopapp.features.mainScreen.presentation.adapters.HomeStorePageAdapter
 import com.example.shopapp.features.mainScreen.presentation.viewModel.MainViewModel
@@ -42,14 +42,23 @@ class MainFragment : Fragment() {
         }
         mainViewModel.bestSellerPhonesList.observe(viewLifecycleOwner) {
             mainViewModel.bestSellerListSize.value = it.size
-            val adapterBS = BestSellerAdapter {
+            val adapterBS = BestSellerAdapter( {
                 if (view != null) {
                     val uri = Uri.parse("shopapp://ToProductDetailsScreen")
                     findNavController().navigate(uri)
                 }
+            },
+                object :BestSellerAdapter.BookmarkClickListener {
+                    override fun addBookmark(bestSeller: BestSeller) {
+                        mainViewModel.addBookmark(bestSeller)
+                    }
 
+                    override fun deleteBookmark(bestSeller: BestSeller) {
+                        mainViewModel.deleteBookmark(bestSeller)
+                    }
 
-            }
+                }
+            )
             adapterBS.submitList(it)
             binding.recyclerViewBestSeller.adapter = adapterBS
             binding.recyclerViewBestSeller.layoutManager = GridLayoutManager(requireContext(), 2)
@@ -108,6 +117,10 @@ class MainFragment : Fragment() {
             when (it.itemId) {
                 R.id.item2 -> {
                     val uri = Uri.parse("shopapp://ToMyCart")
+                    findNavController().navigate(uri)
+                }
+                R.id.item3 -> {
+                    val uri = Uri.parse("shopapp://toBookmarksScreen")
                     findNavController().navigate(uri)
                 }
             }

@@ -35,8 +35,6 @@ class HomeStoreItem : Fragment() {
         binding.bestSellerLayout.setOnClickListener {
             val uri = Uri.parse("shopapp://ToProductDetailsScreen")
             findNavController().navigate(uri)
-//            Navigation.findNavController(requireView())
-//                .navigate(R.id.action_mainFragment_to_productDetailsFragment)
         }
 
 

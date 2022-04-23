@@ -1,5 +1,6 @@
 package com.example.shopapp.features.mainScreen.data.mapper
 
+import com.example.shopapp.common.bookmarkDatabase.data.modelDB.BookmarkDB
 import com.example.shopapp.features.mainScreen.data.modelDB.BestSellerDB
 import com.example.shopapp.features.mainScreen.data.modelDB.HomeStoreDB
 import com.example.shopapp.features.mainScreen.domain.model.BestSeller
@@ -40,5 +41,15 @@ class MainScreenMapper {
         }
         return listHomeStore
 
+    }
+
+    fun mapBestsellerToBookmarkDB(bestSeller: BestSeller): BookmarkDB {
+        return BookmarkDB(
+            id = bestSeller.id,
+            title = bestSeller.title,
+            picture = bestSeller.picture,
+            priceWithoutDiscount = bestSeller.priceWithoutDiscount,
+            discountPrice = bestSeller.discountPrice
+        )
     }
 }

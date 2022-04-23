@@ -62,4 +62,12 @@ dependencies {
 
     // Coil (convert image urls to image)
     implementation "io.coil-kt:coil:1.1.1"
+    // Lifecycle libraries
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0"
+    //Fragment
+    implementation 'androidx.fragment:fragment-ktx:1.4.0'
+
+    //Modules
+    implementation project(path: ':common_database')
 }

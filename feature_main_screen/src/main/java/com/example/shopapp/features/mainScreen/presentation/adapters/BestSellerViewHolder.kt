@@ -10,23 +10,16 @@ import com.example.shopapp.features.mainScreen.domain.model.BestSeller
 
 class BestSellerViewHolder(private var binding: BestSellerItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
+
+    val bookmark = binding.imageViewBSLikes
+
     fun bind(bestSeller: BestSeller) {
         binding.apply {
             textViewMainTitle.text = bestSeller.title
             textViewDiscountPrice.text = "$${bestSeller.discountPrice}"
             textViewPriceWithourDiscount.text = "$${bestSeller.priceWithoutDiscount}"
             imageViewBestSeller.setImageDrawableFromUrl(bestSeller.picture)
-            var pressed = true
-            imageViewBSLikes.setOnClickListener {
-                if (pressed) {
-                    pressed = false
-                    imageViewBSLikes.setImageResource(R.drawable.ic_bestseller)
-                } else {
-                    pressed = true
-                    imageViewBSLikes.setImageResource(R.drawable.ic_bslike_empty)
-                }
 
-            }
 
 
         }

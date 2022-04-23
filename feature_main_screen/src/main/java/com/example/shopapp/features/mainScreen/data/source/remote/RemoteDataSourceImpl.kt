@@ -1,4 +1,4 @@
-package com.example.shopapp.features.mainScreen.data.remote
+package com.example.shopapp.features.mainScreen.data.source.remote
 
 import com.example.shopapp.features.mainScreen.data.modelDB.BestSellerDB
 import com.example.shopapp.features.mainScreen.data.modelDB.HomeStoreDB

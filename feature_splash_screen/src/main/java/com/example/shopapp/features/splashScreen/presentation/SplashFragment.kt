@@ -29,7 +29,7 @@ class SplashFragment : Fragment() {
             val uri = Uri.parse("shopapp://toMainScreen")
             findNavController().navigate(uri)
 //            Navigation.findNavController(view).navigate(R.id.action_splashFragment_to_mainFragment)
-        }, 3000)
+        }, 2000)
 
     }
 

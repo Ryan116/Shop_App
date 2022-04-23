@@ -8,4 +8,8 @@ interface MainScreenRepository {
     suspend fun getBestSellerPhonesList(): List<BestSeller>
 
     suspend fun getHomeStorePhonesList(): List<HomeStore>
+
+    suspend fun addBookmark(bestSeller: BestSeller)
+
+    suspend fun deleteBookmark(bestSeller: BestSeller)
 }

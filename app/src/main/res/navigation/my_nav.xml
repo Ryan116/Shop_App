@@ -48,4 +48,12 @@
             android:id="@+id/deepLink"
             app:uri="shopapp://ToMapScreen" />
     </fragment>
+    <fragment
+        android:id="@+id/bookmarksFragment"
+        android:name="com.example.shopapp.features.bookmarksScreen.presentation.BookmarksFragment"
+        android:label="fragment_bookmarks">
+        <deepLink
+            android:id="@+id/deepLink5"
+            app:uri="shopapp://toBookmarksScreen" />
+    </fragment>
 </navigation>
