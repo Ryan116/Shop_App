@@ -69,40 +69,35 @@ class MainFragment : Fragment() {
                 categoryButtonClick(
                     this,
                     R.drawable.ic_button_phones_clicked,
-                    R.drawable.ic_button_phones,
-                    getString(R.string.category_phones)
+                    R.drawable.ic_button_phones
                 )
             }
             imageButtonComputer.apply {
                 categoryButtonClick(
                     this,
                     R.drawable.ic_button_computer_clicked,
-                    R.drawable.ic_button_computer,
-                    getString(R.string.category_computer)
+                    R.drawable.ic_button_computer
                 )
             }
             imageButtonHealth.apply {
                 categoryButtonClick(
                     this,
                     R.drawable.ic_button_health_clicked,
-                    R.drawable.ic_button_health,
-                    getString(R.string.category_health)
+                    R.drawable.ic_button_health
                 )
             }
             imageButtonBooks.apply {
                 categoryButtonClick(
                     this,
                     R.drawable.ic_button_books_clicked,
-                    R.drawable.ic_button_books,
-                    getString(R.string.category_books)
+                    R.drawable.ic_button_books
                 )
             }
             imageButton5.apply {
                 categoryButtonClick(
                     this,
                     R.drawable.ic_button_5_clicked,
-                    R.drawable.ic_button_5,
-                    getString(R.string.category_button_5)
+                    R.drawable.ic_button_5
                 )
             }
         }
@@ -156,8 +151,7 @@ class MainFragment : Fragment() {
     private fun categoryButtonClick(
         imageButton: ImageButton,
         clickedImage: Int,
-        notClickedImage: Int,
-        buttonClickedName: String
+        notClickedImage: Int
     ) {
         var clicked = true
         imageButton.setOnClickListener {

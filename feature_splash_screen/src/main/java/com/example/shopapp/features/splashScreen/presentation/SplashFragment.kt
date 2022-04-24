@@ -28,7 +28,6 @@ class SplashFragment : Fragment() {
         Handler(Looper.getMainLooper()).postDelayed({
             val uri = Uri.parse("shopapp://toMainScreen")
             findNavController().navigate(uri)
-//            Navigation.findNavController(view).navigate(R.id.action_splashFragment_to_mainFragment)
         }, 2000)
 
     }

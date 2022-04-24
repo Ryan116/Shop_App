@@ -1,5 +1,6 @@
 package com.example.shopapp.features.mainScreen.presentation.adapters
 
+import android.graphics.Paint
 import android.widget.ImageView
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
@@ -16,8 +17,9 @@ class BestSellerViewHolder(private var binding: BestSellerItemBinding) :
     fun bind(bestSeller: BestSeller) {
         binding.apply {
             textViewMainTitle.text = bestSeller.title
-            textViewDiscountPrice.text = "$${bestSeller.discountPrice}"
-            textViewPriceWithourDiscount.text = "$${bestSeller.priceWithoutDiscount}"
+            textViewDiscountPrice.text = "$${bestSeller.priceWithoutDiscount}"
+            textViewPriceWithourDiscount.text = "$${bestSeller.discountPrice}"
+            textViewPriceWithourDiscount.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             imageViewBestSeller.setImageDrawableFromUrl(bestSeller.picture)
 
 
