@@ -3,6 +3,7 @@ package com.example.shopapp.features.mainScreen.presentation
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,13 +43,13 @@ class MainFragment : Fragment() {
         }
         mainViewModel.bestSellerPhonesList.observe(viewLifecycleOwner) {
             mainViewModel.bestSellerListSize.value = it.size
-            val adapterBS = BestSellerAdapter( {
+            val adapterBS = BestSellerAdapter({
                 if (view != null) {
                     val uri = Uri.parse("shopapp://ToProductDetailsScreen")
                     findNavController().navigate(uri)
                 }
             },
-                object :BestSellerAdapter.BookmarkClickListener {
+                object : BestSellerAdapter.BookmarkClickListener {
                     override fun addBookmark(bestSeller: BestSeller) {
                         mainViewModel.addBookmark(bestSeller)
                     }
@@ -69,35 +70,40 @@ class MainFragment : Fragment() {
                 categoryButtonClick(
                     this,
                     R.drawable.ic_button_phones_clicked,
-                    R.drawable.ic_button_phones
+                    R.drawable.ic_button_phones,
+                    "Phones"
                 )
             }
             imageButtonComputer.apply {
                 categoryButtonClick(
                     this,
                     R.drawable.ic_button_computer_clicked,
-                    R.drawable.ic_button_computer
+                    R.drawable.ic_button_computer,
+                    "Computers"
                 )
             }
             imageButtonHealth.apply {
                 categoryButtonClick(
                     this,
                     R.drawable.ic_button_health_clicked,
-                    R.drawable.ic_button_health
+                    R.drawable.ic_button_health,
+                    "Health"
                 )
             }
             imageButtonBooks.apply {
                 categoryButtonClick(
                     this,
                     R.drawable.ic_button_books_clicked,
-                    R.drawable.ic_button_books
+                    R.drawable.ic_button_books,
+                    "Books"
                 )
             }
             imageButton5.apply {
                 categoryButtonClick(
                     this,
                     R.drawable.ic_button_5_clicked,
-                    R.drawable.ic_button_5
+                    R.drawable.ic_button_5,
+                    "Button_5"
                 )
             }
         }
@@ -135,8 +141,7 @@ class MainFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         val callback: OnBackPressedCallback =
-            object : OnBackPressedCallback(true)
-            {
+            object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     requireActivity().finish()
                 }
@@ -151,21 +156,46 @@ class MainFragment : Fragment() {
     private fun categoryButtonClick(
         imageButton: ImageButton,
         clickedImage: Int,
-        notClickedImage: Int
+        notClickedImage: Int,
+        categoryName: String
     ) {
-        var clicked = true
-        imageButton.setOnClickListener {
-            when (clicked) {
-                true -> {
-                    clicked = false
-                    imageButton.setBackgroundResource(clickedImage)
-                }
-                false -> {
-                    clicked = true
-                    imageButton.setBackgroundResource(notClickedImage)
+        imageButton.setOnClickListener { view ->
+            mainViewModel.setMenuCategory(categoryName)
+            mainViewModel.menuCategory.observe(viewLifecycleOwner) {
+                when (mainViewModel.menuCategory.value.equals(categoryName)) {
+                    true -> {
+                        view.setBackgroundResource(clickedImage)
+                    }
+                    false -> {
+                        view.setBackgroundResource(notClickedImage)
+                    }
                 }
             }
+//            when (clicked) {
+//                true -> {
+//                    clicked = false
+//                    imageButton.setBackgroundResource(clickedImage)
+//                }
+//                false -> {
+//                    clicked = true
+//                    imageButton.setBackgroundResource(notClickedImage)
+//                }
+//            }
         }
     }
+
+//    imageButtonPhones.setOnClickListener { view ->
+//        mainViewModel.setMenuCategory("Phones")
+//        mainViewModel.menuCategory.observe(viewLifecycleOwner) { categoryName ->
+//            when (mainViewModel.menuCategory.value.equals(categoryName)) {
+//                true -> {
+//                    view.setBackgroundResource(R.drawable.ic_button_phones_clicked)
+//                }
+//                false -> {
+//                    view.setBackgroundResource(R.drawable.ic_button_phones)
+//                }
+//            }
+//        }
+//    }
 
 }

@@ -27,6 +27,10 @@ class MainViewModel(
     private val _status = MutableLiveData<ShopApiStatus>()
     val status: LiveData<ShopApiStatus> = _status
 
+
+    private val _menuCategory = MutableLiveData<String>()
+    val menuCategory: LiveData<String> = _menuCategory
+
     private val _phones = MutableLiveData<List<HomeStore>>()
     val phones: LiveData<List<HomeStore>> = _phones
 
@@ -39,6 +43,10 @@ class MainViewModel(
 
     init {
         getPhoneModels()
+    }
+
+    fun setMenuCategory(categoryName: String) {
+        _menuCategory.value = categoryName
     }
 
 
