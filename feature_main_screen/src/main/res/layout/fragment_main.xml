@@ -88,7 +88,7 @@
         android:id="@+id/recyclerViewBestSeller"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewBestSellerLabel" />
@@ -96,7 +96,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewBestSellerLabel" />
@@ -136,20 +136,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline3"
         tools:ignore="TouchTargetSizeCheck" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/layout_bg"
-        app:backgroundTint="@color/filter_background"
-        app:itemIconTint="@drawable/bottom_nav_selector"
-        app:itemTextColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewBestSeller"
-        app:menu="@menu/botton_menu" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"

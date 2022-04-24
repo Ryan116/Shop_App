@@ -114,19 +114,7 @@ class MainFragment : Fragment() {
             dialog.show()
         }
 
-        binding.bottomNavigationView.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.item2 -> {
-                    val uri = Uri.parse("shopapp://ToMyCart")
-                    findNavController().navigate(uri)
-                }
-                R.id.item3 -> {
-                    val uri = Uri.parse("shopapp://toBookmarksScreen")
-                    findNavController().navigate(uri)
-                }
-            }
-            true
-        }
+
         binding.textViewrLocation.setOnClickListener {
             val uri = Uri.parse("shopapp://ToMapScreen")
             findNavController().navigate(uri)
