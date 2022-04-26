@@ -1,6 +1,9 @@
 package com.example.shopapp
 
 import android.app.Application
+import com.example.shopapp.di.appDataModule
+import com.example.shopapp.di.appDomainModule
+import com.example.shopapp.di.appPresentationModule
 import com.example.shopapp.features.bookmarksScreen.di.bookmarkScreenDataModule
 import com.example.shopapp.features.bookmarksScreen.di.bookmarkScreenDomainModule
 import com.example.shopapp.features.bookmarksScreen.di.bookmarkScreenPresentationModule
@@ -35,7 +38,10 @@ class App : Application() {
                     myCartPresentationModule,
                     bookmarkScreenDataModule,
                     bookmarkScreenDomainModule,
-                    bookmarkScreenPresentationModule
+                    bookmarkScreenPresentationModule,
+                    appDataModule,
+                    appDomainModule,
+                    appPresentationModule
                 )
             )
         }

@@ -9,6 +9,7 @@ import com.example.shopapp.features.bookmarksScreen.databinding.BookmarkItemBind
 import com.example.shopapp.features.bookmarksScreen.domain.model.Bookmark
 
 class BookmarkAdapter(
+    private val onItemClicked: (Bookmark) -> Unit,
     private val bookmarkClickListener: BookmarkClickListener
 ) :
     ListAdapter<Bookmark, BookmarkViewHolder>(BookmarkDiffCallback()) {
@@ -25,6 +26,9 @@ class BookmarkAdapter(
         val bookmark = getItem(position)
         holder.bind(bookmark)
         var pressed = true
+        holder.itemView.setOnClickListener {
+            onItemClicked(bookmark)
+        }
         holder.bookmark.setOnClickListener {
             if (pressed) {
                 pressed = false

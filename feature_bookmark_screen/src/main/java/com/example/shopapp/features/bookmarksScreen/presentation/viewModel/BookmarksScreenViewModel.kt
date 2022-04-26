@@ -43,5 +43,7 @@ class BookmarksScreenViewModel(
             deleteAllBookmarksUseCase.deleteAllBookmarks()
         }
     }
+
+
 }
 
