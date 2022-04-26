@@ -9,6 +9,7 @@ Key features:<br/>
 + Activity monitoring through Google Analytics.<br/>
 + Navigation bar buttons with notifications<br/>
 <br/>
+
 ![mygif](preview/shop_app.gif)
 
 ## Stack
