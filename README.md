@@ -23,7 +23,7 @@ Coil (convert image urls to image)<br/>
 GoogleMaps<br/>
 Google Analytics<br/>
 Room<br/>
-Coin<br/>
+Koin<br/>
 
 ## Architecture
 MVVM<br/>
