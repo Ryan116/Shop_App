@@ -2,7 +2,6 @@ package com.example.shopapp.presentation
 
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.example.shopapp.R
@@ -22,12 +21,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         addBadge("2", R.id.item2)
         appViewModel.bookmarksList.observe(this) {
             addBadge(it.size.toString(), R.id.item3)
         }
 
-//        binding.bottomNavigationView.removeBadge(R. id.item2)
         binding.bottomNavigationView.setOnItemSelectedListener { it ->
             when (it.itemId) {
                 R.id.item1 -> {
@@ -56,6 +55,8 @@ class MainActivity : AppCompatActivity() {
         badge.number = count.toInt()
         badge.isVisible = true
     }
+
+
 }
 
 

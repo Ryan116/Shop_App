@@ -1,9 +1,7 @@
 package com.example.shopapp.features.productDetailsScreen.domain.model
 
-import com.squareup.moshi.Json
-
 data class ProductDetailsItem(
-    @Json(name = "CPU") val cpu: String,
+    val cpu: String,
     val id: String,
     val camera: String,
     val capacity: List<String>,

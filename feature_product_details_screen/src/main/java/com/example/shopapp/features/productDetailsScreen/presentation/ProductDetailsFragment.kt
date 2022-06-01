@@ -14,7 +14,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class ProductDetailsFragment : Fragment() {
-    private lateinit var binding: FragmentProductDetailsBinding
+
+    private var _binding: FragmentProductDetailsBinding? = null
+    private val binding
+        get() = _binding!!
     private val productDetailsViewModel by viewModel<DetailsViewModel>()
 
     override fun onCreateView(
@@ -22,7 +25,7 @@ class ProductDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentProductDetailsBinding.inflate(inflater)
+        _binding = FragmentProductDetailsBinding.inflate(inflater)
         return binding.root
     }
 
@@ -49,10 +52,14 @@ class ProductDetailsFragment : Fragment() {
                 val uri = Uri.parse("shopapp://ToMyCart")
                 findNavController().navigate(uri)
             }
-
-
         }
+    }
 
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 

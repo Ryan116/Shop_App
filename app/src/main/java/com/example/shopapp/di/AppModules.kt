@@ -15,6 +15,8 @@ import org.koin.dsl.module
 
 
 val appDataModule = module {
+
+
     single<AppRepository> {
         AppRepositoryImpl(localDataSource = get(), appMapper = get())
     }

@@ -16,12 +16,11 @@ import kotlinx.coroutines.launch
 enum class ShopApiStatus { LOADING, ERROR, DONE }
 
 class MainViewModel(
-        private val getBestSellerListUseCase: GetBestSellerListUseCase,
-        private val getHomeStorePhonesListUseCase: GetHomeStorePhonesListUseCase,
-        private val addBookmarkUseCase: AddBookmarkUseCase,
-        private val deleteBookmarkUseCase: DeleteBookmarkUseCase
-        ): ViewModel() {
-
+    private val getBestSellerListUseCase: GetBestSellerListUseCase,
+    private val getHomeStorePhonesListUseCase: GetHomeStorePhonesListUseCase,
+    private val addBookmarkUseCase: AddBookmarkUseCase,
+    private val deleteBookmarkUseCase: DeleteBookmarkUseCase
+) : ViewModel() {
 
 
     private val _status = MutableLiveData<ShopApiStatus>()
@@ -50,18 +49,17 @@ class MainViewModel(
     }
 
 
-
     private fun getPhoneModels() {
 
         viewModelScope.launch {
             _status.value = ShopApiStatus.LOADING
-                try {
-                    _phones.value = getHomeStorePhonesListUseCase.getHomeStorePhonesList()
-                    _bestSellerPhonesList.value = getBestSellerListUseCase.getBestSellerPhonesList()
-                    _status.value = ShopApiStatus.DONE
-                } catch (e: Exception) {
-                    _status.value = ShopApiStatus.ERROR
-                }
+            try {
+                _phones.value = getHomeStorePhonesListUseCase.getHomeStorePhonesList()
+                _bestSellerPhonesList.value = getBestSellerListUseCase.getBestSellerPhonesList()
+                _status.value = ShopApiStatus.DONE
+            } catch (e: Exception) {
+                _status.value = ShopApiStatus.ERROR
+            }
         }
     }
 

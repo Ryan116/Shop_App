@@ -22,7 +22,11 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MainFragment : Fragment() {
-    private lateinit var binding: FragmentMainBinding
+
+    private var _binding: FragmentMainBinding? = null
+    private val binding
+        get() = _binding!!
+
     private val mainViewModel by viewModel<MainViewModel>()
 
     override fun onCreateView(
@@ -30,7 +34,27 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentMainBinding.inflate(inflater)
+        _binding = FragmentMainBinding.inflate(inflater)
+        return binding.root
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    requireActivity().finish()
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            callback
+        )
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         mainViewModel.phones.observe(viewLifecycleOwner) {
             mainViewModel.homeStoreListSize.value = it.size
             val adapterRV = HomeStorePageAdapter(
@@ -40,6 +64,7 @@ class MainFragment : Fragment() {
                 )
             binding.viewPagerHomeStore.adapter = adapterRV
         }
+
         mainViewModel.bestSellerPhonesList.observe(viewLifecycleOwner) {
             mainViewModel.bestSellerListSize.value = it.size
             val adapterBS = BestSellerAdapter({
@@ -106,6 +131,7 @@ class MainFragment : Fragment() {
                 )
             }
         }
+
         binding.imageButtonFilter.setOnClickListener {
             val view: View = layoutInflater.inflate(R.layout.bottom_filter, null)
             val dialog = BottomSheetDialog(requireContext())
@@ -118,25 +144,11 @@ class MainFragment : Fragment() {
             val uri = Uri.parse("shopapp://ToMapScreen")
             findNavController().navigate(uri)
         }
-
-
-
-
-        return binding.root
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        val callback: OnBackPressedCallback =
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    requireActivity().finish()
-                }
-            }
-        requireActivity().onBackPressedDispatcher.addCallback(
-            this,
-            callback
-        )
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 
@@ -158,31 +170,7 @@ class MainFragment : Fragment() {
                     }
                 }
             }
-//            when (clicked) {
-//                true -> {
-//                    clicked = false
-//                    imageButton.setBackgroundResource(clickedImage)
-//                }
-//                false -> {
-//                    clicked = true
-//                    imageButton.setBackgroundResource(notClickedImage)
-//                }
-//            }
         }
     }
-
-//    imageButtonPhones.setOnClickListener { view ->
-//        mainViewModel.setMenuCategory("Phones")
-//        mainViewModel.menuCategory.observe(viewLifecycleOwner) { categoryName ->
-//            when (mainViewModel.menuCategory.value.equals(categoryName)) {
-//                true -> {
-//                    view.setBackgroundResource(R.drawable.ic_button_phones_clicked)
-//                }
-//                false -> {
-//                    view.setBackgroundResource(R.drawable.ic_button_phones)
-//                }
-//            }
-//        }
-//    }
 
 }

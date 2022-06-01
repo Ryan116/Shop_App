@@ -21,14 +21,4 @@ class AppMapper {
         }
         return listBookmark
     }
-
-    fun mapBookmarkToBookmarkDB(bookmark: Bookmark): BookmarkDB {
-        return BookmarkDB(
-            id = bookmark.id,
-            title = bookmark.title,
-            picture = bookmark.picture,
-            priceWithoutDiscount = bookmark.priceWithoutDiscount,
-            discountPrice = bookmark.discountPrice
-        )
-    }
 }

@@ -19,7 +19,13 @@ class BestSellerAdapter(
         parent: ViewGroup,
         viewType: Int
     ): BestSellerViewHolder {
-        return BestSellerViewHolder(BestSellerItemBinding.inflate(LayoutInflater.from(parent.context)))
+        return BestSellerViewHolder(
+            BestSellerItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: BestSellerViewHolder, position: Int) {
@@ -39,7 +45,6 @@ class BestSellerAdapter(
                 holder.bookmark.setImageResource(R.drawable.ic_bslike_empty)
                 bookmarkClickListener.deleteBookmark(bestSeller)
             }
-
 
 
         }

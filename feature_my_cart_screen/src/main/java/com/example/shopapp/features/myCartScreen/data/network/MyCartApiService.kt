@@ -6,7 +6,6 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Headers
 
 private const val BASE_URL =
     "https://run.mocky.io/v3/"
@@ -26,6 +25,7 @@ interface MyCartApiService {
 }
 
 object MyCartApi {
-    val retrofitService : MyCartApiService by lazy {
-        retrofit.create(MyCartApiService::class.java) }
+    val retrofitService: MyCartApiService by lazy {
+        retrofit.create(MyCartApiService::class.java)
+    }
 }

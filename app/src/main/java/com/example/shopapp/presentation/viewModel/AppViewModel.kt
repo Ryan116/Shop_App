@@ -1,11 +1,10 @@
 package com.example.shopapp.presentation.viewModel
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.shopapp.domain.usecase.GetBookmarksListUseCase
 import com.example.shopapp.domain.model.Bookmark
+import com.example.shopapp.domain.usecase.GetBookmarksListUseCase
 import kotlinx.coroutines.launch
 
 class AppViewModel(
@@ -14,7 +13,6 @@ class AppViewModel(
 
 
     lateinit var bookmarksList: LiveData<List<Bookmark>>
-
 
 
     init {
