@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.shopapp.features.mainScreen.R
 import com.example.shopapp.features.mainScreen.databinding.FragmentMainBinding
 import com.example.shopapp.features.mainScreen.domain.model.BestSeller
+import com.example.shopapp.features.mainScreen.domain.model.HomeStore
 import com.example.shopapp.features.mainScreen.presentation.adapters.BestSellerAdapter
 import com.example.shopapp.features.mainScreen.presentation.adapters.HomeStorePageAdapter
 import com.example.shopapp.features.mainScreen.presentation.viewModel.MainViewModel
