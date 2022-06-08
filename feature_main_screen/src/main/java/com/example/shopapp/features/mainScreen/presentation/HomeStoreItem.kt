@@ -60,17 +60,18 @@ class HomeStoreItem : Fragment() {
             }
         }
     }
-}
-
-private fun ImageView.setImageFromUrl(imgUrl: String) {
-    imgUrl.let {
-        this.load(imgUrl) {
-            placeholder(R.drawable.loading_animation)
-            error(R.drawable.ic_broken_image)
-            transformations(RoundedCornersTransformation(40f))
+    private fun ImageView.setImageFromUrl(imgUrl: String) {
+        imgUrl.let {
+            this.load(imgUrl) {
+                placeholder(R.drawable.loading_animation)
+                error(R.drawable.ic_broken_image)
+                transformations(RoundedCornersTransformation(40f))
+            }
         }
     }
 }
+
+
 
 
 

@@ -21,25 +21,22 @@ class BestSellerViewHolder(private var binding: BestSellerItemBinding) :
             textViewPriceWithourDiscount.text = "$${bestSeller.discountPrice}"
             textViewPriceWithourDiscount.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             imageViewBestSeller.setImageDrawableFromUrl(bestSeller.picture)
-
-
-
         }
 
     }
+    private fun ImageView.setImageDrawableFromUrl(imgUrl: String) {
 
-}
-
-private fun ImageView.setImageDrawableFromUrl(imgUrl: String) {
-
-    imgUrl.let {
-        val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
-        this.load(imgUri) {
-            placeholder(R.drawable.loading_animation)
-            error(R.drawable.ic_broken_image)
+        imgUrl.let {
+            val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
+            this.load(imgUri) {
+                placeholder(R.drawable.loading_animation)
+                error(R.drawable.ic_broken_image)
+            }
         }
     }
 }
+
+
 
 
 
