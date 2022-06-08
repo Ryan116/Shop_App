@@ -8,8 +8,7 @@ import com.example.shopapp.features.myCartScreen.domain.repository.MyCartScreenR
 class MyCartScreenRepositoryImpl(
     private val myCartRemoteDataSource: MyCartRemoteDataSource,
     private val myCartScreenMapper: MyCartScreenMapper
-    ) :
-    MyCartScreenRepository {
+    ) : MyCartScreenRepository {
 
 
 

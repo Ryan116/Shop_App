@@ -63,6 +63,16 @@ class MyCartFragment : Fragment() {
 
     }
 
+    private fun ImageView.setImageUrl(imgUrl: String) {
+        imgUrl.let {
+            this.load(imgUrl) {
+                placeholder(R.drawable.loading_animation)
+                error(R.drawable.ic_broken_image)
+                transformations(RoundedCornersTransformation(40f))
+            }
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -70,12 +80,4 @@ class MyCartFragment : Fragment() {
 }
 
 
-private fun ImageView.setImageUrl(imgUrl: String) {
-    imgUrl.let {
-        this.load(imgUrl) {
-            placeholder(R.drawable.loading_animation)
-            error(R.drawable.ic_broken_image)
-            transformations(RoundedCornersTransformation(40f))
-        }
-    }
-}
+
