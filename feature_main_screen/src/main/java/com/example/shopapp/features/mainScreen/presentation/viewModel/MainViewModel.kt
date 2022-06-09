@@ -13,7 +13,15 @@ import com.example.shopapp.features.mainScreen.domain.useCases.GetHomeStorePhone
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-enum class ShopApiStatus { LOADING, ERROR, DONE }
+
+
+sealed class ShopApiStatus() {
+    class LOADING(): ShopApiStatus()
+    class ERROR(): ShopApiStatus() {
+        var exception: Exception? = null
+    }
+    class DONE(): ShopApiStatus()
+}
 
 class MainViewModel(
     private val getBestSellerListUseCase: GetBestSellerListUseCase,
@@ -52,13 +60,14 @@ class MainViewModel(
     private fun getPhoneModels() {
 
         viewModelScope.launch {
-            _status.value = ShopApiStatus.LOADING
+            _status.value = ShopApiStatus.LOADING()
             try {
                 _phones.value = getHomeStorePhonesListUseCase.getHomeStorePhonesList()
                 _bestSellerPhonesList.value = getBestSellerListUseCase.getBestSellerPhonesList()
-                _status.value = ShopApiStatus.DONE
+                _status.value = ShopApiStatus.DONE()
             } catch (e: Exception) {
-                _status.value = ShopApiStatus.ERROR
+                _status.value = ShopApiStatus.ERROR()
+                ShopApiStatus.ERROR().exception = e
             }
         }
     }

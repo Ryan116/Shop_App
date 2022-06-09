@@ -8,7 +8,15 @@ import com.example.shopapp.features.productDetailsScreen.domain.model.ProductDet
 import com.example.shopapp.features.productDetailsScreen.domain.useCases.GetProductDetailsUseCase
 import kotlinx.coroutines.launch
 
-enum class DetailsApiStatus { LOADING, ERROR, DONE }
+
+
+sealed class DetailsApiStatus() {
+    class LOADING(): DetailsApiStatus()
+    class ERROR(): DetailsApiStatus() {
+        var exception: Exception? = null
+    }
+    class DONE(): DetailsApiStatus()
+}
 
 class DetailsViewModel(
     private val getProductDetailsUseCase: GetProductDetailsUseCase
@@ -29,12 +37,13 @@ class DetailsViewModel(
     private fun getPDItemModels() {
 
         viewModelScope.launch {
-            _status.value = DetailsApiStatus.LOADING
+            _status.value = DetailsApiStatus.LOADING()
             try {
                 _phoneDetailsList.value = getProductDetailsUseCase.getProductDetails()
-                _status.value = DetailsApiStatus.DONE
+                _status.value = DetailsApiStatus.DONE()
             } catch (e: Exception) {
-                _status.value = DetailsApiStatus.ERROR
+                _status.value = DetailsApiStatus.ERROR()
+                DetailsApiStatus.ERROR().exception = e
             }
         }
     }

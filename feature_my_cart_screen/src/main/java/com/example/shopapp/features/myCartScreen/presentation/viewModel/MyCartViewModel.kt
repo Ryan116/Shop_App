@@ -8,7 +8,17 @@ import com.example.shopapp.features.myCartScreen.domain.model.BasketMain
 import com.example.shopapp.features.myCartScreen.domain.useCases.GetMyCartUseCase
 import kotlinx.coroutines.launch
 
-enum class MyCartApiStatus { LOADING, ERROR, DONE }
+
+
+sealed class MyCartApiStatus() {
+    class LOADING(): MyCartApiStatus()
+    class ERROR(): MyCartApiStatus() {
+        var exception: Exception? = null
+    }
+    class DONE(): MyCartApiStatus()
+}
+
+
 
 class MyCartViewModel(
     private val getMyCartUseCase: GetMyCartUseCase
@@ -29,12 +39,13 @@ class MyCartViewModel(
     private fun getMyCartModels() {
 
         viewModelScope.launch {
-            _status.value = MyCartApiStatus.LOADING
+            _status.value = MyCartApiStatus.LOADING()
             try {
                 _myCartList.value = getMyCartUseCase.getMyCart()
-                _status.value = MyCartApiStatus.DONE
+                _status.value = MyCartApiStatus.DONE()
             } catch (e: Exception) {
-                _status.value = MyCartApiStatus.ERROR
+                _status.value = MyCartApiStatus.ERROR()
+                MyCartApiStatus.ERROR().exception = e
             }
         }
     }

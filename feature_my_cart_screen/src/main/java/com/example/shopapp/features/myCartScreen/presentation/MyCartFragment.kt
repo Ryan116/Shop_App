@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.example.shopapp.features.myCartScreen.R
 import com.example.shopapp.features.myCartScreen.databinding.FragmentMyCartBinding
+import com.example.shopapp.features.myCartScreen.presentation.viewModel.MyCartApiStatus
 import com.example.shopapp.features.myCartScreen.presentation.viewModel.MyCartViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.NumberFormat
@@ -58,6 +60,19 @@ class MyCartFragment : Fragment() {
                 textViewItem2Name.text = basketProduct2.title
                 textViewItem2Price.text =
                     NumberFormat.getCurrencyInstance(Locale.US).format(basketProduct2.price)
+            }
+        }
+
+        myCartViewModel.status.observe(viewLifecycleOwner) {
+            when (it) {
+                is MyCartApiStatus.ERROR -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "We can't load images! Exception: ${MyCartApiStatus.ERROR().exception}",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
+                }
             }
         }
 

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -17,6 +18,7 @@ import com.example.shopapp.features.mainScreen.domain.model.BestSeller
 import com.example.shopapp.features.mainScreen.presentation.adapters.BestSellerAdapter
 import com.example.shopapp.features.mainScreen.presentation.adapters.HomeStorePageAdapter
 import com.example.shopapp.features.mainScreen.presentation.viewModel.MainViewModel
+import com.example.shopapp.features.mainScreen.presentation.viewModel.ShopApiStatus
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -87,8 +89,21 @@ class MainFragment : Fragment() {
             adapterBS.submitList(it)
             binding.recyclerViewBestSeller.adapter = adapterBS
             binding.recyclerViewBestSeller.layoutManager = GridLayoutManager(requireContext(), 2)
-
         }
+
+        mainViewModel.status.observe(viewLifecycleOwner) {
+            when (it) {
+                is ShopApiStatus.ERROR -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "We can't load images! Exception: ${ShopApiStatus.ERROR().exception}",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
+                }
+            }
+        }
+
         binding.apply {
             imageButtonPhones.apply {
                 categoryButtonClick(
