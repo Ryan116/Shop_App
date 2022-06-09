@@ -25,19 +25,19 @@ class BookmarkViewHolder(private var binding: BookmarkItemBinding) :
         }
 
     }
+    private fun ImageView.setImageDrawableFromUrl(imgUrl: String) {
 
-}
-
-private fun ImageView.setImageDrawableFromUrl(imgUrl: String) {
-
-    imgUrl.let {
-        val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
-        this.load(imgUri) {
-            placeholder(R.drawable.loading_animation)
-            error(R.drawable.ic_broken_image)
+        imgUrl.let {
+            val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
+            this.load(imgUri) {
+                placeholder(R.drawable.loading_animation)
+                error(R.drawable.ic_broken_image)
+            }
         }
     }
 }
+
+
 
 
 
