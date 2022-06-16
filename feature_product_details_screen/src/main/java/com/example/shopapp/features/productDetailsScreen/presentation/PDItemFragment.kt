@@ -4,11 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import coil.load
-import coil.transform.RoundedCornersTransformation
-import com.example.shopapp.features.productDetailsScreen.R
+import com.example.shopapp.common.extensions.setImageDrawableFromUrl
 import com.example.shopapp.features.productDetailsScreen.databinding.FragmentPDItemBinding
 import com.example.shopapp.features.productDetailsScreen.presentation.viewModel.DetailsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -43,27 +40,13 @@ class PDItemFragment : Fragment() {
                     when (position) {
                         i -> {
                             binding.apply {
-                                imageViewPD.setImageFromUrl(listImages[i])
+                                imageViewPD.setImageDrawableFromUrl(listImages[i], 30f)
 
                             }
                         }
                     }
                 }
             }
-
-
-
-        }
-    }
-}
-
-
-private fun ImageView.setImageFromUrl(imgUrl: String) {
-    imgUrl.let {
-        this.load(imgUrl) {
-            placeholder(R.drawable.loading_animation)
-            error(R.drawable.ic_broken_image)
-            transformations(RoundedCornersTransformation(40f))
         }
     }
 }

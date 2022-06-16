@@ -5,12 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import coil.load
-import coil.transform.RoundedCornersTransformation
-import com.example.shopapp.features.mainScreen.R
+import com.example.shopapp.common.extensions.setImageDrawableFromUrl
 import com.example.shopapp.features.mainScreen.databinding.HomeStoreItemBinding
 import com.example.shopapp.features.mainScreen.presentation.viewModel.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -51,7 +48,7 @@ class HomeStoreItem : Fragment() {
                             binding.apply {
                                 textViewMainTitle.text = phone.title
                                 textViewSubtitle.text = phone.subtitle
-                                imageView.setImageFromUrl(phone.picture)
+                                imageView.setImageDrawableFromUrl(phone.picture, 30f)
 
                             }
                         }
@@ -60,15 +57,7 @@ class HomeStoreItem : Fragment() {
             }
         }
     }
-    private fun ImageView.setImageFromUrl(imgUrl: String) {
-        imgUrl.let {
-            this.load(imgUrl) {
-                placeholder(R.drawable.loading_animation)
-                error(R.drawable.ic_broken_image)
-                transformations(RoundedCornersTransformation(40f))
-            }
-        }
-    }
+
 }
 
 

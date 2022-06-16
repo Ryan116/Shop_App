@@ -1,7 +1,7 @@
 package com.example.shopapp.data.source.local
 
 import androidx.lifecycle.LiveData
-import com.example.shopapp.common.bookmarkDatabase.data.modelDB.BookmarkDB
+import com.example.shopapp.common.database.data.modelDB.BookmarkDB
 
 
 interface LocalDataSource {

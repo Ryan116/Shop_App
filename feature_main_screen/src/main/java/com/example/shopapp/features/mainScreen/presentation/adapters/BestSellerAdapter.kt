@@ -45,10 +45,7 @@ class BestSellerAdapter(
                 holder.bookmark.setImageResource(R.drawable.ic_bslike_empty)
                 bookmarkClickListener.deleteBookmark(bestSeller)
             }
-
-
         }
-
     }
 
     interface BookmarkClickListener {

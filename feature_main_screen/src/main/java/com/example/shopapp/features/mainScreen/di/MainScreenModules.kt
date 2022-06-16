@@ -1,7 +1,7 @@
 package com.example.shopapp.features.mainScreen.di
 
-import com.example.shopapp.common.bookmarkDatabase.data.database.BookmarkDao
-import com.example.shopapp.common.bookmarkDatabase.data.database.BookmarkDatabase
+import com.example.shopapp.common.database.data.database.BookmarkDatabase
+import com.example.shopapp.common.database.data.database.BookmarkDao
 import com.example.shopapp.features.mainScreen.data.mapper.MainScreenMapper
 import com.example.shopapp.features.mainScreen.data.network.ShopMainApi
 import com.example.shopapp.features.mainScreen.data.network.ShopMainApiService

@@ -1,7 +1,7 @@
 package com.example.shopapp.features.bookmarksScreen.di
 
-import com.example.shopapp.common.bookmarkDatabase.data.database.BookmarkDao
-import com.example.shopapp.common.bookmarkDatabase.data.database.BookmarkDatabase
+import com.example.shopapp.common.database.data.database.BookmarkDatabase
+import com.example.shopapp.common.database.data.database.BookmarkDao
 import com.example.shopapp.features.bookmarksScreen.data.dataSource.local.LocalDataSource
 import com.example.shopapp.features.bookmarksScreen.data.dataSource.local.LocalDataSourceImpl
 import com.example.shopapp.features.bookmarksScreen.data.mapper.BookmarkScreenMapper

@@ -1,7 +1,7 @@
 package com.example.shopapp.di
 
-import com.example.shopapp.common.bookmarkDatabase.data.database.BookmarkDao
-import com.example.shopapp.common.bookmarkDatabase.data.database.BookmarkDatabase
+import com.example.shopapp.common.database.data.database.BookmarkDao
+import com.example.shopapp.common.database.data.database.BookmarkDatabase
 import com.example.shopapp.data.mapper.AppMapper
 import com.example.shopapp.data.repository.AppRepositoryImpl
 import com.example.shopapp.data.source.local.LocalDataSource

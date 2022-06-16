@@ -1,6 +1,6 @@
 package com.example.shopapp.data.mapper
 
-import com.example.shopapp.common.bookmarkDatabase.data.modelDB.BookmarkDB
+import com.example.shopapp.common.database.data.modelDB.BookmarkDB
 import com.example.shopapp.domain.model.Bookmark
 
 class AppMapper {

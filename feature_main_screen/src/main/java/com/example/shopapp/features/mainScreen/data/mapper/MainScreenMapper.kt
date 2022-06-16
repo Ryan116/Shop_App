@@ -1,6 +1,6 @@
 package com.example.shopapp.features.mainScreen.data.mapper
 
-import com.example.shopapp.common.bookmarkDatabase.data.modelDB.BookmarkDB
+import com.example.shopapp.common.database.data.modelDB.BookmarkDB
 import com.example.shopapp.features.mainScreen.data.modelDB.BestSellerDB
 import com.example.shopapp.features.mainScreen.data.modelDB.HomeStoreDB
 import com.example.shopapp.features.mainScreen.domain.model.BestSeller

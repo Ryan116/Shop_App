@@ -94,7 +94,9 @@ dependencies {
     implementation project(path: ':feature_splash_screen')
     implementation project(path: ':feature_map_screen')
     implementation project(path: ':feature_bookmark_screen')
-    implementation project(path: ':common_database')
+
+    //Modules
+    implementation project(path: ':common:database')
 
 
 }

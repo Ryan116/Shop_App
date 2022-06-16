@@ -69,5 +69,11 @@ dependencies {
     implementation 'androidx.fragment:fragment-ktx:1.4.0'
 
     //Modules
-    implementation project(path: ':common_database')
+    implementation project(path: ':common:database')
+    implementation project(path: ':common:extensions')
+
+    // Room
+    implementation "androidx.room:room-runtime:2.4.2"
+    kapt "androidx.room:room-compiler:2.4.2"
+    implementation "androidx.room:room-ktx:2.4.2"
 }

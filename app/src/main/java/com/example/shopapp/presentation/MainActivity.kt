@@ -31,15 +31,15 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.item1 -> {
                     val uri = Uri.parse("shopapp://toMainScreen")
-                    findNavController(R.id.fragmentContainerView).navigate(uri)
+                    findNavController(binding.fragmentContainerView.id).navigate(uri)
                 }
                 R.id.item2 -> {
                     val uri = Uri.parse("shopapp://ToMyCart")
-                    findNavController(R.id.fragmentContainerView).navigate(uri)
+                    findNavController(binding.fragmentContainerView.id).navigate(uri)
                 }
                 R.id.item3 -> {
                     val uri = Uri.parse("shopapp://toBookmarksScreen")
-                    findNavController(R.id.fragmentContainerView).navigate(uri)
+                    findNavController(binding.fragmentContainerView.id).navigate(uri)
                 }
             }
             true
