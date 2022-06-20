@@ -23,7 +23,7 @@
         android:id="@+id/bottomNavigationView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/layout_bg"
+        android:background="@drawable/top_rounded_corners"
         app:backgroundTint="@color/filter_background"
         app:itemIconTint="@drawable/bottom_nav_selector"
         app:itemTextColor="@color/white"
