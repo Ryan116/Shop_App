@@ -91,7 +91,6 @@ dependencies {
     implementation project(path: ':feature_main_screen')
     implementation project(path: ':feature_my_cart_screen')
     implementation project(path: ':feature_product_details_screen')
-    implementation project(path: ':feature_splash_screen')
     implementation project(path: ':feature_map_screen')
     implementation project(path: ':feature_bookmark_screen')
 
