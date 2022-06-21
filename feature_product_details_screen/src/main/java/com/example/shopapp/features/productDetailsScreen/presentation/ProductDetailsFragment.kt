@@ -2,6 +2,7 @@ package com.example.shopapp.features.productDetailsScreen.presentation
 
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +21,7 @@ class ProductDetailsFragment : Fragment() {
     private var _binding: FragmentProductDetailsBinding? = null
     private val binding
         get() = _binding!!
+
     private val productDetailsViewModel by viewModel<DetailsViewModel>()
 
     override fun onCreateView(

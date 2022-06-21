@@ -1,14 +1,15 @@
 package com.example.shopapp.features.productDetailsScreen.data.mapper
 
-import com.example.shopapp.features.productDetailsScreen.data.modelDB.ProductDetailsItemDB
+import com.example.shopapp.features.productDetailsScreen.data.cacheDB.modelDB.ProductDetailsItemDB
+import com.example.shopapp.features.productDetailsScreen.data.modelRemote.ProductDetailsItemRemote
 import com.example.shopapp.features.productDetailsScreen.domain.model.ProductDetailsItem
 
 class ProductDetailsScreenMapper {
 
-    fun mapProductDetailsItemDBtoProductDetailsItem(productDetailsItemDB: ProductDetailsItemDB): ProductDetailsItem {
+    fun mapProductDetailsItemDBToProductDetailsItem(productDetailsItemDB: ProductDetailsItemDB): ProductDetailsItem {
         return ProductDetailsItem(
             cpu = productDetailsItemDB.cpu,
-            id = productDetailsItemDB.id,
+            id = productDetailsItemDB.id.toString(),
             camera = productDetailsItemDB.camera,
             capacity = productDetailsItemDB.capacity,
             color = productDetailsItemDB.color,
@@ -19,6 +20,23 @@ class ProductDetailsScreenMapper {
             sd = productDetailsItemDB.sd,
             ssd = productDetailsItemDB.ssd,
             title = productDetailsItemDB.title
+        )
+    }
+
+    fun mapProductDetailsItemRemoteToProductDetailsItemDB(productDetailsItemRemote: ProductDetailsItemRemote): ProductDetailsItemDB {
+        return ProductDetailsItemDB(
+            cpu = productDetailsItemRemote.cpu,
+            id = productDetailsItemRemote.id.toInt(),
+            camera = productDetailsItemRemote.camera,
+            capacity = productDetailsItemRemote.capacity,
+            color = productDetailsItemRemote.color,
+            images = productDetailsItemRemote.images,
+            isFavorites = productDetailsItemRemote.isFavorites,
+            price = productDetailsItemRemote.price,
+            rating = productDetailsItemRemote.rating,
+            sd = productDetailsItemRemote.sd,
+            ssd = productDetailsItemRemote.ssd,
+            title = productDetailsItemRemote.title
         )
     }
 }

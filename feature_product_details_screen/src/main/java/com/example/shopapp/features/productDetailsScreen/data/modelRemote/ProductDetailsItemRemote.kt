@@ -1,8 +1,8 @@
-package com.example.shopapp.features.productDetailsScreen.data.modelDB
+package com.example.shopapp.features.productDetailsScreen.data.modelRemote
 
 import com.squareup.moshi.Json
 
-data class ProductDetailsItemDB(
+data class ProductDetailsItemRemote(
     @Json(name = "CPU") val cpu: String,
     val id: String,
     val camera: String,

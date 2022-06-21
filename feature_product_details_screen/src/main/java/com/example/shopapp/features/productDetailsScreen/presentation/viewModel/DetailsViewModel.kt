@@ -1,11 +1,13 @@
 package com.example.shopapp.features.productDetailsScreen.presentation.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shopapp.features.productDetailsScreen.domain.model.ProductDetailsItem
 import com.example.shopapp.features.productDetailsScreen.domain.useCases.GetProductDetailsUseCase
+import com.example.shopapp.features.productDetailsScreen.domain.useCases.InsertProductDetailsToCacheUseCase
 import kotlinx.coroutines.launch
 
 
@@ -19,27 +21,29 @@ sealed class DetailsApiStatus() {
 }
 
 class DetailsViewModel(
-    private val getProductDetailsUseCase: GetProductDetailsUseCase
+    private val getProductDetailsUseCase: GetProductDetailsUseCase,
+    private val insertProductDetailsToCacheUseCase: InsertProductDetailsToCacheUseCase
 ) : ViewModel() {
 
 
-    private val _status = MutableLiveData<DetailsApiStatus>()
+    private var _status = MutableLiveData<DetailsApiStatus>()
     val status: LiveData<DetailsApiStatus> = _status
 
-    private val _phoneDetailsList = MutableLiveData<ProductDetailsItem>()
+    private var _phoneDetailsList = MutableLiveData<ProductDetailsItem>()
     val phoneDetailsList: LiveData<ProductDetailsItem> = _phoneDetailsList
 
     init {
-        getPDItemModels()
+        getPDItem()
     }
 
 
-    private fun getPDItemModels() {
+    private fun getPDItem() {
 
         viewModelScope.launch {
             _status.value = DetailsApiStatus.LOADING()
             try {
-                _phoneDetailsList.value = getProductDetailsUseCase.getProductDetails()
+                insertProductDetailsToCacheUseCase.insertProductDetailsToCache()
+                _phoneDetailsList.value = getProductDetailsUseCase.getProductDetails().value
                 _status.value = DetailsApiStatus.DONE()
             } catch (e: Exception) {
                 _status.value = DetailsApiStatus.ERROR()
