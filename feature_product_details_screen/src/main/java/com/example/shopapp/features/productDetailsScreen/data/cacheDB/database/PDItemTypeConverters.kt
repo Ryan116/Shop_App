@@ -1,6 +1,5 @@
 package com.example.shopapp.features.productDetailsScreen.data.cacheDB.database
 
-import android.util.Log
 import androidx.room.TypeConverter
 
 class PDItemTypeConverters {

@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shopapp.features.myCartScreen.domain.model.BasketMain
 import com.example.shopapp.features.myCartScreen.domain.useCases.GetMyCartUseCase
+import com.example.shopapp.features.myCartScreen.domain.useCases.InsertMyCartToDBUseCase
 import kotlinx.coroutines.launch
-
 
 
 sealed class MyCartApiStatus() {
@@ -21,15 +21,16 @@ sealed class MyCartApiStatus() {
 
 
 class MyCartViewModel(
-    private val getMyCartUseCase: GetMyCartUseCase
+    private val getMyCartUseCase: GetMyCartUseCase,
+    private val insertMyCartToDBUseCase: InsertMyCartToDBUseCase
 ) : ViewModel() {
 
 
     private val _status = MutableLiveData<MyCartApiStatus>()
     val status: LiveData<MyCartApiStatus> = _status
 
-    private val _myCartList = MutableLiveData<BasketMain>()
-    val myCartList: LiveData<BasketMain> = _myCartList
+    private val _myCart = MutableLiveData<BasketMain>()
+    val myCart: LiveData<BasketMain> = _myCart
 
     init {
         getMyCartModels()
@@ -41,7 +42,8 @@ class MyCartViewModel(
         viewModelScope.launch {
             _status.value = MyCartApiStatus.LOADING()
             try {
-                _myCartList.value = getMyCartUseCase.getMyCart()
+                insertMyCartToDBUseCase.insertMyCartToDB()
+                _myCart.value = getMyCartUseCase.getMyCart()
                 _status.value = MyCartApiStatus.DONE()
             } catch (e: Exception) {
                 _status.value = MyCartApiStatus.ERROR()

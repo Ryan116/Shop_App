@@ -1,15 +1,13 @@
 package com.example.shopapp.features.productDetailsScreen.presentation.viewModel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shopapp.features.productDetailsScreen.domain.model.ProductDetailsItem
 import com.example.shopapp.features.productDetailsScreen.domain.useCases.GetProductDetailsUseCase
-import com.example.shopapp.features.productDetailsScreen.domain.useCases.InsertProductDetailsToCacheUseCase
+import com.example.shopapp.features.productDetailsScreen.domain.useCases.InsertProductDetailsToDBUseCase
 import kotlinx.coroutines.launch
-
 
 
 sealed class DetailsApiStatus() {
@@ -22,7 +20,7 @@ sealed class DetailsApiStatus() {
 
 class DetailsViewModel(
     private val getProductDetailsUseCase: GetProductDetailsUseCase,
-    private val insertProductDetailsToCacheUseCase: InsertProductDetailsToCacheUseCase
+    private val insertProductDetailsToDBUseCase: InsertProductDetailsToDBUseCase
 ) : ViewModel() {
 
 
@@ -42,8 +40,8 @@ class DetailsViewModel(
         viewModelScope.launch {
             _status.value = DetailsApiStatus.LOADING()
             try {
-                insertProductDetailsToCacheUseCase.insertProductDetailsToCache()
-                _phoneDetailsList.value = getProductDetailsUseCase.getProductDetails().value
+                insertProductDetailsToDBUseCase.insertProductDetailsToCache()
+                _phoneDetailsList.value = getProductDetailsUseCase.getProductDetails()
                 _status.value = DetailsApiStatus.DONE()
             } catch (e: Exception) {
                 _status.value = DetailsApiStatus.ERROR()

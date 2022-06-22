@@ -1,6 +1,6 @@
 package com.example.shopapp.features.productDetailsScreen.data.network
 
-import com.example.shopapp.features.productDetailsScreen.data.modelRemote.ProductDetailsItemRemote
+import com.example.shopapp.features.productDetailsScreen.data.network.modelRemote.ProductDetailsItemRemote
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit

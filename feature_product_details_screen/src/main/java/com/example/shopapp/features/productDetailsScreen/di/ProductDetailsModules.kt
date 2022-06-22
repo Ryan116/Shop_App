@@ -1,6 +1,6 @@
 package com.example.shopapp.features.productDetailsScreen.di
 
-import com.example.shopapp.features.productDetailsScreen.data.cacheDB.database.PDCacheDao
+import com.example.shopapp.features.productDetailsScreen.data.cacheDB.database.PDDao
 import com.example.shopapp.features.productDetailsScreen.data.cacheDB.database.ProductDetailsDatabase
 import com.example.shopapp.features.productDetailsScreen.data.dataSource.local.PDLocalDataSource
 import com.example.shopapp.features.productDetailsScreen.data.dataSource.local.PDLocalDataSourceImpl
@@ -12,7 +12,7 @@ import com.example.shopapp.features.productDetailsScreen.data.dataSource.remote.
 import com.example.shopapp.features.productDetailsScreen.data.repository.DetailsScreenRepositoryImpl
 import com.example.shopapp.features.productDetailsScreen.domain.repository.DetailsScreenRepository
 import com.example.shopapp.features.productDetailsScreen.domain.useCases.GetProductDetailsUseCase
-import com.example.shopapp.features.productDetailsScreen.domain.useCases.InsertProductDetailsToCacheUseCase
+import com.example.shopapp.features.productDetailsScreen.domain.useCases.InsertProductDetailsToDBUseCase
 import com.example.shopapp.features.productDetailsScreen.presentation.viewModel.DetailsViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -32,10 +32,10 @@ val productDetailsDataModule = module {
     }
 
     single<PDLocalDataSource> {
-        PDLocalDataSourceImpl(pdCacheDao = get())
+        PDLocalDataSourceImpl(pdDao = get())
     }
 
-    single<PDCacheDao> {
+    single<PDDao> {
         ProductDetailsDatabase.getDatabase(androidApplication()).productDetailsDao()
     }
 
@@ -56,8 +56,8 @@ val productDetailsDomainModule = module {
         GetProductDetailsUseCase(detailsScreenRepository = get() )
     }
 
-    factory<InsertProductDetailsToCacheUseCase> {
-        InsertProductDetailsToCacheUseCase(detailsScreenRepository = get())
+    factory<InsertProductDetailsToDBUseCase> {
+        InsertProductDetailsToDBUseCase(detailsScreenRepository = get())
     }
 }
 
@@ -65,7 +65,7 @@ val productDetailsPresentationModule = module {
     viewModel {
         DetailsViewModel(
             getProductDetailsUseCase = get(),
-            insertProductDetailsToCacheUseCase = get()
+            insertProductDetailsToDBUseCase = get()
         )
     }
 }

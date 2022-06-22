@@ -1,7 +1,7 @@
 package com.example.shopapp.features.productDetailsScreen.data.mapper
 
 import com.example.shopapp.features.productDetailsScreen.data.cacheDB.modelDB.ProductDetailsItemDB
-import com.example.shopapp.features.productDetailsScreen.data.modelRemote.ProductDetailsItemRemote
+import com.example.shopapp.features.productDetailsScreen.data.network.modelRemote.ProductDetailsItemRemote
 import com.example.shopapp.features.productDetailsScreen.domain.model.ProductDetailsItem
 
 class ProductDetailsScreenMapper {

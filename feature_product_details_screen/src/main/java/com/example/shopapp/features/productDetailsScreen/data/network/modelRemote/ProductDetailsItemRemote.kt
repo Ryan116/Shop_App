@@ -1,4 +1,4 @@
-package com.example.shopapp.features.productDetailsScreen.data.modelRemote
+package com.example.shopapp.features.productDetailsScreen.data.network.modelRemote
 
 import com.squareup.moshi.Json
 

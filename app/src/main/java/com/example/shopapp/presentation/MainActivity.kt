@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         addBadge("2", R.id.item2)
+
         appViewModel.bookmarksList.observe(this) {
             addBadge(it.size.toString(), R.id.item3)
         }

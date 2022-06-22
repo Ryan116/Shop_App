@@ -1,12 +1,12 @@
-package com.example.shopapp.features.myCartScreen.data.remote
+package com.example.shopapp.features.myCartScreen.data.dataSource.remote
 
-import com.example.shopapp.features.myCartScreen.data.modelDB.BasketMainDB
 import com.example.shopapp.features.myCartScreen.data.network.MyCartApiService
+import com.example.shopapp.features.myCartScreen.data.network.modelRemote.BasketMainRemote
 
 
 class MyCartRemoteDataSourceImpl(private val myCartApiService: MyCartApiService) :
     MyCartRemoteDataSource {
-    override suspend fun getMyCart(): BasketMainDB {
+    override suspend fun getMyCart(): BasketMainRemote {
         return myCartApiService.getMyCart()
     }
 

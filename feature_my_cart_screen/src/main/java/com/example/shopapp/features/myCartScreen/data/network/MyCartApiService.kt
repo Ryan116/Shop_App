@@ -1,6 +1,6 @@
 package com.example.shopapp.features.myCartScreen.data.network
 
-import com.example.shopapp.features.myCartScreen.data.modelDB.BasketMainDB
+import com.example.shopapp.features.myCartScreen.data.network.modelRemote.BasketMainRemote
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -21,7 +21,7 @@ private val retrofit = Retrofit.Builder()
 
 interface MyCartApiService {
     @GET("53539a72-3c5f-4f30-bbb1-6ca10d42c149")
-    suspend fun getMyCart(): BasketMainDB
+    suspend fun getMyCart(): BasketMainRemote
 }
 
 object MyCartApi {

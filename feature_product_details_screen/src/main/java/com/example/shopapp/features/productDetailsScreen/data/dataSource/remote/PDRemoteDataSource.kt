@@ -1,6 +1,6 @@
 package com.example.shopapp.features.productDetailsScreen.data.dataSource.remote
 
-import com.example.shopapp.features.productDetailsScreen.data.modelRemote.ProductDetailsItemRemote
+import com.example.shopapp.features.productDetailsScreen.data.network.modelRemote.ProductDetailsItemRemote
 
 
 interface PDRemoteDataSource {
