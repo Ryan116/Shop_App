@@ -39,16 +39,28 @@ class MyCartViewModel(
 
     private fun getMyCartModels() {
 
-        viewModelScope.launch {
-            _status.value = MyCartApiStatus.LOADING()
+        val jobInsert = viewModelScope.launch {
             try {
                 insertMyCartToDBUseCase.insertMyCartToDB()
+            } catch (e: Exception) {
+                _status.value = MyCartApiStatus.ERROR()
+            }
+        }
+
+        val jobGet = viewModelScope.launch {
+            _status.value = MyCartApiStatus.LOADING()
+            try {
                 _myCart.value = getMyCartUseCase.getMyCart()
                 _status.value = MyCartApiStatus.DONE()
             } catch (e: Exception) {
                 _status.value = MyCartApiStatus.ERROR()
                 MyCartApiStatus.ERROR().exception = e
             }
+        }
+
+        viewModelScope.launch {
+            jobInsert.join()
+            jobGet.join()
         }
     }
 }

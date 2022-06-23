@@ -5,6 +5,6 @@ import com.example.shopapp.features.myCartScreen.data.network.modelRemote.Basket
 
 interface MyCartRemoteDataSource {
 
-    suspend fun getMyCart() : BasketMainRemote
+    suspend fun getMyCartFromServer() : BasketMainRemote
 
 }

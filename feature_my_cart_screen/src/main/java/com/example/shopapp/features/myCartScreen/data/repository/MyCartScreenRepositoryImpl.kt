@@ -22,7 +22,7 @@ class MyCartScreenRepositoryImpl(
 
     override suspend fun insertMyCartToDB() {
 
-        val basketMainRemote = myCartRemoteDataSource.getMyCart()
+        val basketMainRemote = myCartRemoteDataSource.getMyCartFromServer()
         myCartLocalDataSource.insertMyCartToDB(
             myCartScreenMapper.mapBasketMainRemoteToBasketMainDB(
                 basketMainRemote

@@ -37,16 +37,29 @@ class DetailsViewModel(
 
     private fun getPDItem() {
 
-        viewModelScope.launch {
-            _status.value = DetailsApiStatus.LOADING()
+        val jobInsert = viewModelScope.launch {
             try {
                 insertProductDetailsToDBUseCase.insertProductDetailsToCache()
+            } catch (e: Exception) {
+                _status.value = DetailsApiStatus.ERROR()
+            }
+
+        }
+
+        val jobGet = viewModelScope.launch {
+            _status.value = DetailsApiStatus.LOADING()
+            try {
                 _phoneDetailsList.value = getProductDetailsUseCase.getProductDetails()
                 _status.value = DetailsApiStatus.DONE()
             } catch (e: Exception) {
                 _status.value = DetailsApiStatus.ERROR()
                 DetailsApiStatus.ERROR().exception = e
             }
+        }
+
+        viewModelScope.launch {
+            jobInsert.join()
+            jobGet.join()
         }
     }
 }
