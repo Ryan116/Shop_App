@@ -2,10 +2,13 @@ package com.example.shopapp.presentation
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.shopapp.databinding.ActivitySplashBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SplashActivity : AppCompatActivity() {
 
@@ -18,10 +21,20 @@ class SplashActivity : AppCompatActivity() {
         _binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }, 2000)
+        val intent = Intent(this, MainActivity::class.java)
+
+        lifecycleScope.launch {
+            withContext(Dispatchers.Main) {
+                binding.imageViewSplashLogo.animate().apply {
+                    duration = 2000
+                    rotationYBy(360f)
+                    delay(2500)
+                    startActivity(intent)
+                    finish()
+                }.start()
+            }
+
+        }
     }
 
 
