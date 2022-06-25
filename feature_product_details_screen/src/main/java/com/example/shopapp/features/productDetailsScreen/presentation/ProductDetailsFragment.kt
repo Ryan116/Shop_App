@@ -1,5 +1,6 @@
 package com.example.shopapp.features.productDetailsScreen.presentation
 
+import android.app.ProgressDialog.show
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -64,7 +65,8 @@ class ProductDetailsFragment : Fragment() {
                 is DetailsApiStatus.ERROR -> {
                     Toast.makeText(
                         requireContext(),
-                        "We can't load images! Exception: ${DetailsApiStatus.ERROR().exception}",
+                        "We can't load images! You are don't have connection to internet! Exception: " +
+                                "${DetailsApiStatus.ERROR().exception}\nLoading from database...",
                         Toast.LENGTH_SHORT
                     )
                         .show()
