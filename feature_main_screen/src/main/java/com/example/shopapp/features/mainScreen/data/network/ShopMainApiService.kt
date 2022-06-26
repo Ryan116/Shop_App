@@ -1,6 +1,6 @@
 package com.example.shopapp.features.mainScreen.data.network
 
-import com.example.shopapp.features.mainScreen.data.modelDB.MainDB
+import com.example.shopapp.features.mainScreen.data.network.modelRemote.MainRemote
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -23,7 +23,7 @@ interface ShopMainApiService {
 
 
     @GET("654bd15e-b121-49ba-a588-960956b15175")
-    suspend fun getMain(): MainDB
+    suspend fun getMain(): MainRemote
 }
 
 object ShopMainApi {

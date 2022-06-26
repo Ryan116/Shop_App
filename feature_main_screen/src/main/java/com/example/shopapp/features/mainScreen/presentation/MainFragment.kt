@@ -1,5 +1,6 @@
 package com.example.shopapp.features.mainScreen.presentation
 
+import android.app.ProgressDialog.show
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -41,7 +42,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mainViewModel.phones.observe(viewLifecycleOwner) {
+        mainViewModel.homeStorePhonesList.observe(viewLifecycleOwner) {
             mainViewModel.homeStoreListSize.value = it.size
             val adapterRV = HomeStorePageAdapter(
                 requireActivity(),
@@ -80,7 +81,8 @@ class MainFragment : Fragment() {
                 is ShopApiStatus.ERROR -> {
                     Toast.makeText(
                         requireContext(),
-                        "We can't load images! Exception: ${ShopApiStatus.ERROR().exception}",
+                        "Warninig! You are don't have connection to internet! Exception: " +
+                                "${ShopApiStatus.ERROR().exception}\nLoading from database...",
                         Toast.LENGTH_SHORT
                     )
                         .show()

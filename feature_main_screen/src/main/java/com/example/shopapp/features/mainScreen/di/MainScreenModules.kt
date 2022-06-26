@@ -2,19 +2,18 @@ package com.example.shopapp.features.mainScreen.di
 
 import com.example.shopapp.common.database.data.database.BookmarkDatabase
 import com.example.shopapp.common.database.data.database.BookmarkDao
+import com.example.shopapp.features.mainScreen.data.cacheDB.database.MainScreenDao
+import com.example.shopapp.features.mainScreen.data.cacheDB.database.MainScreenDatabase
 import com.example.shopapp.features.mainScreen.data.mapper.MainScreenMapper
 import com.example.shopapp.features.mainScreen.data.network.ShopMainApi
 import com.example.shopapp.features.mainScreen.data.network.ShopMainApiService
-import com.example.shopapp.features.mainScreen.data.source.remote.RemoteDataSource
-import com.example.shopapp.features.mainScreen.data.source.remote.RemoteDataSourceImpl
+import com.example.shopapp.features.mainScreen.data.dataSource.remote.RemoteDataSource
+import com.example.shopapp.features.mainScreen.data.dataSource.remote.RemoteDataSourceImpl
 import com.example.shopapp.features.mainScreen.data.repository.MainScreenRepositoryImpl
-import com.example.shopapp.features.mainScreen.data.source.local.LocalDataSource
-import com.example.shopapp.features.mainScreen.data.source.local.LocalDataSourceImpl
+import com.example.shopapp.features.mainScreen.data.dataSource.local.LocalDataSource
+import com.example.shopapp.features.mainScreen.data.dataSource.local.LocalDataSourceImpl
 import com.example.shopapp.features.mainScreen.domain.repository.MainScreenRepository
-import com.example.shopapp.features.mainScreen.domain.useCases.AddBookmarkUseCase
-import com.example.shopapp.features.mainScreen.domain.useCases.DeleteBookmarkUseCase
-import com.example.shopapp.features.mainScreen.domain.useCases.GetBestSellerListUseCase
-import com.example.shopapp.features.mainScreen.domain.useCases.GetHomeStorePhonesListUseCase
+import com.example.shopapp.features.mainScreen.domain.useCases.*
 import com.example.shopapp.features.mainScreen.presentation.viewModel.MainViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -30,7 +29,14 @@ val mainScreenDataModule = module {
     }
 
     single<LocalDataSource> {
-        LocalDataSourceImpl(bookmarkDao = get())
+        LocalDataSourceImpl(
+            bookmarkDao = get(),
+            mainScreenDao = get()
+        )
+    }
+
+    single<MainScreenDao> {
+        MainScreenDatabase.getDatabase(androidApplication()).mainScreenDao()
     }
 
     single<BookmarkDao> {
@@ -66,6 +72,10 @@ val mainScreenDomainModule = module {
     factory<DeleteBookmarkUseCase> {
         DeleteBookmarkUseCase(mainScreenRepository = get())
     }
+
+    factory<InsertMainRemoteToDBUseCase> {
+        InsertMainRemoteToDBUseCase(mainScreenRepository = get())
+    }
 }
 
 val mainScreenPresentationModule = module {
@@ -74,7 +84,8 @@ val mainScreenPresentationModule = module {
             getBestSellerListUseCase = get(),
             getHomeStorePhonesListUseCase = get(),
             addBookmarkUseCase = get(),
-            deleteBookmarkUseCase = get()
+            deleteBookmarkUseCase = get(),
+            insertMainRemoteToDBUseCase = get()
         )
     }
 }

@@ -6,28 +6,26 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shopapp.features.mainScreen.domain.model.BestSeller
 import com.example.shopapp.features.mainScreen.domain.model.HomeStore
-import com.example.shopapp.features.mainScreen.domain.useCases.AddBookmarkUseCase
-import com.example.shopapp.features.mainScreen.domain.useCases.DeleteBookmarkUseCase
-import com.example.shopapp.features.mainScreen.domain.useCases.GetBestSellerListUseCase
-import com.example.shopapp.features.mainScreen.domain.useCases.GetHomeStorePhonesListUseCase
+import com.example.shopapp.features.mainScreen.domain.useCases.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-
 sealed class ShopApiStatus() {
-    class LOADING(): ShopApiStatus()
-    class ERROR(): ShopApiStatus() {
+    class LOADING() : ShopApiStatus()
+    class ERROR() : ShopApiStatus() {
         var exception: Exception? = null
     }
-    class DONE(): ShopApiStatus()
+
+    class DONE() : ShopApiStatus()
 }
 
 class MainViewModel(
     private val getBestSellerListUseCase: GetBestSellerListUseCase,
     private val getHomeStorePhonesListUseCase: GetHomeStorePhonesListUseCase,
     private val addBookmarkUseCase: AddBookmarkUseCase,
-    private val deleteBookmarkUseCase: DeleteBookmarkUseCase
+    private val deleteBookmarkUseCase: DeleteBookmarkUseCase,
+    private val insertMainRemoteToDBUseCase: InsertMainRemoteToDBUseCase
 ) : ViewModel() {
 
 
@@ -38,8 +36,8 @@ class MainViewModel(
     private val _menuCategory = MutableLiveData<String>()
     val menuCategory: LiveData<String> = _menuCategory
 
-    private val _phones = MutableLiveData<List<HomeStore>>()
-    val phones: LiveData<List<HomeStore>> = _phones
+    private val _homeStorePhonesList = MutableLiveData<List<HomeStore>>()
+    val homeStorePhonesList: LiveData<List<HomeStore>> = _homeStorePhonesList
 
     private val _bestSellerPhonesList = MutableLiveData<List<BestSeller>>()
     val bestSellerPhonesList: LiveData<List<BestSeller>> = _bestSellerPhonesList
@@ -62,13 +60,16 @@ class MainViewModel(
         viewModelScope.launch {
             _status.value = ShopApiStatus.LOADING()
             try {
-                _phones.value = getHomeStorePhonesListUseCase.getHomeStorePhonesList()
-                _bestSellerPhonesList.value = getBestSellerListUseCase.getBestSellerPhonesList()
+                insertMainRemoteToDBUseCase.insertMainRemoteToDB()
                 _status.value = ShopApiStatus.DONE()
             } catch (e: Exception) {
                 _status.value = ShopApiStatus.ERROR()
                 ShopApiStatus.ERROR().exception = e
             }
+
+            _homeStorePhonesList.value = getHomeStorePhonesListUseCase.getHomeStorePhonesList()
+            _bestSellerPhonesList.value = getBestSellerListUseCase.getBestSellerPhonesList()
+
         }
     }
 

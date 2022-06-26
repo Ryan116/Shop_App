@@ -39,7 +39,7 @@ class HomeStoreItem : Fragment() {
             it.containsKey(IMAGE_POSITION)
         }?.apply {
             val position = getInt(IMAGE_POSITION)
-            mainViewModel.phones.observe(viewLifecycleOwner) {
+            mainViewModel.homeStorePhonesList.observe(viewLifecycleOwner) {
                 val listSize = it.size
                 for (i in 0 until listSize) {
                     when (position) {

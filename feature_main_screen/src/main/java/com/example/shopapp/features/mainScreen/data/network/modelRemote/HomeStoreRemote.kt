@@ -1,8 +1,8 @@
-package com.example.shopapp.features.mainScreen.data.modelDB
+package com.example.shopapp.features.mainScreen.data.network.modelRemote
 
 import com.squareup.moshi.Json
 
-data class HomeStoreDB(
+data class HomeStoreRemote(
     val id: Int,
     val title: String,
     val subtitle: String,

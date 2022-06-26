@@ -65,7 +65,7 @@ class ProductDetailsFragment : Fragment() {
                 is DetailsApiStatus.ERROR -> {
                     Toast.makeText(
                         requireContext(),
-                        "We can't load images! You are don't have connection to internet! Exception: " +
+                        "Warninig! You are don't have connection to internet! Exception: " +
                                 "${DetailsApiStatus.ERROR().exception}\nLoading from database...",
                         Toast.LENGTH_SHORT
                     )

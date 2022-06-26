@@ -1,8 +1,8 @@
-package com.example.shopapp.features.mainScreen.data.modelDB
+package com.example.shopapp.features.mainScreen.data.network.modelRemote
 
 import com.squareup.moshi.Json
 
-data class BestSellerDB(
+data class BestSellerRemote(
     val id: Int,
     @Json(name = "is_favorites") val isFavorites: Boolean,
     val title: String,
