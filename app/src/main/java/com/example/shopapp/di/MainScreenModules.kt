@@ -1,4 +1,4 @@
-package com.example.shopapp.features.mainScreen.di
+package com.example.shopapp.di
 
 import com.example.shopapp.common.database.data.database.BookmarkDatabase
 import com.example.shopapp.common.database.data.database.BookmarkDao

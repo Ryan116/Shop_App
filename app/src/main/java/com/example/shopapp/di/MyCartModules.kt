@@ -1,4 +1,4 @@
-package com.example.shopapp.features.myCartScreen.di
+package com.example.shopapp.di
 
 import com.example.shopapp.features.myCartScreen.data.cacheDB.database.MyCartDao
 import com.example.shopapp.features.myCartScreen.data.cacheDB.database.MyCartDatabase

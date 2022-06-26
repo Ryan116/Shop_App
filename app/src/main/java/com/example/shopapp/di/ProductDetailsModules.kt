@@ -1,4 +1,4 @@
-package com.example.shopapp.features.productDetailsScreen.di
+package com.example.shopapp.di
 
 import com.example.shopapp.features.productDetailsScreen.data.cacheDB.database.PDDao
 import com.example.shopapp.features.productDetailsScreen.data.cacheDB.database.ProductDetailsDatabase
