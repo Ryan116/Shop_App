@@ -1,8 +1,6 @@
 package com.example.shopapp.presentation
 
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.example.shopapp.R
@@ -31,24 +29,20 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigationView.setOnItemSelectedListener { it ->
             when (it.itemId) {
-                R.id.item1 -> {
-                    val uri = Uri.parse("shopapp://toMainScreen")
-                    findNavController(binding.fragmentContainerView.id).navigate(uri)
+                R.id.itemMainFragment -> {
+                    findNavController(binding.fragmentContainerView.id).navigate(R.id.action_to_mainFragment)
                 }
                 R.id.item2 -> {
-                    val uri = Uri.parse("shopapp://ToMyCart")
-                    findNavController(binding.fragmentContainerView.id).navigate(uri)
+                    findNavController(binding.fragmentContainerView.id).navigate(R.id.action_to_myCartFragment)
                 }
                 R.id.item3 -> {
-                    val uri = Uri.parse("shopapp://toBookmarksScreen")
-                    findNavController(binding.fragmentContainerView.id).navigate(uri)
+                    findNavController(binding.fragmentContainerView.id).navigate(R.id.action_to_bookmarksFragment)
                 }
             }
             true
         }
 
     }
-
 
     private fun addBadge(count: String, buttonId: Int) {
         val badge: BadgeDrawable = binding.bottomNavigationView.getOrCreateBadge(

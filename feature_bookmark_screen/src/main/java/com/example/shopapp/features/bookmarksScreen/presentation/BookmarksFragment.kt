@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.shopapp.features.bookmarksScreen.R
 import com.example.shopapp.features.bookmarksScreen.databinding.FragmentBookmarksBinding
 import com.example.shopapp.features.bookmarksScreen.domain.model.Bookmark
 import com.example.shopapp.features.bookmarksScreen.presentation.adapter.BookmarkAdapter
@@ -34,8 +35,7 @@ class BookmarksFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         bookmarksScreenViewModel.bookmarksList.observe(viewLifecycleOwner) {
             val adapterBookmark = BookmarkAdapter({
-                val uri = Uri.parse("shopapp://ToProductDetailsScreen")
-                findNavController().navigate(uri)
+                findNavController().navigate(R.id.action_to_productDetailsFragment)
 
             },
                 object : BookmarkAdapter.BookmarkClickListener {

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.shopapp.features.productDetailsScreen.R
 import com.example.shopapp.features.productDetailsScreen.databinding.FragmentProductDetailsBinding
 import com.example.shopapp.features.productDetailsScreen.presentation.adapters.PDPageAdapter
 import com.example.shopapp.features.productDetailsScreen.presentation.viewModel.DetailsApiStatus
@@ -55,8 +56,7 @@ class ProductDetailsFragment : Fragment() {
 
         binding.apply {
             buttonMyCart.setOnClickListener {
-                val uri = Uri.parse("shopapp://ToMyCart")
-                findNavController().navigate(uri)
+                findNavController().navigate(R.id.action_productDetailsFragment_to_myCartFragment)
             }
         }
 

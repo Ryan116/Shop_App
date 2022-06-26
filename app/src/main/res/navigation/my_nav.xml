@@ -6,54 +6,71 @@
     app:startDestination="@id/mainFragment">
 
     <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.example.shopapp.features.splashScreen.presentation.SplashFragment"
-        android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" />
-    <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.shopapp.features.mainScreen.presentation.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
-        <deepLink
-            android:id="@+id/deepLink4"
-            app:uri="shopapp://toMainScreen" />
+        <action
+            android:id="@+id/action_mainFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/productDetailsFragment"
         android:name="com.example.shopapp.features.productDetailsScreen.presentation.ProductDetailsFragment"
         android:label="fragment_product_details"
         tools:layout="@layout/fragment_product_details">
-        <deepLink
-            android:id="@+id/deepLink2"
-            app:uri="shopapp://ToProductDetailsScreen"
-            app:popUpTo="@id/splashFragment"
-            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/myCartFragment"
         android:name="com.example.shopapp.features.myCartScreen.presentation.MyCartFragment"
         android:label="fragment_my_cart"
         tools:layout="@layout/fragment_my_cart">
-        <deepLink
-            android:id="@+id/deepLink3"
-            app:uri="shopapp://ToMyCart" />
     </fragment>
+
     <fragment
         android:id="@+id/mapsFragment"
         android:name="com.example.shopapp.features.mapScreen.presentation.MapsFragment"
         android:label="fragment_maps"
         tools:layout="@layout/fragment_maps">
-        <deepLink
-            android:id="@+id/deepLink"
-            app:uri="shopapp://ToMapScreen" />
     </fragment>
+
     <fragment
         android:id="@+id/bookmarksFragment"
         android:name="com.example.shopapp.features.bookmarksScreen.presentation.BookmarksFragment"
-        android:label="fragment_bookmarks">
-        <deepLink
-            android:id="@+id/deepLink5"
-            app:uri="shopapp://toBookmarksScreen" />
+        android:label="fragment_bookmarks"
+        tools:layout="@layout/fragment_bookmarks">
     </fragment>
+
+    <action
+        android:id="@+id/action_to_myCartFragment"
+        app:destination="@id/myCartFragment"
+        app:popUpTo="@id/productDetailsFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim" />
+
+    <action
+        android:id="@+id/action_to_mainFragment"
+        app:destination="@id/mainFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim" />
+
+    <action
+        android:id="@+id/action_to_bookmarksFragment"
+        app:destination="@id/bookmarksFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim" />
+
+    <action
+        android:id="@+id/action_to_productDetailsFragment"
+        app:destination="@id/productDetailsFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim" />
 </navigation>

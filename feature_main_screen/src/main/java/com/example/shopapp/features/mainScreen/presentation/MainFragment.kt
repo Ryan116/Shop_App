@@ -1,7 +1,5 @@
 package com.example.shopapp.features.mainScreen.presentation
 
-import android.app.ProgressDialog.show
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -55,10 +53,8 @@ class MainFragment : Fragment() {
         mainViewModel.bestSellerPhonesList.observe(viewLifecycleOwner) {
             mainViewModel.bestSellerListSize.value = it.size
             val adapterBS = BestSellerAdapter({
-                if (view != null) {
-                    val uri = Uri.parse("shopapp://ToProductDetailsScreen")
-                    findNavController().navigate(uri)
-                }
+                findNavController().navigate(R.id.action_mainFragment_to_productDetailsFragment)
+
             },
                 object : BestSellerAdapter.BookmarkClickListener {
                     override fun addBookmark(bestSeller: BestSeller) {
@@ -142,8 +138,7 @@ class MainFragment : Fragment() {
 
 
         binding.textViewrLocation.setOnClickListener {
-            val uri = Uri.parse("shopapp://ToMapScreen")
-            findNavController().navigate(uri)
+            findNavController().navigate(R.id.action_mainFragment_to_mapsFragment)
         }
     }
 

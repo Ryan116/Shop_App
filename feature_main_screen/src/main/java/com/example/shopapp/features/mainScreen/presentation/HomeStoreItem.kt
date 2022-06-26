@@ -1,6 +1,5 @@
 package com.example.shopapp.features.mainScreen.presentation
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.shopapp.common.extensions.setImageDrawableFromUrl
+import com.example.shopapp.features.mainScreen.R
 import com.example.shopapp.features.mainScreen.databinding.HomeStoreItemBinding
 import com.example.shopapp.features.mainScreen.presentation.viewModel.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -30,8 +30,7 @@ class HomeStoreItem : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.bestSellerLayout.setOnClickListener {
-            val uri = Uri.parse("shopapp://ToProductDetailsScreen")
-            findNavController().navigate(uri)
+            findNavController().navigate(R.id.action_mainFragment_to_productDetailsFragment)
         }
 
 
