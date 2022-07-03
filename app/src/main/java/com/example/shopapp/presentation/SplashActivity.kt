@@ -29,12 +29,17 @@ class SplashActivity : AppCompatActivity() {
                     duration = 2000
                     rotationYBy(360f)
                     delay(2500)
-                    startActivity(intent)
-                    finish()
                 }.start()
+                startActivity(intent)
+                finish()
             }
 
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 

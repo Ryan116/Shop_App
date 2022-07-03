@@ -9,8 +9,10 @@ import java.lang.reflect.ParameterizedType
 
 class MyCartTypeConverters {
 
-    private val moshi = Moshi.Builder().add(com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory()).build()
-    private val listMyData : ParameterizedType = Types.newParameterizedType(List::class.java, BasketProductDB::class.java)
+    private val moshi =
+        Moshi.Builder().add(com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory()).build()
+    private val listMyData: ParameterizedType =
+        Types.newParameterizedType(List::class.java, BasketProductDB::class.java)
     private val jsonAdapter: JsonAdapter<List<BasketProductDB>> = moshi.adapter(listMyData)
 
     @TypeConverter

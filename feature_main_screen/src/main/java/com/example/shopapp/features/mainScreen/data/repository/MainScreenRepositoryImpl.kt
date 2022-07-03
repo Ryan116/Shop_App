@@ -1,11 +1,13 @@
 package com.example.shopapp.features.mainScreen.data.repository
 
-import com.example.shopapp.features.mainScreen.data.mapper.MainScreenMapper
 import com.example.shopapp.features.mainScreen.data.dataSource.local.LocalDataSource
 import com.example.shopapp.features.mainScreen.data.dataSource.remote.RemoteDataSource
+import com.example.shopapp.features.mainScreen.data.mapper.MainScreenMapper
 import com.example.shopapp.features.mainScreen.domain.model.BestSeller
 import com.example.shopapp.features.mainScreen.domain.model.HomeStore
 import com.example.shopapp.features.mainScreen.domain.repository.MainScreenRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class MainScreenRepositoryImpl(
     private val remoteDataSource: RemoteDataSource,
@@ -26,16 +28,23 @@ class MainScreenRepositoryImpl(
 
     override suspend fun addBookmark(bestSeller: BestSeller) {
         localDataSource.addBookmark(mainScreenMapper.mapBestsellerToBookmarkDB(bestSeller))
+
+
     }
 
     override suspend fun deleteBookmark(bestSeller: BestSeller) {
         localDataSource.deleteBookmark(mainScreenMapper.mapBestsellerToBookmarkDB(bestSeller))
+
+
     }
 
     override suspend fun insertMainRemoteToDB() {
         val mainRemote = remoteDataSource.getMainRemote()
-        val mainDB = mainScreenMapper.mapMainRemoteToMainDB(mainRemote)
-        localDataSource.insertMainDBToDB(mainDB)
+        withContext(Dispatchers.IO) {
+            val mainDB = mainScreenMapper.mapMainRemoteToMainDB(mainRemote)
+            localDataSource.insertMainDBToDB(mainDB)
+        }
+
     }
 
 
