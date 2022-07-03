@@ -25,10 +25,6 @@ class LocalDataSourceImpl(
         mainScreenDao.insertMainDB(mainDB)
     }
 
-    override suspend fun getLIstMainDB(): List<MainDB> {
-        return mainScreenDao.getListMainDB()
-    }
-
     override suspend fun getBestSellerDBPhonesList(): List<BestSellerDB> {
         return mainScreenDao.getListMainDB()[0].bestSeller
     }
