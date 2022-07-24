@@ -13,10 +13,7 @@ import kotlinx.coroutines.launch
 
 sealed class ShopApiStatus() {
     class LOADING() : ShopApiStatus()
-    class ERROR() : ShopApiStatus() {
-        var exception: Exception? = null
-    }
-
+    class ERROR(val error: String) : ShopApiStatus()
     class DONE() : ShopApiStatus()
 }
 
@@ -63,8 +60,7 @@ class MainViewModel(
                 insertMainRemoteToDBUseCase.insertMainRemoteToDB()
                 _status.value = ShopApiStatus.DONE()
             } catch (e: Exception) {
-                _status.value = ShopApiStatus.ERROR()
-                ShopApiStatus.ERROR().exception = e
+                _status.value = ShopApiStatus.ERROR(e.toString())
             }
 
             _homeStorePhonesList.value = getHomeStorePhonesListUseCase.getHomeStorePhonesList()

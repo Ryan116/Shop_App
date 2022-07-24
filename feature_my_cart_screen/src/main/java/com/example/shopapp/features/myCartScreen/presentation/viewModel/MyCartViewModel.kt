@@ -12,9 +12,7 @@ import kotlinx.coroutines.launch
 
 sealed class MyCartApiStatus() {
     class LOADING(): MyCartApiStatus()
-    class ERROR(): MyCartApiStatus() {
-        var exception: Exception? = null
-    }
+    class ERROR(val error: String) : MyCartApiStatus()
     class DONE(): MyCartApiStatus()
 }
 
@@ -44,8 +42,7 @@ class MyCartViewModel(
                 insertMyCartToDBUseCase.insertMyCartToDB()
                 _status.value = MyCartApiStatus.DONE()
             } catch (e: Exception) {
-                _status.value = MyCartApiStatus.ERROR()
-                MyCartApiStatus.ERROR().exception = e
+                _status.value = MyCartApiStatus.ERROR(e.toString())
             }
             _myCart.value = getMyCartUseCase.getMyCart()
         }

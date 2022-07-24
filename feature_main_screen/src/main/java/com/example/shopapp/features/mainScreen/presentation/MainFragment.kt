@@ -77,8 +77,7 @@ class MainFragment : Fragment() {
                 is ShopApiStatus.ERROR -> {
                     Toast.makeText(
                         requireContext(),
-                        "Warning! You are don't have connection to internet! Exception: " +
-                                "${ShopApiStatus.ERROR().exception}\nLoading from database...",
+                        it.error,
                         Toast.LENGTH_SHORT
                     )
                         .show()

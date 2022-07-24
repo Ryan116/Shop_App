@@ -1,9 +1,6 @@
 package com.example.shopapp.features.productDetailsScreen.presentation
 
-import android.app.ProgressDialog.show
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,8 +62,7 @@ class ProductDetailsFragment : Fragment() {
                 is DetailsApiStatus.ERROR -> {
                     Toast.makeText(
                         requireContext(),
-                        "Warninig! You are don't have connection to internet! Exception: " +
-                                "${DetailsApiStatus.ERROR().exception}\nLoading from database...",
+                        it.error,
                         Toast.LENGTH_SHORT
                     )
                         .show()

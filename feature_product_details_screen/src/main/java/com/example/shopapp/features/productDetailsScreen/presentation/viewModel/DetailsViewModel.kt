@@ -12,9 +12,7 @@ import kotlinx.coroutines.launch
 
 sealed class DetailsApiStatus() {
     class LOADING(): DetailsApiStatus()
-    class ERROR(): DetailsApiStatus() {
-        var exception: Exception? = null
-    }
+    class ERROR(val error: String) : DetailsApiStatus()
     class DONE(): DetailsApiStatus()
 }
 
@@ -43,8 +41,7 @@ class DetailsViewModel(
                 insertProductDetailsToDBUseCase.insertProductDetailsToCache()
                 _status.value = DetailsApiStatus.DONE()
             } catch (e: Exception) {
-                _status.value = DetailsApiStatus.ERROR()
-                DetailsApiStatus.ERROR().exception = e
+                _status.value = DetailsApiStatus.ERROR(e.toString())
             }
             _phoneDetailsList.value = getProductDetailsUseCase.getProductDetails()
         }

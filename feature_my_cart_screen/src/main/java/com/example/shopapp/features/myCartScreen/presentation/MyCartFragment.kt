@@ -65,8 +65,7 @@ class MyCartFragment : Fragment() {
                 is MyCartApiStatus.ERROR -> {
                     Toast.makeText(
                         requireContext(),
-                        "Warning! You are don't have connection to internet!" +
-                                " Exception: ${MyCartApiStatus.ERROR().exception}\nLoading from database...",
+                        it.error,
                         Toast.LENGTH_SHORT
                     )
                         .show()
