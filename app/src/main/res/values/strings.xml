@@ -7,6 +7,10 @@
     <string name="category_books">Books</string>
     <string name="category_button_5">button_5</string>
     <string name="my_cart_total">$%s us</string>
+    <string name="bottom_bar_button_1_name_explorer">Explorer</string>
+    <string name="bottom_bar_button_1_name_cart">Cart</string>
+    <string name="bottom_bar_button_1_name_favourite">Favourite</string>
+    <string name="bottom_bar_button_1_name_profile">Profile</string>
     <array name="brands">
         <item>Samsung</item>
         <item>IPhone</item>

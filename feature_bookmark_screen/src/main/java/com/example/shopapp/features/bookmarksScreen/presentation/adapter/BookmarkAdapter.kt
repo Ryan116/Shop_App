@@ -33,11 +33,9 @@ class BookmarkAdapter(
             if (pressed) {
                 pressed = false
                 holder.bookmark.setImageResource(R.drawable.ic_bslike_empty)
-                holder.bookmark.setImageResource(R.drawable.ic_bestseller)
                 bookmarkClickListener.deleteBookmark(bookmark)
             } else {
                 pressed = true
-                holder.bookmark.setImageResource(R.drawable.ic_bslike_empty)
                 holder.bookmark.setImageResource(R.drawable.ic_bestseller)
             }
 

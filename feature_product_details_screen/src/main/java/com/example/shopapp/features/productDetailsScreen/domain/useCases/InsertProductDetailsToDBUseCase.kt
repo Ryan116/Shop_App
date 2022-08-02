@@ -1,9 +1,9 @@
 package com.example.shopapp.features.productDetailsScreen.domain.useCases
 
-import com.example.shopapp.features.productDetailsScreen.domain.repository.DetailsScreenRepository
+import com.example.shopapp.features.productDetailsScreen.domain.repository.ProductDetailsRepository
 
-class InsertProductDetailsToDBUseCase(private val detailsScreenRepository: DetailsScreenRepository) {
+class InsertProductDetailsToDBUseCase(private val productDetailsRepository: ProductDetailsRepository) {
     suspend fun insertProductDetailsToCache() {
-        return detailsScreenRepository.insertProductDetailsToCache()
+        return productDetailsRepository.insertProductDetailsToCache()
     }
 }

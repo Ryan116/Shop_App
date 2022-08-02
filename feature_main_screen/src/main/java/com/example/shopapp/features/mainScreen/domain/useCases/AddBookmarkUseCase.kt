@@ -2,11 +2,11 @@ package com.example.shopapp.features.mainScreen.domain.useCases
 
 
 import com.example.shopapp.features.mainScreen.domain.model.BestSeller
-import com.example.shopapp.features.mainScreen.domain.repository.MainScreenRepository
+import com.example.shopapp.features.mainScreen.domain.repository.MainRepository
 
 
-class AddBookmarkUseCase(private val mainScreenRepository: MainScreenRepository) {
+class AddBookmarkUseCase(private val mainRepository: MainRepository) {
     suspend fun addBookmark(bestSeller: BestSeller) {
-        mainScreenRepository.addBookmark(bestSeller)
+        mainRepository.addBookmark(bestSeller)
     }
 }

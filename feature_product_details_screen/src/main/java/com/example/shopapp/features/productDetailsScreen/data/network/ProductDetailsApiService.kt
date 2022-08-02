@@ -1,0 +1,31 @@
+package com.example.shopapp.features.productDetailsScreen.data.network
+
+import com.example.shopapp.features.productDetailsScreen.data.network.modelRemote.ProductDetailsItemRemote
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.http.GET
+
+private const val BASE_URL =
+    "https://run.mocky.io/v3/"
+
+private val moshi = Moshi.Builder()
+    .add(KotlinJsonAdapterFactory())
+    .build()
+
+private val retrofit = Retrofit.Builder()
+    .addConverterFactory(MoshiConverterFactory.create(moshi))
+    .baseUrl(BASE_URL)
+    .build()
+
+interface ProductDetailsApiService {
+    @GET("6c14c560-15c6-4248-b9d2-b4508df7d4f5")
+    suspend fun getProductDetails(): ProductDetailsItemRemote
+}
+
+object ProductDetailsApi {
+    val retrofitService: ProductDetailsApiService by lazy {
+        retrofit.create(ProductDetailsApiService::class.java)
+    }
+}

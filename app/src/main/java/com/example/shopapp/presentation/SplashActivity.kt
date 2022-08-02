@@ -1,5 +1,6 @@
 package com.example.shopapp.presentation
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+@SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
 
     private var _binding: ActivitySplashBinding? = null
@@ -21,20 +23,7 @@ class SplashActivity : AppCompatActivity() {
         _binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val intent = Intent(this, MainActivity::class.java)
-
-        lifecycleScope.launch {
-            withContext(Dispatchers.Main) {
-                binding.imageViewSplashLogo.animate().apply {
-                    duration = 2000
-                    rotationYBy(360f)
-                    delay(2500)
-                }.start()
-                startActivity(intent)
-                finish()
-            }
-
-        }
+        navigateToMainScreen()
     }
 
     override fun onDestroy() {
@@ -42,5 +31,20 @@ class SplashActivity : AppCompatActivity() {
         _binding = null
     }
 
+    private fun navigateToMainScreen() {
 
+        val intent = Intent(this, MainActivity::class.java)
+
+        lifecycleScope.launch {
+            withContext(Dispatchers.Main) {
+                binding.imageViewSplashLogo.animate().apply {
+                    duration = 2000
+                    rotationYBy(360f)
+                }.start()
+                delay(2500)
+                startActivity(intent)
+                finish()
+            }
+        }
+    }
 }

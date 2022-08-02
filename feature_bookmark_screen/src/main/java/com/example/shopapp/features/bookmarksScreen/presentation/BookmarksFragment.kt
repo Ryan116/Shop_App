@@ -1,6 +1,5 @@
 package com.example.shopapp.features.bookmarksScreen.presentation
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +11,7 @@ import com.example.shopapp.features.bookmarksScreen.R
 import com.example.shopapp.features.bookmarksScreen.databinding.FragmentBookmarksBinding
 import com.example.shopapp.features.bookmarksScreen.domain.model.Bookmark
 import com.example.shopapp.features.bookmarksScreen.presentation.adapter.BookmarkAdapter
-import com.example.shopapp.features.bookmarksScreen.presentation.viewModel.BookmarksScreenViewModel
+import com.example.shopapp.features.bookmarksScreen.presentation.viewModel.BookmarkViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -20,7 +19,7 @@ class BookmarksFragment : Fragment() {
     private var _binding: FragmentBookmarksBinding? = null
     private val binding
         get() = _binding!!
-    private val bookmarksScreenViewModel by viewModel<BookmarksScreenViewModel>()
+    private val bookmarkViewModel by viewModel<BookmarkViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +32,8 @@ class BookmarksFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bookmarksScreenViewModel.bookmarksList.observe(viewLifecycleOwner) {
+
+        bookmarkViewModel.bookmarksList.observe(viewLifecycleOwner) {
             val adapterBookmark = BookmarkAdapter({
                 findNavController().navigate(R.id.action_to_productDetailsFragment)
 
@@ -41,7 +41,7 @@ class BookmarksFragment : Fragment() {
                 object : BookmarkAdapter.BookmarkClickListener {
 
                     override fun deleteBookmark(bookmark: Bookmark) {
-                        bookmarksScreenViewModel.deleteBookmark(bookmark)
+                        bookmarkViewModel.deleteBookmark(bookmark)
                     }
 
                 }
@@ -53,7 +53,7 @@ class BookmarksFragment : Fragment() {
         }
 
         binding.buttonDeleteAll.setOnClickListener {
-            bookmarksScreenViewModel.deleteAllBooks()
+            bookmarkViewModel.deleteAllBooks()
         }
     }
 

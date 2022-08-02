@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.shopapp.common.extensions.setImageDrawableFromUrl
 import com.example.shopapp.features.productDetailsScreen.databinding.FragmentPDItemBinding
-import com.example.shopapp.features.productDetailsScreen.presentation.viewModel.DetailsViewModel
+import com.example.shopapp.features.productDetailsScreen.presentation.viewModel.ProductDetailsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 const val PD_IMAGE_POSITION = "pdImagePos"
 
 class PDItemFragment : Fragment() {
     private lateinit var binding: FragmentPDItemBinding
-    private val pdViewModel by viewModel<DetailsViewModel>()
+    private val pdViewModel by viewModel<ProductDetailsViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

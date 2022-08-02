@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/itemMainFragment"
+    <item
+        android:id="@+id/item1MainFragment"
         android:icon="@drawable/ic_item_name"
-        android:title="Explorer"
-
-        android:orderInCategory="1"/>
-    <item android:id="@+id/item2"
+        android:orderInCategory="1"
+        android:title="@string/bottom_bar_button_1_name_explorer" />
+    <item
+        android:id="@+id/item2MyCart"
         android:icon="@drawable/ic_item2"
-        android:title="Cart"
-        android:orderInCategory="2"/>
-    <item android:id="@+id/item3"
+        android:orderInCategory="2"
+        android:title="@string/bottom_bar_button_1_name_cart" />
+    <item
+        android:id="@+id/item3Favorite"
         android:icon="@drawable/ic_item3"
-        android:title="Favourite"
-        android:orderInCategory="3"/>
-    <item android:id="@+id/item4"
+        android:orderInCategory="3"
+        android:title="@string/bottom_bar_button_1_name_favourite" />
+    <item
+        android:id="@+id/item4Profile"
         android:icon="@drawable/ic_item4"
-        android:title="Profile"
-        android:orderInCategory="4"/>
-
-
+        android:orderInCategory="4"
+        android:title="@string/bottom_bar_button_1_name_profile" />
 </menu>

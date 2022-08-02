@@ -1,9 +1,10 @@
 package com.example.shopapp.features.mainScreen.domain.useCases
 
-import com.example.shopapp.features.mainScreen.domain.repository.MainScreenRepository
+import com.example.shopapp.features.mainScreen.domain.repository.MainRepository
 
-class InsertMainRemoteToDBUseCase(private val mainScreenRepository: MainScreenRepository) {
+class InsertMainRemoteToDBUseCase(private val mainRepository: MainRepository) {
+
     suspend fun insertMainRemoteToDB(){
-        return mainScreenRepository.insertMainRemoteToDB()
+        return mainRepository.insertMainRemoteToDB()
     }
 }

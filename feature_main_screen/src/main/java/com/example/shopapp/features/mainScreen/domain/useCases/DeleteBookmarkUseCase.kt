@@ -2,10 +2,10 @@ package com.example.shopapp.features.mainScreen.domain.useCases
 
 
 import com.example.shopapp.features.mainScreen.domain.model.BestSeller
-import com.example.shopapp.features.mainScreen.domain.repository.MainScreenRepository
+import com.example.shopapp.features.mainScreen.domain.repository.MainRepository
 
-class DeleteBookmarkUseCase(private val mainScreenRepository: MainScreenRepository) {
+class DeleteBookmarkUseCase(private val mainRepository: MainRepository) {
     suspend fun deleteBookmark(bestSeller: BestSeller) {
-        mainScreenRepository.deleteBookmark(bestSeller)
+        mainRepository.deleteBookmark(bestSeller)
     }
 }

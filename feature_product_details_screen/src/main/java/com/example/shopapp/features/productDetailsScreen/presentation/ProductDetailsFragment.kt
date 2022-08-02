@@ -11,7 +11,7 @@ import com.example.shopapp.features.productDetailsScreen.R
 import com.example.shopapp.features.productDetailsScreen.databinding.FragmentProductDetailsBinding
 import com.example.shopapp.features.productDetailsScreen.presentation.adapters.PDPageAdapter
 import com.example.shopapp.features.productDetailsScreen.presentation.viewModel.DetailsApiStatus
-import com.example.shopapp.features.productDetailsScreen.presentation.viewModel.DetailsViewModel
+import com.example.shopapp.features.productDetailsScreen.presentation.viewModel.ProductDetailsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -21,7 +21,7 @@ class ProductDetailsFragment : Fragment() {
     private val binding
         get() = _binding!!
 
-    private val productDetailsViewModel by viewModel<DetailsViewModel>()
+    private val productDetailsViewModel by viewModel<ProductDetailsViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,6 +67,7 @@ class ProductDetailsFragment : Fragment() {
                     )
                         .show()
                 }
+                else -> {}
             }
         }
     }

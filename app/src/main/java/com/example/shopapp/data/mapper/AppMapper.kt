@@ -1,24 +1,19 @@
 package com.example.shopapp.data.mapper
 
-import com.example.shopapp.common.database.data.modelDB.BookmarkDB
-import com.example.shopapp.domain.model.Bookmark
+import com.example.shopapp.common.database.data.modelDB.PhoneBookmarkDB
+import com.example.shopapp.domain.model.PhoneBookmark
 
 class AppMapper {
-    fun mapListBookmarkDBToBookmark(listBookmarkDB: List<BookmarkDB>): List<Bookmark> {
 
-        val listBookmark: MutableList<Bookmark> = mutableListOf()
-
-        listBookmarkDB.forEach {
-            val bookmark = Bookmark(
+    fun mapListPhoneBookmarkDBToListPhoneBookmark(listPhoneBookmarkDB: List<PhoneBookmarkDB>): List<PhoneBookmark> {
+        return listPhoneBookmarkDB.map {
+            PhoneBookmark(
                 id = it.id,
                 title = it.title,
                 picture = it.picture,
                 priceWithoutDiscount = it.priceWithoutDiscount,
                 discountPrice = it.discountPrice
-
             )
-            listBookmark.add(bookmark)
         }
-        return listBookmark
     }
 }

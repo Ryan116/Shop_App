@@ -1,41 +1,43 @@
 package com.example.shopapp.di
 
-import com.example.shopapp.common.database.data.database.BookmarkDatabase
 import com.example.shopapp.common.database.data.database.BookmarkDao
-import com.example.shopapp.features.bookmarksScreen.data.dataSource.local.LocalDataSource
-import com.example.shopapp.features.bookmarksScreen.data.dataSource.local.LocalDataSourceImpl
-import com.example.shopapp.features.bookmarksScreen.data.mapper.BookmarkScreenMapper
+import com.example.shopapp.common.database.data.database.BookmarkDatabase
+import com.example.shopapp.features.bookmarksScreen.data.dataSource.local.BookmarkLocalDataSource
+import com.example.shopapp.features.bookmarksScreen.data.dataSource.local.BookmarkLocalDataSourceImpl
+import com.example.shopapp.features.bookmarksScreen.data.mapper.BookmarkMapper
 import com.example.shopapp.features.bookmarksScreen.data.repository.BookmarkRepositoryImpl
 import com.example.shopapp.features.bookmarksScreen.domain.repository.BookmarkRepository
 import com.example.shopapp.features.bookmarksScreen.domain.usecase.DeleteAllBookmarksUseCase
 import com.example.shopapp.features.bookmarksScreen.domain.usecase.DeleteBookmarkUseCase
 import com.example.shopapp.features.bookmarksScreen.domain.usecase.GetBookmarksListUseCase
-import com.example.shopapp.features.bookmarksScreen.presentation.viewModel.BookmarksScreenViewModel
+import com.example.shopapp.features.bookmarksScreen.presentation.viewModel.BookmarkViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
+val bookmarkDataModule = module {
 
-val bookmarkScreenDataModule = module {
     single<BookmarkRepository> {
-        BookmarkRepositoryImpl(localDataSource = get(), bookmarkScreenMapper = get())
+        BookmarkRepositoryImpl(
+            bookmarkLocalDataSource = get(),
+            bookmarkMapper = get()
+        )
     }
 
-    single<LocalDataSource> {
-        LocalDataSourceImpl(bookmarkDao = get())
+    single<BookmarkLocalDataSource> {
+        BookmarkLocalDataSourceImpl(bookmarkDao = get())
     }
 
-    factory<BookmarkScreenMapper> {
-        BookmarkScreenMapper()
+    factory<BookmarkMapper> {
+        BookmarkMapper()
     }
 
     single<BookmarkDao> {
         BookmarkDatabase.getDatabase(androidApplication()).bookmarkDao()
     }
-
 }
 
-val bookmarkScreenDomainModule = module {
+val bookmarkDomainModule = module {
 
     factory<GetBookmarksListUseCase> {
         GetBookmarksListUseCase(bookmarkRepository = get())
@@ -50,10 +52,10 @@ val bookmarkScreenDomainModule = module {
     }
 }
 
-val bookmarkScreenPresentationModule = module {
+val bookmarkPresentationModule = module {
 
     viewModel {
-        BookmarksScreenViewModel(
+        BookmarkViewModel(
             get(),
             get(),
             get()

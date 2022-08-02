@@ -11,7 +11,7 @@ import com.example.shopapp.features.productDetailsScreen.data.cacheDB.modelDB.Pr
 @TypeConverters(PDItemTypeConverters::class)
 abstract class ProductDetailsDatabase : RoomDatabase() {
 
-    abstract fun productDetailsDao(): PDDao
+    abstract fun productDetailsDao(): ProductDetailsDao
 
     companion object {
         @Volatile

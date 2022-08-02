@@ -1,69 +1,69 @@
 package com.example.shopapp.di
 
-import com.example.shopapp.features.productDetailsScreen.data.cacheDB.database.PDDao
+import com.example.shopapp.features.productDetailsScreen.data.cacheDB.database.ProductDetailsDao
 import com.example.shopapp.features.productDetailsScreen.data.cacheDB.database.ProductDetailsDatabase
-import com.example.shopapp.features.productDetailsScreen.data.dataSource.local.PDLocalDataSource
-import com.example.shopapp.features.productDetailsScreen.data.dataSource.local.PDLocalDataSourceImpl
-import com.example.shopapp.features.productDetailsScreen.data.mapper.ProductDetailsScreenMapper
-import com.example.shopapp.features.productDetailsScreen.data.network.ShopDetailsApi
-import com.example.shopapp.features.productDetailsScreen.data.network.ShopDetailsApiService
-import com.example.shopapp.features.productDetailsScreen.data.dataSource.remote.PDRemoteDataSource
-import com.example.shopapp.features.productDetailsScreen.data.dataSource.remote.PDRemoteDataSourceImpl
-import com.example.shopapp.features.productDetailsScreen.data.repository.DetailsScreenRepositoryImpl
-import com.example.shopapp.features.productDetailsScreen.domain.repository.DetailsScreenRepository
+import com.example.shopapp.features.productDetailsScreen.data.dataSource.local.ProductDetailsLocalDataSource
+import com.example.shopapp.features.productDetailsScreen.data.dataSource.local.ProductDetailsLocalDataSourceImpl
+import com.example.shopapp.features.productDetailsScreen.data.dataSource.remote.ProductDetailsRemoteDataSource
+import com.example.shopapp.features.productDetailsScreen.data.dataSource.remote.ProductDetailsRemoteDataSourceImpl
+import com.example.shopapp.features.productDetailsScreen.data.mapper.ProductDetailsMapper
+import com.example.shopapp.features.productDetailsScreen.data.network.ProductDetailsApi
+import com.example.shopapp.features.productDetailsScreen.data.network.ProductDetailsApiService
+import com.example.shopapp.features.productDetailsScreen.data.repository.ProductDetailsRepositoryImpl
+import com.example.shopapp.features.productDetailsScreen.domain.repository.ProductDetailsRepository
 import com.example.shopapp.features.productDetailsScreen.domain.useCases.GetProductDetailsUseCase
 import com.example.shopapp.features.productDetailsScreen.domain.useCases.InsertProductDetailsToDBUseCase
-import com.example.shopapp.features.productDetailsScreen.presentation.viewModel.DetailsViewModel
+import com.example.shopapp.features.productDetailsScreen.presentation.viewModel.ProductDetailsViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val productDetailsDataModule = module {
-    single<DetailsScreenRepository> {
-        DetailsScreenRepositoryImpl(
-            pdRemoteDataSource = get(),
+
+    single<ProductDetailsRepository> {
+        ProductDetailsRepositoryImpl(
+            productDetailsRemoteDataSource = get(),
             productDetailsMapper = get(),
-            pdLocalDataSource = get()
+            productDetailsLocalDataSource = get()
         )
     }
 
-    single<PDRemoteDataSource> {
-        PDRemoteDataSourceImpl(detailsApiService = get())
+    single<ProductDetailsRemoteDataSource> {
+        ProductDetailsRemoteDataSourceImpl(productDetailsApiService = get())
     }
 
-    single<PDLocalDataSource> {
-        PDLocalDataSourceImpl(pdDao = get())
+    single<ProductDetailsLocalDataSource> {
+        ProductDetailsLocalDataSourceImpl(productDetailsDao = get())
     }
 
-    single<PDDao> {
+    single<ProductDetailsDao> {
         ProductDetailsDatabase.getDatabase(androidApplication()).productDetailsDao()
     }
 
-
-
-    single<ShopDetailsApiService> {
-        ShopDetailsApi.retrofitService
+    single<ProductDetailsApiService> {
+        ProductDetailsApi.retrofitService
     }
 
-    factory<ProductDetailsScreenMapper> {
-        ProductDetailsScreenMapper()
+    factory<ProductDetailsMapper> {
+        ProductDetailsMapper()
     }
 }
 
 val productDetailsDomainModule = module {
 
     factory<GetProductDetailsUseCase> {
-        GetProductDetailsUseCase(detailsScreenRepository = get() )
+        GetProductDetailsUseCase(productDetailsRepository = get())
     }
 
     factory<InsertProductDetailsToDBUseCase> {
-        InsertProductDetailsToDBUseCase(detailsScreenRepository = get())
+        InsertProductDetailsToDBUseCase(productDetailsRepository = get())
     }
 }
 
 val productDetailsPresentationModule = module {
+
     viewModel {
-        DetailsViewModel(
+        ProductDetailsViewModel(
             getProductDetailsUseCase = get(),
             insertProductDetailsToDBUseCase = get()
         )

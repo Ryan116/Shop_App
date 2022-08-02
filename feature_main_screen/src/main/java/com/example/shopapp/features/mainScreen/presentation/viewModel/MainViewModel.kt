@@ -18,7 +18,7 @@ sealed class ShopApiStatus() {
 }
 
 class MainViewModel(
-    private val getBestSellerListUseCase: GetBestSellerListUseCase,
+    private val getBestSellerPhonesListUseCase: GetBestSellerPhonesListUseCase,
     private val getHomeStorePhonesListUseCase: GetHomeStorePhonesListUseCase,
     private val addBookmarkUseCase: AddBookmarkUseCase,
     private val deleteBookmarkUseCase: DeleteBookmarkUseCase,
@@ -64,7 +64,7 @@ class MainViewModel(
             }
 
             _homeStorePhonesList.value = getHomeStorePhonesListUseCase.getHomeStorePhonesList()
-            _bestSellerPhonesList.value = getBestSellerListUseCase.getBestSellerPhonesList()
+            _bestSellerPhonesList.value = getBestSellerPhonesListUseCase.getBestSellerPhonesList()
 
         }
     }
