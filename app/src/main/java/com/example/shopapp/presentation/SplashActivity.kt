@@ -37,14 +37,18 @@ class SplashActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             withContext(Dispatchers.Main) {
-                binding.imageViewSplashLogo.animate().apply {
-                    duration = 2000
-                    rotationYBy(360f)
-                }.start()
-                delay(2500)
+                logoAnimation()
                 startActivity(intent)
                 finish()
             }
         }
+    }
+
+    private suspend fun logoAnimation() {
+        binding.imageViewSplashLogo.animate().apply {
+            duration = 2000
+            rotationYBy(360f)
+        }.start()
+        delay(2000)
     }
 }

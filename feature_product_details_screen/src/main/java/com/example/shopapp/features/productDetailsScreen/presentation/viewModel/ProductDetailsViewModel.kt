@@ -10,10 +10,10 @@ import com.example.shopapp.features.productDetailsScreen.domain.useCases.InsertP
 import kotlinx.coroutines.launch
 
 
-sealed class DetailsApiStatus() {
-    class LOADING(): DetailsApiStatus()
+sealed class DetailsApiStatus {
+    class LOADING : DetailsApiStatus()
     class ERROR(val error: String) : DetailsApiStatus()
-    class DONE(): DetailsApiStatus()
+    class DONE : DetailsApiStatus()
 }
 
 class ProductDetailsViewModel(

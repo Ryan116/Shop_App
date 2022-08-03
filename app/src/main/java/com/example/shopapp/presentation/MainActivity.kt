@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        fillCountOfElementsOfBottomBarButtons()
+        fillCountOfElementsOnBottomBarButtons()
 
         setupBottomBarButtonsNavigation()
     }
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun fillCountOfElementsOfBottomBarButtons() {
+    private fun fillCountOfElementsOnBottomBarButtons() {
         addBadge("2", R.id.item2MyCart)
 
         appViewModel.bookmarksList.observe(this) {

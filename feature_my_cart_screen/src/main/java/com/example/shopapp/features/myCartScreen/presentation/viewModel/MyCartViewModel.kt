@@ -10,10 +10,10 @@ import com.example.shopapp.features.myCartScreen.domain.useCases.InsertMyCartToD
 import kotlinx.coroutines.launch
 
 
-sealed class MyCartApiStatus() {
-    class LOADING(): MyCartApiStatus()
+sealed class MyCartApiStatus {
+    class LOADING : MyCartApiStatus()
     class ERROR(val error: String) : MyCartApiStatus()
-    class DONE(): MyCartApiStatus()
+    class DONE : MyCartApiStatus()
 }
 
 

@@ -11,10 +11,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-sealed class ShopApiStatus() {
-    class LOADING() : ShopApiStatus()
+sealed class ShopApiStatus {
+    class LOADING : ShopApiStatus()
     class ERROR(val error: String) : ShopApiStatus()
-    class DONE() : ShopApiStatus()
+    class DONE : ShopApiStatus()
 }
 
 class MainViewModel(

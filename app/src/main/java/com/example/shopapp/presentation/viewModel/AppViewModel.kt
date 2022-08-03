@@ -9,6 +9,6 @@ class AppViewModel(
     private val getBookmarksListUseCase: GetBookmarksListUseCase
 ) : ViewModel() {
 
-    var bookmarksList: LiveData<List<PhoneBookmark>> = getBookmarksListUseCase.getBookmarksList()
+    val bookmarksList: LiveData<List<PhoneBookmark>> = getBookmarksListUseCase.getBookmarksList()
 }
 
