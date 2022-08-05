@@ -5,8 +5,10 @@ import com.example.shopapp.domain.model.PhoneBookmark
 
 class AppMapper {
 
-    fun mapListPhoneBookmarkDBToListPhoneBookmark(listPhoneBookmarkDB: List<PhoneBookmarkDB>): List<PhoneBookmark> {
-        return listPhoneBookmarkDB.map {
+    fun mapListPhoneBookmarkDBToListPhoneBookmark(
+        listPhoneBookmarkDB: List<PhoneBookmarkDB>
+    ): List<PhoneBookmark> =
+        listPhoneBookmarkDB.map {
             PhoneBookmark(
                 id = it.id,
                 title = it.title,
@@ -15,5 +17,4 @@ class AppMapper {
                 discountPrice = it.discountPrice
             )
         }
-    }
 }

@@ -4,11 +4,11 @@ import com.example.shopapp.features.myCartScreen.data.cacheDB.database.MyCartDao
 import com.example.shopapp.features.myCartScreen.data.cacheDB.database.MyCartDatabase
 import com.example.shopapp.features.myCartScreen.data.dataSource.local.MyCartLocalDataSource
 import com.example.shopapp.features.myCartScreen.data.dataSource.local.MyCartLocalDataSourceImpl
+import com.example.shopapp.features.myCartScreen.data.dataSource.remote.MyCartRemoteDataSource
+import com.example.shopapp.features.myCartScreen.data.dataSource.remote.MyCartRemoteDataSourceImpl
 import com.example.shopapp.features.myCartScreen.data.mapper.MyCartMapper
 import com.example.shopapp.features.myCartScreen.data.network.MyCartApi
 import com.example.shopapp.features.myCartScreen.data.network.MyCartApiService
-import com.example.shopapp.features.myCartScreen.data.dataSource.remote.MyCartRemoteDataSource
-import com.example.shopapp.features.myCartScreen.data.dataSource.remote.MyCartRemoteDataSourceImpl
 import com.example.shopapp.features.myCartScreen.data.repository.MyCartRepositoryImpl
 import com.example.shopapp.features.myCartScreen.domain.repository.MyCartRepository
 import com.example.shopapp.features.myCartScreen.domain.useCases.GetMyCartUseCase
@@ -52,7 +52,7 @@ val myCartDataModule = module {
 val myCartDomainModule = module {
 
     factory<GetMyCartUseCase> {
-        GetMyCartUseCase(myCartRepository = get() )
+        GetMyCartUseCase(myCartRepository = get())
     }
 
     factory<InsertMyCartToDBUseCase> {

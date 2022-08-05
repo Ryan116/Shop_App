@@ -12,9 +12,9 @@ import kotlinx.coroutines.launch
 
 
 sealed class ShopApiStatus {
-    class LOADING : ShopApiStatus()
+    object LOADING : ShopApiStatus()
     class ERROR(val error: String) : ShopApiStatus()
-    class DONE : ShopApiStatus()
+    object DONE : ShopApiStatus()
 }
 
 class MainViewModel(
@@ -25,10 +25,8 @@ class MainViewModel(
     private val insertMainRemoteToDBUseCase: InsertMainRemoteToDBUseCase
 ) : ViewModel() {
 
-
     private val _status = MutableLiveData<ShopApiStatus>()
     val status: LiveData<ShopApiStatus> = _status
-
 
     private val _menuCategory = MutableLiveData<String>()
     val menuCategory: LiveData<String> = _menuCategory
@@ -53,19 +51,17 @@ class MainViewModel(
 
 
     private fun getPhoneModels() {
-
         viewModelScope.launch {
-            _status.value = ShopApiStatus.LOADING()
+            _status.value = ShopApiStatus.LOADING
             try {
                 insertMainRemoteToDBUseCase.insertMainRemoteToDB()
-                _status.value = ShopApiStatus.DONE()
+                _status.value = ShopApiStatus.DONE
             } catch (e: Exception) {
                 _status.value = ShopApiStatus.ERROR(e.toString())
             }
 
             _homeStorePhonesList.value = getHomeStorePhonesListUseCase.getHomeStorePhonesList()
             _bestSellerPhonesList.value = getBestSellerPhonesListUseCase.getBestSellerPhonesList()
-
         }
     }
 

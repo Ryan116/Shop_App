@@ -6,6 +6,7 @@ import com.example.shopapp.common.database.data.modelDB.PhoneBookmarkDB
 
 @Dao
 interface BookmarkDao {
+
     @Query("SELECT * FROM phone_table ORDER BY id")
     fun getBookmarks(): LiveData<List<PhoneBookmarkDB>>
 
@@ -17,5 +18,4 @@ interface BookmarkDao {
 
     @Query("DELETE FROM phone_table")
     suspend fun deleteAllBookmarks()
-
 }

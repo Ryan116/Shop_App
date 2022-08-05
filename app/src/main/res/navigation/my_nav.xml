@@ -32,19 +32,19 @@
         android:id="@+id/myCartFragment"
         android:name="com.example.shopapp.features.myCartScreen.presentation.MyCartFragment"
         android:label="fragment_my_cart"
-        tools:layout="@layout/fragment_my_cart"/>
+        tools:layout="@layout/fragment_my_cart" />
 
     <fragment
         android:id="@+id/mapsFragment"
         android:name="com.example.shopapp.features.mapScreen.presentation.MapsFragment"
         android:label="fragment_maps"
-        tools:layout="@layout/fragment_maps"/>
+        tools:layout="@layout/fragment_maps" />
 
     <fragment
         android:id="@+id/bookmarksFragment"
         android:name="com.example.shopapp.features.bookmarksScreen.presentation.BookmarksFragment"
         android:label="fragment_bookmarks"
-        tools:layout="@layout/fragment_bookmarks"/>
+        tools:layout="@layout/fragment_bookmarks" />
 
     <action
         android:id="@+id/action_to_myCartFragment"
