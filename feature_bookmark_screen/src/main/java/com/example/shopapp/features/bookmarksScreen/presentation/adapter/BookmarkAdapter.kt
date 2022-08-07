@@ -1,19 +1,16 @@
 package com.example.shopapp.features.bookmarksScreen.presentation.adapter
 
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.example.shopapp.features.bookmarksScreen.R
 import com.example.shopapp.features.bookmarksScreen.databinding.BookmarkItemBinding
-import com.example.shopapp.features.bookmarksScreen.domain.model.Bookmark
+import com.example.shopapp.features.bookmarksScreen.domain.model.PhoneBookmark
 
 class BookmarkAdapter(
-    private val onItemClicked: (Bookmark) -> Unit,
-    private val bookmarkClickListener: BookmarkClickListener
+    private val onItemClicked: (PhoneBookmark) -> Unit,
+    private val onBookmarkClicked: (PhoneBookmark) -> Unit
 ) :
-    ListAdapter<Bookmark, BookmarkViewHolder>(BookmarkDiffCallback()) {
-
+    ListAdapter<PhoneBookmark, BookmarkViewHolder>(BookmarkDiffCallback()) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -25,28 +22,12 @@ class BookmarkAdapter(
     override fun onBindViewHolder(holder: BookmarkViewHolder, position: Int) {
         val bookmark = getItem(position)
         holder.bind(bookmark)
-        var pressed = true
         holder.itemView.setOnClickListener {
             onItemClicked(bookmark)
         }
         holder.bookmark.setOnClickListener {
-            if (pressed) {
-                pressed = false
-                holder.bookmark.setImageResource(R.drawable.ic_bslike_empty)
-                bookmarkClickListener.deleteBookmark(bookmark)
-            } else {
-                pressed = true
-                holder.bookmark.setImageResource(R.drawable.ic_bestseller)
-            }
-
-
-
+            onBookmarkClicked(bookmark)
         }
-
-    }
-
-    interface BookmarkClickListener {
-        fun deleteBookmark(bookmark: Bookmark)
     }
 }
 

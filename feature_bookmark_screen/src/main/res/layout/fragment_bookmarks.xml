@@ -26,6 +26,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:clickable="true"
+        android:focusable="true"
         android:src="@android:drawable/ic_menu_delete"
         app:backgroundTint="@color/design_default_color_background"
         app:layout_constraintBottom_toBottomOf="parent"

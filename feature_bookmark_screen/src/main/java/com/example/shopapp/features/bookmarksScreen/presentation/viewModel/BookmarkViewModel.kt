@@ -3,7 +3,7 @@ package com.example.shopapp.features.bookmarksScreen.presentation.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.shopapp.features.bookmarksScreen.domain.model.Bookmark
+import com.example.shopapp.features.bookmarksScreen.domain.model.PhoneBookmark
 import com.example.shopapp.features.bookmarksScreen.domain.usecase.DeleteAllBookmarksUseCase
 import com.example.shopapp.features.bookmarksScreen.domain.usecase.DeleteBookmarkUseCase
 import com.example.shopapp.features.bookmarksScreen.domain.usecase.GetBookmarksListUseCase
@@ -16,25 +16,11 @@ class BookmarkViewModel(
     private val deleteAllBookmarksUseCase: DeleteAllBookmarksUseCase
 ) : ViewModel() {
 
+    val bookmarksList: LiveData<List<PhoneBookmark>> = getBookmarksListUseCase.getBookmarksList()
 
-    lateinit var bookmarksList: LiveData<List<Bookmark>>
-
-    init {
-        getBookmarksList()
-    }
-
-    private fun getBookmarksList() {
-        viewModelScope.launch {
-            bookmarksList = getBookmarksListUseCase.getBookmarksList()
-        }
-    }
-
-
-
-
-    fun deleteBookmark(bookmark: Bookmark) {
+    fun deleteBookmark(phoneBookmark: PhoneBookmark) {
         viewModelScope.launch(Dispatchers.IO) {
-            deleteBookmarkUseCase.deleteBookmark(bookmark)
+            deleteBookmarkUseCase.deleteBookmark(phoneBookmark)
         }
     }
 
@@ -43,7 +29,5 @@ class BookmarkViewModel(
             deleteAllBookmarksUseCase.deleteAllBookmarks()
         }
     }
-
-
 }
 

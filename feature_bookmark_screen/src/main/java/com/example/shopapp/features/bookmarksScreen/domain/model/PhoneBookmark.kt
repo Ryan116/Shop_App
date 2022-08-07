@@ -1,7 +1,6 @@
 package com.example.shopapp.features.bookmarksScreen.domain.model
 
-
-data class Bookmark(
+data class PhoneBookmark(
     val id: Int,
     val title: String,
     val priceWithoutDiscount: Int,

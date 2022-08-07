@@ -1,12 +1,13 @@
 package com.example.shopapp.features.bookmarksScreen.domain.repository
 
 import androidx.lifecycle.LiveData
-import com.example.shopapp.features.bookmarksScreen.domain.model.Bookmark
+import com.example.shopapp.features.bookmarksScreen.domain.model.PhoneBookmark
 
 interface BookmarkRepository {
-    suspend fun getBookmarks(): LiveData<List<Bookmark>>
 
-    suspend fun deleteBookmark(bookmark: Bookmark)
+    fun getBookmarks(): LiveData<List<PhoneBookmark>>
+
+    suspend fun deleteBookmark(phoneBookmark: PhoneBookmark)
 
     suspend fun deleteAllBookmarks()
 }

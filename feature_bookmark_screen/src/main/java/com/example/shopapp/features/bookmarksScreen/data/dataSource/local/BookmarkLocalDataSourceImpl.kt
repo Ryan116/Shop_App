@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import com.example.shopapp.common.database.data.database.BookmarkDao
 import com.example.shopapp.common.database.data.modelDB.PhoneBookmarkDB
 
-
 class BookmarkLocalDataSourceImpl(private val bookmarkDao: BookmarkDao) : BookmarkLocalDataSource {
-    override suspend fun getBookmarks(): LiveData<List<PhoneBookmarkDB>> {
+
+    override fun getBookmarks(): LiveData<List<PhoneBookmarkDB>> {
         return bookmarkDao.getBookmarks()
     }
 
@@ -17,6 +17,4 @@ class BookmarkLocalDataSourceImpl(private val bookmarkDao: BookmarkDao) : Bookma
     override suspend fun deleteAllBookmarks() {
         bookmarkDao.deleteAllBookmarks()
     }
-
-
 }

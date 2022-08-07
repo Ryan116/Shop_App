@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
 
-    var gradlePluginVersion = "1.6.0"
+    ext.gradlePluginVersion = "1.6.0"
 
     repositories {
         google()
@@ -11,7 +11,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:7.2.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin: $gradlePluginVersion"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$gradlePluginVersion"
         classpath 'androidx.navigation:navigation-safe-args-gradle-plugin:2.4.2'
         classpath 'com.google.gms:google-services:4.3.10'
 
@@ -65,4 +65,7 @@ ext {
 
     // Firebase
     firebase_bom_version = '29.1.0'
+
+    // Coil
+    coil_version = '1.1.1'
 }

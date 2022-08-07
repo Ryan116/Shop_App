@@ -9,13 +9,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.shopapp.features.bookmarksScreen.R
 import com.example.shopapp.features.bookmarksScreen.databinding.FragmentBookmarksBinding
-import com.example.shopapp.features.bookmarksScreen.domain.model.Bookmark
 import com.example.shopapp.features.bookmarksScreen.presentation.adapter.BookmarkAdapter
 import com.example.shopapp.features.bookmarksScreen.presentation.viewModel.BookmarkViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class BookmarksFragment : Fragment() {
+
     private var _binding: FragmentBookmarksBinding? = null
     private val binding
         get() = _binding!!
@@ -32,33 +31,36 @@ class BookmarksFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        bookmarkViewModel.bookmarksList.observe(viewLifecycleOwner) {
-            val adapterBookmark = BookmarkAdapter({
-                findNavController().navigate(R.id.action_to_productDetailsFragment)
-
-            },
-                object : BookmarkAdapter.BookmarkClickListener {
-
-                    override fun deleteBookmark(bookmark: Bookmark) {
-                        bookmarkViewModel.deleteBookmark(bookmark)
-                    }
-
-                }
-            )
-            adapterBookmark.submitList(it)
-            binding.recyclerViewBookmarks.adapter = adapterBookmark
-            binding.recyclerViewBookmarks.layoutManager = GridLayoutManager(requireContext(), 2)
-
-        }
-
-        binding.buttonDeleteAll.setOnClickListener {
-            bookmarkViewModel.deleteAllBooks()
-        }
+        setupRecyclerViewAdapter()
+        setupFloatingButton()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setupRecyclerViewAdapter() {
+        val adapterBookmark = BookmarkAdapter(
+            {
+                findNavController().navigate(R.id.action_to_productDetailsFragment)
+
+            }, { phoneBookmark ->
+                bookmarkViewModel.deleteBookmark(phoneBookmark)
+            }
+        )
+        binding.recyclerViewBookmarks.apply {
+            adapter = adapterBookmark
+            layoutManager = GridLayoutManager(requireContext(), 2)
+        }
+        bookmarkViewModel.bookmarksList.observe(viewLifecycleOwner) {
+            adapterBookmark.submitList(it)
+        }
+    }
+
+    private fun setupFloatingButton() {
+        binding.buttonDeleteAll.setOnClickListener {
+            bookmarkViewModel.deleteAllBooks()
+        }
     }
 }
