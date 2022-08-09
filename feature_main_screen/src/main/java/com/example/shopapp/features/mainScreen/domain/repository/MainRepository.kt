@@ -1,6 +1,5 @@
 package com.example.shopapp.features.mainScreen.domain.repository
 
-import com.example.shopapp.features.mainScreen.data.network.modelRemote.MainRemote
 import com.example.shopapp.features.mainScreen.domain.model.BestSeller
 import com.example.shopapp.features.mainScreen.domain.model.HomeStore
 

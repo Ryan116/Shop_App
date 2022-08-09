@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.shopapp.features.mainScreen.data.cacheDB.modelDB.MainDB
-import com.example.shopapp.features.mainScreen.data.network.modelRemote.MainRemote
 
 @Dao
 interface MainScreenDao {
@@ -15,5 +14,4 @@ interface MainScreenDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMainDB(mainDB: MainDB)
-
 }

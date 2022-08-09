@@ -5,8 +5,8 @@ import com.example.shopapp.features.mainScreen.data.cacheDB.modelDB.BestSellerDB
 import com.example.shopapp.features.mainScreen.data.cacheDB.modelDB.HomeStoreDB
 import com.example.shopapp.features.mainScreen.data.cacheDB.modelDB.MainDB
 
-
 interface MainLocalDataSource {
+
     suspend fun addBookmark(phoneBookmarkDB: PhoneBookmarkDB)
 
     suspend fun deleteBookmark(phoneBookmarkDB: PhoneBookmarkDB)
@@ -16,5 +16,4 @@ interface MainLocalDataSource {
     suspend fun getBestSellerDBPhonesList(): List<BestSellerDB>
 
     suspend fun getHomeStoreDBPhonesList(): List<HomeStoreDB>
-
 }

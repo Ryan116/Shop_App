@@ -12,12 +12,16 @@ import java.lang.reflect.ParameterizedType
 class MainScreenTypeConverters {
 
     private val moshiBestSellerDB = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
-    private val listBestSellerDB : ParameterizedType = Types.newParameterizedType(List::class.java, BestSellerDB::class.java)
-    private val jsonAdapterBestSellerDB: JsonAdapter<List<BestSellerDB>> = moshiBestSellerDB.adapter(listBestSellerDB)
+    private val listBestSellerDB: ParameterizedType =
+        Types.newParameterizedType(List::class.java, BestSellerDB::class.java)
+    private val jsonAdapterBestSellerDB: JsonAdapter<List<BestSellerDB>> =
+        moshiBestSellerDB.adapter(listBestSellerDB)
 
     private val moshiHomeStoreDB = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
-    private val listHomeStoreDB : ParameterizedType = Types.newParameterizedType(List::class.java, HomeStoreDB::class.java)
-    private val jsonAdapterHomeStoreDB: JsonAdapter<List<HomeStoreDB>> = moshiHomeStoreDB.adapter(listHomeStoreDB)
+    private val listHomeStoreDB: ParameterizedType =
+        Types.newParameterizedType(List::class.java, HomeStoreDB::class.java)
+    private val jsonAdapterHomeStoreDB: JsonAdapter<List<HomeStoreDB>> =
+        moshiHomeStoreDB.adapter(listHomeStoreDB)
 
     @TypeConverter
     fun listBestSellerDBlToJsonStr(listMyModel: List<BestSellerDB>?): String? {

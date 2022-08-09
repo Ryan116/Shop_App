@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_background"
-    android:padding="16dp">
+    android:paddingStart="16dp"
+    android:paddingTop="16dp"
+    android:paddingEnd="16dp">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="Hot sales"
+        android:text="@string/text_view_hot_sales"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="see more"
+        android:text="@string/text_view_see_more"
         android:textColor="@color/button_see_more"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewHomeStoreLabel"
@@ -64,7 +64,7 @@
         android:id="@+id/textViewSelectCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Category"
+        android:text="@string/select_category"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="view all"
+        android:text="@string/view_all"
         android:textColor="@color/button_see_more"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewSelectCategory"
@@ -116,7 +116,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Best Seller"
+        android:text="@string/best_seller"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -129,14 +129,13 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="see more"
+        android:text="@string/text_view_see_more"
         android:textColor="@color/button_see_more"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewBestSellerLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3"
         tools:ignore="TouchTargetSizeCheck" />
-
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -153,7 +152,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Search"
+            android:hint="@string/text_input_edit_text_hint_search"
             tools:ignore="TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -164,7 +163,7 @@
         android:background="#0000"
         android:clickable="true"
         android:focusable="true"
-        android:src="@drawable/ic_button7"
+        android:src="@drawable/ic_button_filter"
         app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textInputLayout"
@@ -219,13 +218,14 @@
                     android:id="@+id/imageButtonPhones"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_button_phones" />
+                    android:background="@drawable/ic_button_category_phones" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/category_phones" />
+                    android:text="@string/category_phones"
+                    android:textColor="#0277BD" />
             </LinearLayout>
 
             <LinearLayout
@@ -237,13 +237,14 @@
                     android:id="@+id/imageButtonComputer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_button_computer" />
+                    android:background="@drawable/ic_button_category_computer" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/category_computer" />
+                    android:text="@string/category_computer"
+                    android:textColor="#0277BD" />
             </LinearLayout>
 
             <LinearLayout
@@ -255,13 +256,14 @@
                     android:id="@+id/imageButtonHealth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_button_health" />
+                    android:background="@drawable/ic_button_category_health" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/category_health" />
+                    android:text="@string/category_health"
+                    android:textColor="#0277BD" />
             </LinearLayout>
 
             <LinearLayout
@@ -273,7 +275,7 @@
                     android:id="@+id/imageButtonBooks"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_button_books" />
+                    android:background="@drawable/ic_button_category_books" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -291,7 +293,7 @@
                     android:id="@+id/imageButton5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_button_5" />
+                    android:background="@drawable/ic_button_category_5" />
 
                 <TextView
                     android:layout_width="match_parent"

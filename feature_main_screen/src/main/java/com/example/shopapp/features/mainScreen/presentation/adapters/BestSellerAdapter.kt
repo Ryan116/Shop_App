@@ -1,6 +1,5 @@
 package com.example.shopapp.features.mainScreen.presentation.adapters
 
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
@@ -13,7 +12,6 @@ class BestSellerAdapter(
     private val bookmarkClickListener: BookmarkClickListener
 ) :
     ListAdapter<BestSeller, BestSellerViewHolder>(BestSellerDiffCallback()) {
-
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -34,23 +32,17 @@ class BestSellerAdapter(
         holder.itemView.setOnClickListener {
             onItemClicked(bestSeller)
         }
-        var pressed = true
         holder.bookmark.setOnClickListener {
-            if (pressed) {
-                pressed = false
-                holder.bookmark.setImageResource(R.drawable.ic_bestseller)
-                bookmarkClickListener.addBookmark(bestSeller)
-            } else {
-                pressed = true
-                holder.bookmark.setImageResource(R.drawable.ic_bslike_empty)
+            if (bestSeller.pressed) {
+                holder.bookmark.setImageResource(R.drawable.ic_bestseller_bookmark_empty)
                 bookmarkClickListener.deleteBookmark(bestSeller)
+                bestSeller.pressed = false
+            } else {
+                holder.bookmark.setImageResource(R.drawable.ic_bestseller_bookmark_full)
+                bookmarkClickListener.addBookmark(bestSeller)
+                bestSeller.pressed = true
             }
         }
-    }
-
-    interface BookmarkClickListener {
-        fun addBookmark(bestSeller: BestSeller)
-        fun deleteBookmark(bestSeller: BestSeller)
     }
 }
 

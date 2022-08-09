@@ -1,7 +1,5 @@
 package com.example.shopapp.features.mainScreen.domain.model
 
-
-
 data class HomeStore(
     val id: Int,
     val title: String,

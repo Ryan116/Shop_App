@@ -7,8 +7,7 @@ import androidx.room.PrimaryKey
 data class MainDB(
     val homeStore: List<HomeStoreDB>,
     val bestSeller: List<BestSellerDB>
-    ) {
-
+) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
 }

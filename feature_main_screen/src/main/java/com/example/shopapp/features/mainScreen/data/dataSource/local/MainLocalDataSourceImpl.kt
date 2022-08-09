@@ -7,7 +7,6 @@ import com.example.shopapp.features.mainScreen.data.cacheDB.modelDB.BestSellerDB
 import com.example.shopapp.features.mainScreen.data.cacheDB.modelDB.HomeStoreDB
 import com.example.shopapp.features.mainScreen.data.cacheDB.modelDB.MainDB
 
-
 class MainLocalDataSourceImpl(
     private val bookmarkDao: BookmarkDao,
     private val mainScreenDao: MainScreenDao
@@ -32,6 +31,4 @@ class MainLocalDataSourceImpl(
     override suspend fun getHomeStoreDBPhonesList(): List<HomeStoreDB> {
         return mainScreenDao.getListMainDB()[0].homeStore
     }
-
-
 }

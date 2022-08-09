@@ -15,37 +15,33 @@ class MainRepositoryImpl(
     private val mainMapper: MainMapper
 ) : MainRepository {
 
-
     override suspend fun getBestSellerPhonesList(): List<BestSeller> {
-        val listBestSellerDB = mainLocalDataSource.getBestSellerDBPhonesList()
-        return mainMapper.mapListBestsellerDBToListBestseller(listBestSellerDB)
+        return mainMapper.mapListBestsellerDBToListBestseller(
+            mainLocalDataSource.getBestSellerDBPhonesList()
+        )
     }
 
     override suspend fun getHomeStorePhonesList(): List<HomeStore> {
-        val listHomeStoreDB = mainLocalDataSource.getHomeStoreDBPhonesList()
-        return mainMapper.mapListHomeStoreDBToListHomeStore(listHomeStoreDB)
+        return mainMapper.mapListHomeStoreDBToListHomeStore(
+            mainLocalDataSource.getHomeStoreDBPhonesList()
+        )
     }
 
     override suspend fun addBookmark(bestSeller: BestSeller) {
         mainLocalDataSource.addBookmark(mainMapper.mapBestsellerToBookmarkDB(bestSeller))
-
-
     }
 
     override suspend fun deleteBookmark(bestSeller: BestSeller) {
         mainLocalDataSource.deleteBookmark(mainMapper.mapBestsellerToBookmarkDB(bestSeller))
-
-
     }
 
     override suspend fun insertMainRemoteToDB() {
-        val mainRemote = mainRemoteDataSource.getMainRemote()
         withContext(Dispatchers.IO) {
-            val mainDB = mainMapper.mapMainRemoteToMainDB(mainRemote)
-            mainLocalDataSource.insertMainDBToDB(mainDB)
+            mainLocalDataSource.insertMainDBToDB(
+                mainMapper.mapMainRemoteToMainDB(
+                    mainRemoteDataSource.getMainRemote()
+                )
+            )
         }
-
     }
-
-
 }

@@ -46,6 +46,8 @@ ext {
 
     // Retrofit
     retrofit_version = '2.9.0'
+
+    // Moshi
     moshi_version = '1.13.0'
 
     // Fragment

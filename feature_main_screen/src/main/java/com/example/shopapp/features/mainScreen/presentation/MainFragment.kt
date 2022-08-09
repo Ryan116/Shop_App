@@ -13,12 +13,12 @@ import com.example.shopapp.features.mainScreen.R
 import com.example.shopapp.features.mainScreen.databinding.FragmentMainBinding
 import com.example.shopapp.features.mainScreen.domain.model.BestSeller
 import com.example.shopapp.features.mainScreen.presentation.adapters.BestSellerAdapter
+import com.example.shopapp.features.mainScreen.presentation.adapters.BookmarkClickListener
 import com.example.shopapp.features.mainScreen.presentation.adapters.HomeStorePageAdapter
+import com.example.shopapp.features.mainScreen.presentation.state.MainScreenStatus
 import com.example.shopapp.features.mainScreen.presentation.viewModel.MainViewModel
-import com.example.shopapp.features.mainScreen.presentation.viewModel.ShopApiStatus
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 class MainFragment : Fragment() {
 
@@ -39,42 +39,74 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        mainViewModel.homeStorePhonesList.observe(viewLifecycleOwner) {
-            mainViewModel.homeStoreListSize.value = it.size
-            val adapterRV = HomeStorePageAdapter(
-                requireActivity(),
-                listSize = mainViewModel.homeStoreListSize.value ?: 0,
-
+        setupHomeStoreAdapter()
+        setupBestSellerAdapter()
+        setupMainScreenStatus()
+        setupBottomFilter()
+        chooseLocation()
+        binding.apply {
+            imageButtonPhones.apply {
+                categoryButtonClick(
+                    this,
+                    R.drawable.ic_button_category_phones_clicked,
+                    R.drawable.ic_button_category_phones,
+                    context.getString(R.string.button_category_phones)
                 )
-            binding.viewPagerHomeStore.adapter = adapterRV
+            }
+            imageButtonComputer.apply {
+                categoryButtonClick(
+                    this,
+                    R.drawable.ic_button_category_computer_clicked,
+                    R.drawable.ic_button_category_computer,
+                    context.getString(R.string.button_category_computers)
+                )
+            }
+            imageButtonHealth.apply {
+                categoryButtonClick(
+                    this,
+                    R.drawable.ic_button_category_health_clicked,
+                    R.drawable.ic_button_category_health,
+                    context.getString(R.string.button_category_health)
+                )
+            }
+            imageButtonBooks.apply {
+                categoryButtonClick(
+                    this,
+                    R.drawable.ic_button_category_books_clicked,
+                    R.drawable.ic_button_category_books,
+                    context.getString(R.string.button_category_books)
+                )
+            }
+            imageButton5.apply {
+                categoryButtonClick(
+                    this,
+                    R.drawable.ic_button_category_5_clicked,
+                    R.drawable.ic_button_category_5,
+                    context.getString(R.string.button_category_button_5)
+                )
+            }
         }
+    }
 
-        mainViewModel.bestSellerPhonesList.observe(viewLifecycleOwner) {
-            mainViewModel.bestSellerListSize.value = it.size
-            val adapterBS = BestSellerAdapter({
-                findNavController().navigate(R.id.action_mainFragment_to_productDetailsFragment)
-
-            },
-                object : BestSellerAdapter.BookmarkClickListener {
-                    override fun addBookmark(bestSeller: BestSeller) {
-                        mainViewModel.addBookmark(bestSeller)
-                    }
-
-                    override fun deleteBookmark(bestSeller: BestSeller) {
-                        mainViewModel.deleteBookmark(bestSeller)
-                    }
-
-                }
-            )
-            adapterBS.submitList(it)
-            binding.recyclerViewBestSeller.adapter = adapterBS
-            binding.recyclerViewBestSeller.layoutManager = GridLayoutManager(requireContext(), 2)
+    private fun chooseLocation() {
+        binding.textViewrLocation.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_mapsFragment)
         }
+    }
 
+    private fun setupBottomFilter() {
+        binding.imageButtonFilter.setOnClickListener {
+            val view: View = layoutInflater.inflate(R.layout.bottom_filter, null)
+            val dialog = BottomSheetDialog(requireContext())
+            dialog.setContentView(view)
+            dialog.show()
+        }
+    }
+
+    private fun setupMainScreenStatus() {
         mainViewModel.status.observe(viewLifecycleOwner) {
             when (it) {
-                is ShopApiStatus.ERROR -> {
+                is MainScreenStatus.ERROR -> {
                     Toast.makeText(
                         requireContext(),
                         it.error,
@@ -84,60 +116,40 @@ class MainFragment : Fragment() {
                 }
             }
         }
+    }
 
-        binding.apply {
-            imageButtonPhones.apply {
-                categoryButtonClick(
-                    this,
-                    R.drawable.ic_button_phones_clicked,
-                    R.drawable.ic_button_phones,
-                    "Phones"
-                )
+    private fun setupBestSellerAdapter() {
+        val adapterBS = BestSellerAdapter({
+            findNavController().navigate(R.id.action_mainFragment_to_productDetailsFragment)
+
+        },
+            object : BookmarkClickListener {
+                override fun addBookmark(bestSeller: BestSeller) {
+                    mainViewModel.addBookmark(bestSeller)
+                }
+
+                override fun deleteBookmark(bestSeller: BestSeller) {
+                    mainViewModel.deleteBookmark(bestSeller)
+                }
+
             }
-            imageButtonComputer.apply {
-                categoryButtonClick(
-                    this,
-                    R.drawable.ic_button_computer_clicked,
-                    R.drawable.ic_button_computer,
-                    "Computers"
-                )
-            }
-            imageButtonHealth.apply {
-                categoryButtonClick(
-                    this,
-                    R.drawable.ic_button_health_clicked,
-                    R.drawable.ic_button_health,
-                    "Health"
-                )
-            }
-            imageButtonBooks.apply {
-                categoryButtonClick(
-                    this,
-                    R.drawable.ic_button_books_clicked,
-                    R.drawable.ic_button_books,
-                    "Books"
-                )
-            }
-            imageButton5.apply {
-                categoryButtonClick(
-                    this,
-                    R.drawable.ic_button_5_clicked,
-                    R.drawable.ic_button_5,
-                    "Button_5"
-                )
-            }
+        )
+        binding.recyclerViewBestSeller.apply {
+            adapter = adapterBS
+            layoutManager = GridLayoutManager(requireContext(), 2)
         }
-
-        binding.imageButtonFilter.setOnClickListener {
-            val view: View = layoutInflater.inflate(R.layout.bottom_filter, null)
-            val dialog = BottomSheetDialog(requireContext())
-            dialog.setContentView(view)
-            dialog.show()
+        mainViewModel.bestSellerPhonesList.observe(viewLifecycleOwner) {
+            adapterBS.submitList(it)
         }
+    }
 
-
-        binding.textViewrLocation.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_mapsFragment)
+    private fun setupHomeStoreAdapter() {
+        mainViewModel.homeStoreListSize.observe(viewLifecycleOwner) {
+            val adapterRV = HomeStorePageAdapter(
+                requireActivity(),
+                listSize = it
+            )
+            binding.viewPagerHomeStore.adapter = adapterRV
         }
     }
 
@@ -145,7 +157,6 @@ class MainFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 
     private fun categoryButtonClick(
         imageButton: ImageButton,
@@ -167,5 +178,4 @@ class MainFragment : Fragment() {
             }
         }
     }
-
 }

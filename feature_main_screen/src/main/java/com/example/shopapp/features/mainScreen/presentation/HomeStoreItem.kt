@@ -6,13 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.shopapp.common.constants.Constants.HOME_STORE_ITEM_IMAGE_POSITION
+import com.example.shopapp.common.constants.Constants.RADIUS_ROUNDED_CORNERS_30
 import com.example.shopapp.common.extensions.setImageDrawableFromUrl
 import com.example.shopapp.features.mainScreen.R
 import com.example.shopapp.features.mainScreen.databinding.HomeStoreItemBinding
 import com.example.shopapp.features.mainScreen.presentation.viewModel.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-const val IMAGE_POSITION = "imagePos"
 
 class HomeStoreItem : Fragment() {
     private lateinit var binding: HomeStoreItemBinding
@@ -32,12 +33,10 @@ class HomeStoreItem : Fragment() {
         binding.bestSellerLayout.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_productDetailsFragment)
         }
-
-
         arguments?.takeIf {
-            it.containsKey(IMAGE_POSITION)
+            it.containsKey(HOME_STORE_ITEM_IMAGE_POSITION)
         }?.apply {
-            val position = getInt(IMAGE_POSITION)
+            val position = getInt(HOME_STORE_ITEM_IMAGE_POSITION)
             mainViewModel.homeStorePhonesList.observe(viewLifecycleOwner) {
                 val listSize = it.size
                 for (i in 0 until listSize) {
@@ -47,8 +46,10 @@ class HomeStoreItem : Fragment() {
                             binding.apply {
                                 textViewMainTitle.text = phone.title
                                 textViewSubtitle.text = phone.subtitle
-                                imageView.setImageDrawableFromUrl(phone.picture, 30f)
-
+                                imageView.setImageDrawableFromUrl(
+                                    phone.picture,
+                                    RADIUS_ROUNDED_CORNERS_30
+                                )
                             }
                         }
                     }
@@ -56,7 +57,6 @@ class HomeStoreItem : Fragment() {
             }
         }
     }
-
 }
 
 

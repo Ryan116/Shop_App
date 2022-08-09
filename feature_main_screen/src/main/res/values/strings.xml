@@ -8,6 +8,23 @@
     <string name="category_button_5">button_5</string>
     <string name="my_cart_total">$%s us</string>
     <string name="main_screen_location">Zihuatanejo, Gro</string>
+    <string name="text_input_edit_text_hint_search">Search</string>
+    <string name="text_view_see_more">see more</string>
+    <string name="button_category_phones">Phones</string>
+    <string name="button_category_computers">Computers</string>
+    <string name="button_category_health">Health</string>
+    <string name="button_category_books">Books</string>
+    <string name="button_category_button_5">Button_5</string>
+    <string name="bottom_filter_options">Filter options</string>
+    <string name="button_done">Done</string>
+    <string name="bottom_filter_category_brand">Brand</string>
+    <string name="bottom_filter_category_price">Price</string>
+    <string name="bottom_filter_category_size">Size</string>
+    <string name="text_view_hot_sales">Hot sales</string>
+    <string name="select_category">Select Category</string>
+    <string name="view_all">view all</string>
+    <string name="best_seller">Best Seller</string>
+    <string name="buy_now">Buy now!</string>
     <array name="brands">
         <item>Samsung</item>
         <item>IPhone</item>
