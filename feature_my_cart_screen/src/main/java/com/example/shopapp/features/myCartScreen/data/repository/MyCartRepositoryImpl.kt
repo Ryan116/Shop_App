@@ -10,18 +10,15 @@ class MyCartRepositoryImpl(
     private val myCartRemoteDataSource: MyCartRemoteDataSource,
     private val myCartMapper: MyCartMapper,
     private val myCartLocalDataSource: MyCartLocalDataSource
-    ) : MyCartRepository {
-
-
+) : MyCartRepository {
 
     override suspend fun getMyCart(): BasketMain {
-
-        val listBasketMain = myCartMapper.maplistBasketMainDBToListBasketMain(myCartLocalDataSource.getMyCart())
+        val listBasketMain =
+            myCartMapper.mapListBasketMainDBToListBasketMain(myCartLocalDataSource.getMyCart())
         return listBasketMain[0]
     }
 
     override suspend fun insertMyCartToDB() {
-
         val basketMainRemote = myCartRemoteDataSource.getMyCartFromServer()
         myCartLocalDataSource.insertMyCartToDB(
             myCartMapper.mapBasketMainRemoteToBasketMainDB(

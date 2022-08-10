@@ -7,22 +7,13 @@ import androidx.lifecycle.viewModelScope
 import com.example.shopapp.features.myCartScreen.domain.model.BasketMain
 import com.example.shopapp.features.myCartScreen.domain.useCases.GetMyCartUseCase
 import com.example.shopapp.features.myCartScreen.domain.useCases.InsertMyCartToDBUseCase
+import com.example.shopapp.features.myCartScreen.presentation.MyCartApiStatus
 import kotlinx.coroutines.launch
-
-
-sealed class MyCartApiStatus {
-    class LOADING : MyCartApiStatus()
-    class ERROR(val error: String) : MyCartApiStatus()
-    class DONE : MyCartApiStatus()
-}
-
-
 
 class MyCartViewModel(
     private val getMyCartUseCase: GetMyCartUseCase,
     private val insertMyCartToDBUseCase: InsertMyCartToDBUseCase
 ) : ViewModel() {
-
 
     private val _status = MutableLiveData<MyCartApiStatus>()
     val status: LiveData<MyCartApiStatus> = _status
@@ -35,12 +26,11 @@ class MyCartViewModel(
     }
 
     private fun getMyCartModels() {
-
         viewModelScope.launch {
-            _status.value = MyCartApiStatus.LOADING()
+            _status.value = MyCartApiStatus.LOADING
             try {
                 insertMyCartToDBUseCase.insertMyCartToDB()
-                _status.value = MyCartApiStatus.DONE()
+                _status.value = MyCartApiStatus.DONE
             } catch (e: Exception) {
                 _status.value = MyCartApiStatus.ERROR(e.toString())
             }

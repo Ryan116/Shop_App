@@ -8,10 +8,10 @@ import com.example.shopapp.features.productDetailsScreen.data.cacheDB.modelDB.Pr
 
 @Dao
 interface ProductDetailsDao {
+
     @Query("SELECT * FROM product_details_cache ORDER BY id")
     suspend fun getProductDetails(): List<ProductDetailsItemDB>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertProductDetails(productDetailsItemDB: ProductDetailsItemDB)
-
 }

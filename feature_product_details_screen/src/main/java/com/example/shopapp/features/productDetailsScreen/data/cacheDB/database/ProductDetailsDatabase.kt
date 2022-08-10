@@ -5,9 +5,11 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.example.shopapp.common.constants.Constants.PRODUCT_DETAILS_DATABASE_TABLE_NAME
+import com.example.shopapp.common.constants.Constants.PRODUCT_DETAILS_DATABASE_VERSION
 import com.example.shopapp.features.productDetailsScreen.data.cacheDB.modelDB.ProductDetailsItemDB
 
-@Database(entities = [ ProductDetailsItemDB::class ], version=1, exportSchema = false)
+@Database(entities = [ProductDetailsItemDB::class], version = PRODUCT_DETAILS_DATABASE_VERSION, exportSchema = false)
 @TypeConverters(PDItemTypeConverters::class)
 abstract class ProductDetailsDatabase : RoomDatabase() {
 
@@ -21,7 +23,7 @@ abstract class ProductDetailsDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     application,
                     ProductDetailsDatabase::class.java,
-                    "product_details_cache"
+                    PRODUCT_DETAILS_DATABASE_TABLE_NAME
                 )
                     .fallbackToDestructiveMigration()
                     .build()

@@ -1,4 +1,4 @@
-package com.example.shopapp.features.myCartScreen.data.cacheDB.modelDB
+package com.example.shopapp.features.myCartScreen.data.cache.model
 
 data class BasketProductDB(
     val id: Int,

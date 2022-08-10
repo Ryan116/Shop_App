@@ -3,8 +3,10 @@ package com.example.shopapp.common.constants
 object Constants {
 
     const val BOOKMARK_DATABASE_NAME = "book_database"
+    const val BOOKMARK_DATABASE_VERSION = 1
 
     const val MAIN_SCREEN_DATABASE_NAME = "main_screen_cache"
+    const val MAIN_SCREEN_DATABASE_VERSION = 1
 
     const val BESTSELLER_REMOTE_IS_FAVORITES_NAME = "is_favorites"
     const val BESTSELLER_REMOTE_PRICE_WITHOUT_DISCOUNT = "price_without_discount"
@@ -22,4 +24,13 @@ object Constants {
     const val RADIUS_ROUNDED_CORNERS_30 = 30f
 
     const val LOCATION_REQUEST_CODE = 1
+
+    const val MY_CART_DATABASE_TABLE_NAME = "my_cart_cache"
+    const val MY_CART_DATABASE_VERSION = 1
+
+    const val MY_CART_BASE_URL = "https://run.mocky.io/v3/"
+    const val MY_CART_GET = "53539a72-3c5f-4f30-bbb1-6ca10d42c149"
+
+    const val PRODUCT_DETAILS_DATABASE_TABLE_NAME = "product_details_cache"
+    const val PRODUCT_DETAILS_DATABASE_VERSION = 1
 }

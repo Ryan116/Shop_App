@@ -1,4 +1,4 @@
-package com.example.shopapp.features.myCartScreen.data.network.modelRemote
+package com.example.shopapp.features.myCartScreen.data.network.model
 
 data class BasketProductRemote(
     val id: Int,

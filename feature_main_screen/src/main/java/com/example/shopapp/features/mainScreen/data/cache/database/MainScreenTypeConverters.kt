@@ -1,4 +1,4 @@
-package com.example.shopapp.features.mainScreen.data.cacheDB.database
+package com.example.shopapp.features.mainScreen.data.cache.database
 
 import androidx.room.TypeConverter
 import com.example.shopapp.features.mainScreen.data.cacheDB.modelDB.BestSellerDB

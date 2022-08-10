@@ -1,8 +1,7 @@
 package com.example.shopapp.features.myCartScreen.data.dataSource.local
 
-import com.example.shopapp.features.myCartScreen.data.cacheDB.database.MyCartDao
-import com.example.shopapp.features.myCartScreen.data.cacheDB.modelDB.BasketMainDB
-
+import com.example.shopapp.features.myCartScreen.data.cache.database.MyCartDao
+import com.example.shopapp.features.myCartScreen.data.cache.model.BasketMainDB
 
 class MyCartLocalDataSourceImpl(private val myCartDao: MyCartDao) :
     MyCartLocalDataSource {
@@ -12,9 +11,6 @@ class MyCartLocalDataSourceImpl(private val myCartDao: MyCartDao) :
     }
 
     override suspend fun getMyCart(): List<BasketMainDB> {
-
         return myCartDao.getMyCart()
     }
-
-
 }

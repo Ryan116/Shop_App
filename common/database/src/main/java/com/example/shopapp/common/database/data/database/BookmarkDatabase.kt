@@ -5,9 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.shopapp.common.constants.Constants.BOOKMARK_DATABASE_NAME
+import com.example.shopapp.common.constants.Constants.BOOKMARK_DATABASE_VERSION
 import com.example.shopapp.common.database.data.modelDB.PhoneBookmarkDB
 
-@Database(entities = [PhoneBookmarkDB::class], version = 1, exportSchema = false)
+@Database(entities = [PhoneBookmarkDB::class], version = BOOKMARK_DATABASE_VERSION, exportSchema = false)
 abstract class BookmarkDatabase : RoomDatabase() {
     abstract fun bookmarkDao(): BookmarkDao
 

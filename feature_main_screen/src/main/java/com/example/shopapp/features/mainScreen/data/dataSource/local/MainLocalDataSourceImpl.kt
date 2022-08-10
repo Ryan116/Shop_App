@@ -2,7 +2,7 @@ package com.example.shopapp.features.mainScreen.data.dataSource.local
 
 import com.example.shopapp.common.database.data.database.BookmarkDao
 import com.example.shopapp.common.database.data.modelDB.PhoneBookmarkDB
-import com.example.shopapp.features.mainScreen.data.cacheDB.database.MainScreenDao
+import com.example.shopapp.features.mainScreen.data.cache.database.MainScreenDao
 import com.example.shopapp.features.mainScreen.data.cacheDB.modelDB.BestSellerDB
 import com.example.shopapp.features.mainScreen.data.cacheDB.modelDB.HomeStoreDB
 import com.example.shopapp.features.mainScreen.data.cacheDB.modelDB.MainDB

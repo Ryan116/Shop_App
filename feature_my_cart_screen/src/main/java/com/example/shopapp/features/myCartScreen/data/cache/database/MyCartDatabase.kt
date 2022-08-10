@@ -1,13 +1,19 @@
-package com.example.shopapp.features.myCartScreen.data.cacheDB.database
+package com.example.shopapp.features.myCartScreen.data.cache.database
 
 import android.app.Application
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.shopapp.features.myCartScreen.data.cacheDB.modelDB.BasketMainDB
+import com.example.shopapp.common.constants.Constants.MY_CART_DATABASE_TABLE_NAME
+import com.example.shopapp.common.constants.Constants.MY_CART_DATABASE_VERSION
+import com.example.shopapp.features.myCartScreen.data.cache.model.BasketMainDB
 
-@Database(entities = [ BasketMainDB::class ], version = 1, exportSchema = false)
+@Database(
+    entities = [BasketMainDB::class],
+    version = MY_CART_DATABASE_VERSION,
+    exportSchema = false
+)
 @TypeConverters(MyCartTypeConverters::class)
 abstract class MyCartDatabase : RoomDatabase() {
 
@@ -21,7 +27,7 @@ abstract class MyCartDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     application,
                     MyCartDatabase::class.java,
-                    "my_cart_cache"
+                    MY_CART_DATABASE_TABLE_NAME
                 )
                     .fallbackToDestructiveMigration()
                     .build()

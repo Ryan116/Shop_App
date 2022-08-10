@@ -1,7 +1,7 @@
-package com.example.shopapp.features.myCartScreen.data.cacheDB.database
+package com.example.shopapp.features.myCartScreen.data.cache.database
 
 import androidx.room.TypeConverter
-import com.example.shopapp.features.myCartScreen.data.cacheDB.modelDB.BasketProductDB
+import com.example.shopapp.features.myCartScreen.data.cache.model.BasketProductDB
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types

@@ -1,10 +1,10 @@
-package com.example.shopapp.features.myCartScreen.data.cacheDB.database
+package com.example.shopapp.features.myCartScreen.data.cache.database
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.shopapp.features.myCartScreen.data.cacheDB.modelDB.BasketMainDB
+import com.example.shopapp.features.myCartScreen.data.cache.model.BasketMainDB
 
 @Dao
 interface MyCartDao {
@@ -14,5 +14,4 @@ interface MyCartDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMyCart(basketMainDB: BasketMainDB)
-
 }

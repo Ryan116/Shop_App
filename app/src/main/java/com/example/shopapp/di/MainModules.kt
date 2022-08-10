@@ -1,7 +1,7 @@
 package com.example.shopapp.di
 
-import com.example.shopapp.features.mainScreen.data.cacheDB.database.MainScreenDao
-import com.example.shopapp.features.mainScreen.data.cacheDB.database.MainScreenDatabase
+import com.example.shopapp.features.mainScreen.data.cache.database.MainScreenDao
+import com.example.shopapp.features.mainScreen.data.cache.database.MainScreenDatabase
 import com.example.shopapp.features.mainScreen.data.dataSource.local.MainLocalDataSource
 import com.example.shopapp.features.mainScreen.data.dataSource.local.MainLocalDataSourceImpl
 import com.example.shopapp.features.mainScreen.data.dataSource.remote.MainRemoteDataSource
