@@ -11,11 +11,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import com.example.shopapp.common.constants.Constants.LOCATION_REQUEST_CODE
 import com.example.shopapp.features.mapScreen.R
 import com.example.shopapp.features.mapScreen.databinding.FragmentMapsBinding
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.ResolvableApiException
-import com.google.android.gms.location.*
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -23,17 +27,14 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.gms.tasks.Task
 
-const val LOCATION_REQUEST_CODE = 1
 
 class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
+
     private lateinit var binding: FragmentMapsBinding
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var lastLocation: Location
     private lateinit var locationRequest: LocationRequest
-
-
     private val callback = OnMapReadyCallback { googleMap ->
         googleMap.uiSettings.isZoomControlsEnabled = true
         googleMap.setOnMarkerClickListener(this)
@@ -63,9 +64,9 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         fusedLocationProviderClient =
             LocationServices.getFusedLocationProviderClient(requireActivity())
-
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
     }
@@ -79,7 +80,7 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
             ) {
                 ActivityCompat.requestPermissions(
                     requireActivity(),
-                    arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                     LOCATION_REQUEST_CODE
                 )
                 return
@@ -100,34 +101,30 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
                 fastestInterval = 5000
                 priority = LocationRequest.PRIORITY_HIGH_ACCURACY
             }
-
             val builder = LocationSettingsRequest.Builder()
                 .addLocationRequest(locationRequest)
                 .setAlwaysShow(true)
-
-            val locationSettingsResponseTask: Task<LocationSettingsResponse> =
-                LocationServices.getSettingsClient(requireActivity().applicationContext)
-                    .checkLocationSettings(builder.build())
-                    .addOnFailureListener {
-                        if (it is ResolvableApiException) {
-                            try {
-                                it.startResolutionForResult(
-                                    requireActivity(),
-                                    LOCATION_REQUEST_CODE
-                                )
-                            } catch (e: ApiException) {
-                                e.printStackTrace()
-                            }
+            LocationServices.getSettingsClient(requireActivity().applicationContext)
+                .checkLocationSettings(builder.build())
+                .addOnFailureListener {
+                    if (it is ResolvableApiException) {
+                        try {
+                            it.startResolutionForResult(
+                                requireActivity(),
+                                LOCATION_REQUEST_CODE
+                            )
+                        } catch (e: ApiException) {
+                            e.printStackTrace()
                         }
                     }
+                }
         }
-
     }
 
     override fun onMarkerClick(p0: Marker): Boolean = false
 
     private fun checkGPSEnabled(): Boolean {
-        var locationManager =
+        val locationManager =
             requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
     }
@@ -137,6 +134,4 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
         markerOptions.title("$currentLatLong")
         googleMap.addMarker(markerOptions)
     }
-
-
 }

@@ -24,9 +24,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@android:color/holo_green_light"
-        android:text="Find me"
+        android:text="@string/find_me"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/map" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

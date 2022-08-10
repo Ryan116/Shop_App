@@ -7,26 +7,5 @@
     <string name="category_books">Books</string>
     <string name="category_button_5">button_5</string>
     <string name="my_cart_total">$%s us</string>
-    <array name="brands">
-        <item>Samsung</item>
-        <item>IPhone</item>
-        <item>Xiaomi</item>
-    </array>
-    <array name="prices">
-        <item>$0 - $1000</item>
-        <item>$1000 - $5000</item>
-        <item>$5000 - $10000</item>
-    </array>
-    <array name="sizes">
-        <item>4.5 to 5.5 inches</item>
-        <item>5.5 to 6.5 inches</item>
-        <item>6.5 to 7.5 inches</item>
-    </array>
-    <array name="locations">
-        <item>Zihuatanejo, Gro</item>
-        <item>Paris, France</item>
-        <item>Le Cannella, Italy</item>
-        <item>Marrakech, Marocco</item>
-    </array>
-
+    <string name="find_me">Find me</string>
 </resources>

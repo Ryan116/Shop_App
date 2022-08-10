@@ -20,4 +20,6 @@ object Constants {
 
     const val HOME_STORE_ITEM_IMAGE_POSITION = "imagePos"
     const val RADIUS_ROUNDED_CORNERS_30 = 30f
+
+    const val LOCATION_REQUEST_CODE = 1
 }
