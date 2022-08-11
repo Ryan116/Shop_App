@@ -2,8 +2,9 @@ package com.example.shopapp.features.productDetailsScreen.data.cacheDB.modelDB
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.shopapp.common.constants.Constants.PRODUCT_DETAILS_DATABASE_TABLE_NAME
 
-@Entity(tableName = "product_details_cache")
+@Entity(tableName = PRODUCT_DETAILS_DATABASE_TABLE_NAME)
 data class ProductDetailsItemDB(
     @PrimaryKey(autoGenerate = true)
     val id: Int,

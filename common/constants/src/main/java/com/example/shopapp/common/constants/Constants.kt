@@ -33,4 +33,10 @@ object Constants {
 
     const val PRODUCT_DETAILS_DATABASE_TABLE_NAME = "product_details_cache"
     const val PRODUCT_DETAILS_DATABASE_VERSION = 1
+
+    const val PRODUCT_DETAILS_ITEM_REMOTE_ATTRIBUTE_CPU = "CPU"
+    const val PRODUCT_DETAILS_BASE_URL = "https://run.mocky.io/v3/"
+    const val PRODUCT_DETAILS_GET = "6c14c560-15c6-4248-b9d2-b4508df7d4f5"
+
+    const val PD_IMAGE_POSITION = "pdImagePos"
 }

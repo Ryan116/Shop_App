@@ -10,10 +10,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.shopapp.features.productDetailsScreen.R
 import com.example.shopapp.features.productDetailsScreen.databinding.FragmentProductDetailsBinding
 import com.example.shopapp.features.productDetailsScreen.presentation.adapters.PDPageAdapter
-import com.example.shopapp.features.productDetailsScreen.presentation.viewModel.DetailsApiStatus
 import com.example.shopapp.features.productDetailsScreen.presentation.viewModel.ProductDetailsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 class ProductDetailsFragment : Fragment() {
 
@@ -47,16 +45,15 @@ class ProductDetailsFragment : Fragment() {
                     textView256GB.text = it.capacity[1]
                 }
             }
-            val adapterPD = PDPageAdapter(requireActivity(), 2)
+            val adapterPD = PDPageAdapter(requireActivity(), it.images.size)
             binding.viewPagerPD.adapter = adapterPD
         }
 
-        binding.apply {
-            buttonMyCart.setOnClickListener {
-                findNavController().navigate(R.id.action_productDetailsFragment_to_myCartFragment)
-            }
-        }
+        setupButtonMyCart()
+        setupPDScreenState()
+    }
 
+    private fun setupPDScreenState() {
         productDetailsViewModel.status.observe(viewLifecycleOwner) {
             when (it) {
                 is DetailsApiStatus.ERROR -> {
@@ -72,14 +69,18 @@ class ProductDetailsFragment : Fragment() {
         }
     }
 
-
+    private fun setupButtonMyCart() {
+        binding.apply {
+            buttonMyCart.setOnClickListener {
+                findNavController().navigate(R.id.action_productDetailsFragment_to_myCartFragment)
+            }
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }
 
 

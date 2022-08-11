@@ -7,20 +7,13 @@ import androidx.lifecycle.viewModelScope
 import com.example.shopapp.features.productDetailsScreen.domain.model.ProductDetailsItem
 import com.example.shopapp.features.productDetailsScreen.domain.useCases.GetProductDetailsUseCase
 import com.example.shopapp.features.productDetailsScreen.domain.useCases.InsertProductDetailsToDBUseCase
+import com.example.shopapp.features.productDetailsScreen.presentation.DetailsApiStatus
 import kotlinx.coroutines.launch
-
-
-sealed class DetailsApiStatus {
-    class LOADING : DetailsApiStatus()
-    class ERROR(val error: String) : DetailsApiStatus()
-    class DONE : DetailsApiStatus()
-}
 
 class ProductDetailsViewModel(
     private val getProductDetailsUseCase: GetProductDetailsUseCase,
     private val insertProductDetailsToDBUseCase: InsertProductDetailsToDBUseCase
 ) : ViewModel() {
-
 
     private var _status = MutableLiveData<DetailsApiStatus>()
     val status: LiveData<DetailsApiStatus> = _status
@@ -32,14 +25,12 @@ class ProductDetailsViewModel(
         getPDItem()
     }
 
-
     private fun getPDItem() {
-
         viewModelScope.launch {
-            _status.value = DetailsApiStatus.LOADING()
+            _status.value = DetailsApiStatus.LOADING
             try {
                 insertProductDetailsToDBUseCase.insertProductDetailsToCache()
-                _status.value = DetailsApiStatus.DONE()
+                _status.value = DetailsApiStatus.DONE
             } catch (e: Exception) {
                 _status.value = DetailsApiStatus.ERROR(e.toString())
             }

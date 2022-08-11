@@ -4,6 +4,7 @@ import com.example.shopapp.features.productDetailsScreen.domain.model.ProductDet
 import com.example.shopapp.features.productDetailsScreen.domain.repository.ProductDetailsRepository
 
 class GetProductDetailsUseCase(private val productDetailsRepository: ProductDetailsRepository) {
+
     suspend fun getProductDetails(): ProductDetailsItem {
         return productDetailsRepository.getProductDetails()
     }

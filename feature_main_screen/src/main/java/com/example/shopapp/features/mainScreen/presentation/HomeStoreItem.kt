@@ -16,7 +16,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class HomeStoreItem : Fragment() {
-    private lateinit var binding: HomeStoreItemBinding
+
+    private var _binding: HomeStoreItemBinding? = null
+    private val binding
+        get() = _binding!!
     private val mainViewModel by viewModel<MainViewModel>()
 
     override fun onCreateView(
@@ -24,15 +27,22 @@ class HomeStoreItem : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = HomeStoreItemBinding.inflate(layoutInflater)
+        _binding = HomeStoreItemBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.bestSellerLayout.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_productDetailsFragment)
-        }
+        setupViewPagerItemNavigation()
+        fillViewPagerItem()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun fillViewPagerItem() {
         arguments?.takeIf {
             it.containsKey(HOME_STORE_ITEM_IMAGE_POSITION)
         }?.apply {
@@ -55,6 +65,12 @@ class HomeStoreItem : Fragment() {
                     }
                 }
             }
+        }
+    }
+
+    private fun setupViewPagerItemNavigation() {
+        binding.bestSellerLayout.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_productDetailsFragment)
         }
     }
 }

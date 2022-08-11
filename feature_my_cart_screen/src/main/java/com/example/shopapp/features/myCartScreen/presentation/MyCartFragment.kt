@@ -64,12 +64,12 @@ class MyCartFragment : Fragment() {
             val basketProduct1 = basketProductsList[0]
             val basketProduct2 = basketProductsList[1]
             binding.apply {
-                imageViewItem1.setImageDrawableFromUrl(basketProduct1.images, 0f)
+                imageViewItem1.setImageDrawableFromUrl(basketProduct1.images)
                 textViewItem1Name.text = basketProduct1.title
                 textViewItem1Price.text =
                     NumberFormat.getCurrencyInstance(Locale.US).format(basketProduct1.price)
                 val image2Url = (basketProduct2.images).substringBefore('?')
-                imageViewItem2.setImageDrawableFromUrl(image2Url, 0f)
+                imageViewItem2.setImageDrawableFromUrl(image2Url)
                 textViewItem2Name.text = basketProduct2.title
                 textViewItem2Price.text =
                     NumberFormat.getCurrencyInstance(Locale.US).format(basketProduct2.price)

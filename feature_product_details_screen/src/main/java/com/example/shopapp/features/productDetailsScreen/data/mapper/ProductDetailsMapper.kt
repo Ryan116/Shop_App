@@ -1,13 +1,13 @@
 package com.example.shopapp.features.productDetailsScreen.data.mapper
 
 import com.example.shopapp.features.productDetailsScreen.data.cacheDB.modelDB.ProductDetailsItemDB
-import com.example.shopapp.features.productDetailsScreen.data.network.modelRemote.ProductDetailsItemRemote
+import com.example.shopapp.features.productDetailsScreen.data.network.model.ProductDetailsItemRemote
 import com.example.shopapp.features.productDetailsScreen.domain.model.ProductDetailsItem
 
 class ProductDetailsMapper {
 
-    fun mapProductDetailsItemDBToProductDetailsItem(productDetailsItemDB: ProductDetailsItemDB): ProductDetailsItem {
-        return ProductDetailsItem(
+    fun mapProductDetailsItemDBToProductDetailsItem(productDetailsItemDB: ProductDetailsItemDB) =
+        ProductDetailsItem(
             cpu = productDetailsItemDB.cpu,
             id = productDetailsItemDB.id.toString(),
             camera = productDetailsItemDB.camera,
@@ -21,10 +21,9 @@ class ProductDetailsMapper {
             ssd = productDetailsItemDB.ssd,
             title = productDetailsItemDB.title
         )
-    }
 
-    fun mapProductDetailsItemRemoteToProductDetailsItemDB(productDetailsItemRemote: ProductDetailsItemRemote): ProductDetailsItemDB {
-        return ProductDetailsItemDB(
+    fun mapProductDetailsItemRemoteToProductDetailsItemDB(productDetailsItemRemote: ProductDetailsItemRemote) =
+        ProductDetailsItemDB(
             cpu = productDetailsItemRemote.cpu,
             id = productDetailsItemRemote.id.toInt(),
             camera = productDetailsItemRemote.camera,
@@ -38,5 +37,4 @@ class ProductDetailsMapper {
             ssd = productDetailsItemRemote.ssd,
             title = productDetailsItemRemote.title
         )
-    }
 }

@@ -1,10 +1,9 @@
 package com.example.shopapp.features.productDetailsScreen.data.dataSource.remote
 
-import com.example.shopapp.features.productDetailsScreen.data.network.modelRemote.ProductDetailsItemRemote
+import com.example.shopapp.features.productDetailsScreen.data.network.model.ProductDetailsItemRemote
 
 
 interface ProductDetailsRemoteDataSource {
 
-    suspend fun getPhonesDetailsList() : ProductDetailsItemRemote
-
+    suspend fun getPhonesDetailsList(): ProductDetailsItemRemote
 }

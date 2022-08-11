@@ -13,10 +13,10 @@ class ProductDetailsRepositoryImpl(
 ) :
     ProductDetailsRepository {
 
-
-
     override suspend fun getProductDetails(): ProductDetailsItem {
-        return productDetailsMapper.mapProductDetailsItemDBToProductDetailsItem(productDetailsLocalDataSource.getProductDetails()[0])
+        return productDetailsMapper.mapProductDetailsItemDBToProductDetailsItem(
+            productDetailsLocalDataSource.getProductDetails()[0]
+        )
     }
 
     override suspend fun insertProductDetailsToCache() {
@@ -26,8 +26,5 @@ class ProductDetailsRepositoryImpl(
                 productDetailsItemRemote
             )
         )
-
     }
-
-
 }

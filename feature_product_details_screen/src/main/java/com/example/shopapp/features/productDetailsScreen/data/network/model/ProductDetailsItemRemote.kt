@@ -1,9 +1,10 @@
-package com.example.shopapp.features.productDetailsScreen.data.network.modelRemote
+package com.example.shopapp.features.productDetailsScreen.data.network.model
 
+import com.example.shopapp.common.constants.Constants.PRODUCT_DETAILS_ITEM_REMOTE_ATTRIBUTE_CPU
 import com.squareup.moshi.Json
 
 data class ProductDetailsItemRemote(
-    @Json(name = "CPU") val cpu: String,
+    @Json(name = PRODUCT_DETAILS_ITEM_REMOTE_ATTRIBUTE_CPU) val cpu: String,
     val id: String,
     val camera: String,
     val capacity: List<String>,
